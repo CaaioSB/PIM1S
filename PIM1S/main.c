@@ -101,6 +101,7 @@ void splash_window()
 	system("pause >nul");
 }
 
+// FUNÇÃO PARA FAZER LINHAS COLORIDAS SUPERIORES
 void topLines()
 {
 	for (i = 0; i < cmd_dimension.columns; i++) {
@@ -112,6 +113,7 @@ void topLines()
 	}
 }
 
+// FUNÇÃO PARA FAZER LINHAS COLORIDAS INFERIORES
 void bottomLines()
 {
 	for (i = 0; i < cmd_dimension.columns; i++) {
