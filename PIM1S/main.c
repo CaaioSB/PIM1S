@@ -12,6 +12,7 @@
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
+
 // FUNÇÕES PARA ALTERAR AS CORES
 void red() {
 	printf("\033[1;31m");
@@ -32,6 +33,21 @@ char title[25] = "SISTEMA DE PIZZARIA v1.0";
 struct CMD_DIMENSION {
 	int rows;
 	int columns;
+};
+
+struct REGISTER {
+	char nome_completo[1024];
+	char email[1024];
+	char rg[1024];
+	char cpf[1024];
+	char cep[1024];
+	char usuario[1024];
+	char senha[1024];
+};
+
+struct LOGIN {
+	char nome[1024];
+	char senha[1024];
 };
 
 struct CMD_DIMENSION cmd_dimension;
@@ -102,53 +118,44 @@ void splash_window()
 	system("pause >nul");
 }
 
-struct LOGIN {
-	char nome[1024];
-	char senha[1024];
-};
 
-void login_window() {
+void principal_menu() {
+	int op;
 
 	system(CLEAR_SCREEN_PROGRAM);
 	topLines();
 	printf("\n\n");
-	centerText("LOGIN - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+	centerText("MENU - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf("Você deseja realizar um cadastro? F1 para SIM ou \033[1;31mF2 para NÃO");
+	printf("1 - FAZER LOGIN\n");
+	printf("2 - REGISTRAR-SE\n");
+	printf("3 - ESQUECI MINHA SENHA\n");
+	printf("ESCOLHA UMA OPÇÃO DESEJADA: \n");
 
-	struct LOGIN login;
-	char tecla;
-	tecla = _getch();
-	if (tecla == -32) {
-		tecla = _getch();
-		switch (tecla) {
-		case 59: // F1
-			register_window();
-			break;
-		case 60: // F2
+	scanf_s("%d", &op);
 
-			printf("Login: ");
-			gets(login.nome);
-
-			printf("Senha: ");
-			gets(login.senha);
-
-
-			for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
-				printf("\n");
-			}
-
-			bottomLines();
-
-			system("pause >nul");
-		}
+	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
+		printf("\n");
 	}
-}
 
+	bottomLines();
+
+	switch (op)
+	{
+	case 1:
+		break;
+	case 2:
+		register_window();
+		break;
+	}
+	system("pause >nul");
+
+
+}
 
 // FUNÇÃO PARA FAZER LINHAS COLORIDAS SUPERIORES
 void topLines()
@@ -189,14 +196,95 @@ int main() {
 	splash_window();
 
 	if (GetKeyState(VK_SPACE) && 0x8000) {
-		login_window();
+		principal_menu();
 	}
 
 	system("pause >nul");
 	return 1;
 }
 
+FILE* arquivo = NULL;
+FILE* AbreArquivo(char modo, char caminho[30]) {
+	switch (modo) {
+	case 'g':
+		arquivo = fopen(caminho, "wt");
+		break;
+	case 'l':
+		arquivo = fopen(caminho, "rt");
+		break;
+	case 'a':
+		arquivo = fopen(caminho, "a");
+		break;
+	}
+	if (arquivo == NULL) {
+		printf("Nao foi possivel abrir o arquivo");
+		exit(0);
+	}
+	return arquivo;
+}
+
+void FecharArquivo(FILE* arquivo) {
+	fclose(arquivo);
+}
+
+
+void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
+	FILE* arquivo;
+	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
+	fprintf(arquivo, "%s %s %s %s %s %s %s\n", nome, email, rg, cpf, cep, usuario, senha);
+	FecharArquivo(arquivo);
+}
+
+struct REGISTER register_func;
 void register_window() {
-	printf("fazendo registro");
+	system(CLEAR_SCREEN_PROGRAM);
+	topLines();
+	printf("\n\n");
+	centerText("REGISTRAR-SE - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+
+	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+		printf("\n");
+	}
+
+	printf("DIGITE SEU NOME COMPLETO: ");
+	(void)scanf(" %[^\n]s",register_func.nome_completo);
+
+	printf("DIGITE SEU E-MAIL: ");
+	(void)scanf("%s", register_func.email);
+
+	printf("DIGITE SEU RG: ");
+	(void)scanf("%s", register_func.rg);
+
+	printf("DIGITE SEU CPF: ");
+	(void)scanf("%s", register_func.cpf);
+
+	printf("DIGITE SEU CEP: ");
+	(void)scanf("%s", register_func.cep);
+
+	printf("DIGITE SEU USUÁRIO DE LOGIN: ");
+	(void)scanf("%s", register_func.usuario);
+
+	printf("DIGITE SUA SENHA DE LOGIN: ");
+	(void)scanf("%s", register_func.senha);
+
+	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
+
+	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
+		printf("\n");
+	}
+
+	bottomLines();
+
+	system("pause >nul");
+}
+
+
+struct LOGIN login;
+void login_window() {
+	printf("Login: ");
+	gets(login.nome);
+
+	printf("Senha: ");
+	gets(login.senha);
 	system("pause >nul");
 }
