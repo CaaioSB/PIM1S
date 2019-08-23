@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="register_func.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />

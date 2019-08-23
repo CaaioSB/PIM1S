@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <locale.h>
 #include "main.h"
+#include <new.h>
 
 // LIMPAR A TELA
 #define CLEAR_SCREEN_PROGRAM "cls"
@@ -87,8 +88,8 @@ void splash_window()
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
-	
-	centerText("SISTEMA DE PIZZARIA v1.0", cmd_dimension.columns);
+
+	centerText("SISTEMA GERENCIADOR DE PIZZARIA v1.0", cmd_dimension.columns);
 	char message[65] = "PRESSIONE A TECLA \033[1;31mESPAÇO\033[0m PARA INICIAR UM NOVO TURNO";
 	centerText(message, cmd_dimension.columns + 10);
 
@@ -100,6 +101,54 @@ void splash_window()
 
 	system("pause >nul");
 }
+
+struct LOGIN {
+	char nome[1024];
+	char senha[1024];
+};
+
+void login_window() {
+
+	system(CLEAR_SCREEN_PROGRAM);
+	topLines();
+	printf("\n\n");
+	centerText("LOGIN - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+
+	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+		printf("\n");
+	}
+
+	printf("Você deseja realizar um cadastro? F1 para SIM ou \033[1;31mF2 para NÃO");
+
+	struct LOGIN login;
+	char tecla;
+	tecla = _getch();
+	if (tecla == -32) {
+		tecla = _getch();
+		switch (tecla) {
+		case 59: // F1
+			register_window();
+			break;
+		case 60: // F2
+
+			printf("Login: ");
+			gets(login.nome);
+
+			printf("Senha: ");
+			gets(login.senha);
+
+
+			for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
+				printf("\n");
+			}
+
+			bottomLines();
+
+			system("pause >nul");
+		}
+	}
+}
+
 
 // FUNÇÃO PARA FAZER LINHAS COLORIDAS SUPERIORES
 void topLines()
@@ -139,6 +188,15 @@ int main() {
 	}
 	splash_window();
 
+	if (GetKeyState(VK_SPACE) && 0x8000) {
+		login_window();
+	}
+
 	system("pause >nul");
 	return 1;
+}
+
+void register_window() {
+	printf("fazendo registro");
+	system("pause >nul");
 }
