@@ -1,5 +1,1 @@
-void bottomLines();
-
-void topLines();
-
-void register_window();
+int get_cmd_dimension();

@@ -3,8 +3,11 @@
 #include <windows.h>
 #include <conio.h>
 #include <locale.h>
-#include "main.h"
 #include <new.h>
+
+#include "main.h"
+#include "util.h"
+#include "funcionario_library.h"
 
 // LIMPAR A TELA
 #define CLEAR_SCREEN_PROGRAM "cls"
@@ -13,20 +16,20 @@
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
 // FUNÇÕES PARA ALTERAR AS CORES
-void red() {
+static void red() {
 	printf("\033[1;31m");
 }
 
-void yellow() {
+static void yellow() {
 	printf("\033[1;33m");
 }
 
-void reset() {
+static void reset() {
 	printf("\033[0m");
 }
 
 // CONSTANTES
-char title[25] = "SISTEMA DE PIZZARIA v1.0";
+static char title[25] = "SISTEMA DE PIZZARIA v1.0";
 
 // FUNÇÃO PARA ARMAZENAR O TAMANHO DO MS-Windows
 struct CMD_DIMENSION {
@@ -34,15 +37,15 @@ struct CMD_DIMENSION {
 	int columns;
 };
 
-struct REGISTER {
-	char nome_completo[1024];
-	char email[1024];
-	char rg[1024];
-	char cpf[1024];
-	char cep[1024];
-	char usuario[1024];
-	char senha[1024];
-};
+//struct REGISTER {
+//	char nome_completo[1024];
+//	char email[1024];
+//	char rg[1024];
+//	char cpf[1024];
+//	char cep[1024];
+//	char usuario[1024];
+//	char senha[1024];
+//};
 
 struct LOGIN {
 	char usuario[1024];
@@ -53,7 +56,7 @@ struct CMD_DIMENSION cmd_dimension;
 
 // FUNÇÃO PARA OBTER AS DIMENSÕES DA JANELA CMD
 // API DO MS-Windows
-int get_cmd_dimension() {
+static int get_cmd_dimension() {
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	BOOL status;
 
@@ -85,14 +88,14 @@ int get_cmd_dimension() {
 	return 1;
 }
 
-void centerText(char* text, int fieldWidth) {
-	int padlen = (fieldWidth - strlen(text)) / 2;
-	printf("% *s % s % *s\n", padlen, "", text, padlen, "");
-}
+//void centerText(char* text, int fieldWidth) {
+//	int padlen = (fieldWidth - strlen(text)) / 2;
+//	printf("% *s % s % *s\n", padlen, "", text, padlen, "");
+//}
 
 int i;
 // FUNÇÃO PARA MOSTRAR A TELA DE SPLASH (INTRODUÇÃO)
-void splash_window()
+static void splash_window()
 {
 
 	// LIMPA O CONSOLE
@@ -117,122 +120,18 @@ void splash_window()
 	system("pause >nul");
 }
 
-void principal_menu() {
-	int op;
-
-	system(CLEAR_SCREEN_PROGRAM);
-	topLines();
-	printf("\n\n");
-	centerText("MENU - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
-
-	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
-		printf("\n");
-	}
-
-	printf("1 - FAZER LOGIN\n");
-	printf("2 - REGISTRAR-SE\n");
-	printf("3 - ESQUECI MINHA SENHA\n");
-	printf("ESCOLHA UMA OPÇÃO DESEJADA: \n");
-
-	scanf_s("%d", &op);
-
-	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
-		printf("\n");
-	}
-
-	bottomLines();
-
-	switch (op)
-	{
-	case 1:
-		break;
-	case 2:
-		register_window();
-		break;
-	}
-	system("pause >nul");
 
 
-}
+//static void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
+//	FILE* arquivo;
+//	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
+//	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s\n", nome, email, rg, cpf, cep, usuario, senha);
+//	FecharArquivo(arquivo);
+//}
 
-// FUNÇÃO PARA FAZER LINHAS COLORIDAS SUPERIORES
-void topLines()
-{
-	for (i = 0; i < cmd_dimension.columns; i++) {
-		red();
-		printf("_");
-		yellow();
-		printf("_");
-		reset();
-	}
-}
+//struct REGISTER register_func;
 
-// FUNÇÃO PARA FAZER LINHAS COLORIDAS INFERIORES
-void bottomLines()
-{
-	for (i = 0; i < cmd_dimension.columns; i++) {
-		yellow();
-		printf("_");
-		red();
-		printf("_");
-		reset();
-	}
-}
-
-int main() {
-	setlocale(LC_ALL, "Portuguese");
-
-	COORD coord;
-	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, &coord);
-
-	// Primeiro obtém o tamanho da janela CMD - será utilizada para construir os menus 
-	if (!get_cmd_dimension()) {
-		printf(ERROR_INTERNAL);
-		return 0;
-	}
-	splash_window();
-
-	if (GetKeyState(VK_SPACE) && 0x8000) {
-		principal_menu();
-	}
-
-	system("pause >nul");
-	return 1;
-}
-
-FILE* arquivo = NULL;
-FILE* AbreArquivo(char modo, char caminho[30]) {
-	switch (modo) {
-	case 'g':
-		arquivo = fopen(caminho, "wt");
-		break;
-	case 'l':
-		arquivo = fopen(caminho, "rt");
-		break;
-	case 'a':
-		arquivo = fopen(caminho, "a");
-		break;
-	}
-	if (arquivo == NULL) {
-		printf("Não foi possivel abrir o arquivo");
-		exit(0);
-	}
-	return arquivo;
-}
-
-void FecharArquivo(FILE* arquivo) {
-	fclose(arquivo);
-}
-
-void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
-	FILE* arquivo;
-	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
-	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s\n", nome, email, rg, cpf, cep, usuario, senha);
-	FecharArquivo(arquivo);
-}
-
-struct REGISTER register_func;
-void register_window() {
+static void register_window() {
 	system(CLEAR_SCREEN_PROGRAM);
 	topLines();
 	printf("\n\n");
@@ -274,12 +173,101 @@ void register_window() {
 	bottomLines();
 	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
 
-
 	system("pause >nul");
 }
 
+static void principal_menu() {
+	int op;
+
+	system(CLEAR_SCREEN_PROGRAM);
+	topLines();
+	printf("\n\n");
+	centerText("MENU - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+
+	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+		printf("\n");
+	}
+
+	printf("1 - FAZER LOGIN\n");
+	printf("2 - REGISTRAR-SE\n");
+	printf("3 - ESQUECI MINHA SENHA\n");
+	printf("ESCOLHA UMA OPÇÃO DESEJADA: \n");
+
+	scanf_s("%d", &op);
+
+	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
+		printf("\n");
+	}
+
+	bottomLines();
+
+	switch (op)
+	{
+	case 1:
+		break;
+	case 2:
+		register_window();
+		break;
+	}
+	system("pause >nul");
+
+
+}
+
+
+// FUNÇÃO PARA FAZER LINHAS COLORIDAS SUPERIORES
+//void topLines()
+//{
+//	for (i = 0; i < cmd_dimension.columns; i++) {
+//		red();
+//		printf("_");
+//		yellow();
+//		printf("_");
+//		reset();
+//	}
+//}
+
+//// FUNÇÃO PARA FAZER LINHAS COLORIDAS INFERIORES
+//void bottomLines()
+//{
+//	for (i = 0; i < cmd_dimension.columns; i++) {
+//		yellow();
+//		printf("_");
+//		red();
+//		printf("_");
+//		reset();
+//	}
+//}
+
+static int start() {
+	setlocale(LC_ALL, "Portuguese");
+
+	COORD coord;
+	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, &coord);
+
+	// Primeiro obtém o tamanho da janela CMD - será utilizada para construir os menus 
+	if (!get_cmd_dimension()) {
+		printf(ERROR_INTERNAL);
+		return 0;
+	}
+	splash_window();
+
+	if (GetKeyState(VK_SPACE) && 0x8000) {
+		principal_menu();
+	}
+
+	system("pause >nul");
+	return 1;
+}
+
+
+
+
+
+
+
 struct LOGIN login;
-void login_window() {
+static void login_window() {
 	printf("Usuário: ");
 	(void)scanf("%s", login.usuario);
 

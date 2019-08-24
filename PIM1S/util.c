@@ -6,6 +6,9 @@
 #include <new.h>
 
 #include "util.h"
+#include "main.c"
+
+int i = 0;
 
 void centerText(char* text, int fieldWidth) {
 	int padlen = (fieldWidth - strlen(text)) / 2;
@@ -33,3 +36,28 @@ void bottomLines()
 		reset();
 	}
 }
+
+FILE *arquivo = NULL;
+FILE *AbreArquivo(char modo, char caminho[30]) {
+	switch (modo) {
+	case 'g':
+		arquivo = fopen(caminho, "wt");
+		break;
+	case 'l':
+		arquivo = fopen(caminho, "rt");
+		break;
+	case 'a':
+		arquivo = fopen(caminho, "a");
+		break;
+	}
+	if (arquivo == NULL) {
+		printf("Não foi possivel abrir o arquivo");
+		exit(0);
+	}
+	return arquivo;
+}
+
+void FecharArquivo(FILE* arquivoo) {
+	fclose(arquivoo);
+}
+
