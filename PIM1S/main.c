@@ -17,11 +17,6 @@
 // CONSTANTES
 static char title[25] = "SISTEMA DE PIZZARIA v1.0";
 
-struct LOGIN {
-	char usuario[1024];
-	char senha[1024];
-};
-
 int i;
 
 int main() {
@@ -46,14 +41,4 @@ int main() {
 
 	system("pause >nul");
 	return 1;
-}
-
-struct LOGIN login;
-
-static void login_window() {
-	printf("Usuário: ");
-	(void)scanf("%s", login.usuario);
-
-	printf("Senha: ");
-	(void)scanf("%s", login.senha);
 }

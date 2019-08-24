@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <locale.h>
 #include <new.h>
+#include <stdbool.h>
 
 #include "util.h"
 
@@ -21,5 +22,23 @@ static void CadastrarFuncionario(char nome[30], char email[100], char rg[20], ch
 	FILE* arquivo;
 	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
 	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s\n", nome, email, rg, cpf, cep, usuario, senha);
+	FecharArquivo(arquivo);
+}
+
+static bool LoginFuncionario(char usuario, char senha) {
+	FILE* arquivo;
+	arquivo = AbreArquivo('l', "C:\\SGP\\db\\tb_funcionario.txt");
+
+	if (arquivo == NULL) {
+		printf("BANCO DE DADOS NÃO ENCONTRADO.\n");
+		exit(0);
+	}
+
+	char string[100];
+
+	while (fgets(string, 100, arquivo) != NULL) {
+		printf("%s", string);
+	}
+
 	FecharArquivo(arquivo);
 }

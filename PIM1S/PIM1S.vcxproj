@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="funcionario_library.c" />
+    <ClCompile Include="login_window.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu_principal.c" />
     <ClCompile Include="register_window.c" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="funcionario_library.h" />
+    <ClInclude Include="login_window.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="menu_principal.h" />
     <ClInclude Include="register_window.h" />

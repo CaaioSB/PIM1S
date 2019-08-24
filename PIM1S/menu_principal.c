@@ -1,5 +1,6 @@
 #include "menu_principal.h"
 #include "util.h"
+#include "login_window.h"
 
 int i;
 
@@ -26,6 +27,7 @@ void menu_principal() {
 	switch (op)
 	{
 	case 1:
+		login_window();
 		break;
 	case 2:
 		register_window();

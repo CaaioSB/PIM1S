@@ -11,5 +11,3 @@ extern void bottomLines();
 extern FILE* AbreArquivo(char modo, char caminho[30]);
 
 extern void FecharArquivo(FILE *arquivoo);
-
-extern void SetSleep(float s);
