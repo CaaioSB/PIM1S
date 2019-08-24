@@ -5,9 +5,9 @@
 #include <locale.h>
 #include <new.h>
 
-#include "main.h"
 #include "util.h"
 #include "funcionario_library.h"
+
 
 // LIMPAR A TELA
 #define CLEAR_SCREEN_PROGRAM "cls"
@@ -15,72 +15,17 @@
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
-// FUNÇÕES PARA ALTERAR AS CORES
-void red() {
-	printf("\033[1;31m");
-}
-
-void yellow() {
-	printf("\033[1;33m");
-}
-
-void reset() {
-	printf("\033[0m");
-}
-
 // CONSTANTES
 static char title[25] = "SISTEMA DE PIZZARIA v1.0";
-
-// FUNÇÃO PARA ARMAZENAR O TAMANHO DO MS-Windows
-struct CMD_DIMENSION {
-	int rows;
-	int columns;
-};
 
 struct LOGIN {
 	char usuario[1024];
 	char senha[1024];
 };
 
-struct CMD_DIMENSION cmd_dimension;
-
-// FUNÇÃO PARA OBTER AS DIMENSÕES DA JANELA CMD
-// API DO MS-Windows
-static int get_cmd_dimension() {
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	BOOL status;
-
-	DWORD error_code;
-
-	LPVOID message;
-
-	status = GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-	if (!status) { // CASO O RETORNO FOR IGUAL A 0, A FUNÇÃO NÃO FOI EXECUTADA CORRETAMENTE
-		error_code = GetLastError();
-		FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-			FORMAT_MESSAGE_FROM_SYSTEM |
-			FORMAT_MESSAGE_IGNORE_INSERTS,
-			NULL,
-			status,
-			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-			(LPSTR)& message,
-			0,
-			NULL);
-		//log((LPSTR)message);
-		LocalFree(message);
-
-		return 0;
-	}
-
-	cmd_dimension.columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-	cmd_dimension.rows = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-
-	return 1;
-}
-
 int i;
 // FUNÇÃO PARA MOSTRAR A TELA DE SPLASH (INTRODUÇÃO)
-void splash_window()
+static void splash_window()
 {
 
 	// LIMPA O CONSOLE
@@ -105,7 +50,7 @@ void splash_window()
 	system("pause >nul");
 }
 
-void register_window() {
+static void register_window() {
 	system(CLEAR_SCREEN_PROGRAM);
 	topLines();
 	printf("\n\n");

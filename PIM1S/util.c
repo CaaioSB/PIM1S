@@ -6,9 +6,22 @@
 #include <new.h>
 
 #include "util.h"
-#include "main.c"
+#include "cmd_resolution.h"
 
 int i = 0;
+
+// FUNÇÕES PARA ALTERAR AS CORES
+static void red() {
+	printf("\033[1;31m");
+}
+
+static void yellow() {
+	printf("\033[1;33m");
+}
+
+static void reset() {
+	printf("\033[0m");
+}
 
 void centerText(char* text, int fieldWidth) {
 	int padlen = (fieldWidth - strlen(text)) / 2;

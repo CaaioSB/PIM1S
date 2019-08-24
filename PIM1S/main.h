@@ -1,1 +1,7 @@
-int get_cmd_dimension();
+#pragma once
+
+void red();
+
+void yellow();
+
+void reset();

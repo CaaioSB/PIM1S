@@ -1,3 +1,5 @@
+#include "cmd_resolution.h"
+
 extern void centerText(char *text, int fieldWidth);
 
 extern void topLines();

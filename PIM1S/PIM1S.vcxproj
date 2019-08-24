@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="funcionario_library.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="funcionario_library.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="util.h" />
