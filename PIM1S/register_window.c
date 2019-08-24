@@ -1,7 +1,7 @@
 #include "cmd_resolution.h"
 #include "util.h"
 #include "funcionario_library.h"
-
+#include "menu_principal.h"
 int i;
 
 void register_window() {
@@ -36,14 +36,11 @@ void register_window() {
 	(void)scanf("%s", register_func.senha);
 
 	printf("\n\n");
+
+	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
 	centerText("O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!", cmd_dimension.columns);
 
-	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
-		printf("\n");
-	}
+	Sleep(3000);
 
-	bottomLines();
-	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
-
-	system("pause >nul");
+	menu_principal();
 }

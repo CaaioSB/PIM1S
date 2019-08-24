@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <locale.h>
 #include <new.h>
+#include <time.h>
 
 #include "util.h"
 #include "cmd_resolution.h"
@@ -70,7 +71,6 @@ FILE *AbreArquivo(char modo, char caminho[30]) {
 	return arquivo;
 }
 
-void FecharArquivo(FILE* arquivoo) {
-	fclose(arquivoo);
+void FecharArquivo(FILE* arquivo) {
+	fclose(arquivo);
 }
-

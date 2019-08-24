@@ -2,4 +2,5 @@
 
 int i;
 
-void register_window();
+extern void register_window();
+
