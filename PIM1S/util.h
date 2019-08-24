@@ -1,5 +1,7 @@
 #include "cmd_resolution.h"
 
+#define CLEAR_SCREEN_PROGRAM "cls"
+
 extern void centerText(char *text, int fieldWidth);
 
 extern void topLines();

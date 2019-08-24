@@ -7,10 +7,7 @@
 
 #include "util.h"
 #include "funcionario_library.h"
-
-
-// LIMPAR A TELA
-#define CLEAR_SCREEN_PROGRAM "cls"
+#include "splash_window.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
@@ -24,31 +21,6 @@ struct LOGIN {
 };
 
 int i;
-// FUNÇÃO PARA MOSTRAR A TELA DE SPLASH (INTRODUÇÃO)
-static void splash_window()
-{
-
-	// LIMPA O CONSOLE
-	system(CLEAR_SCREEN_PROGRAM);
-
-	topLines();
-
-	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
-		printf("\n");
-	}
-
-	centerText("SISTEMA GERENCIADOR DE PIZZARIA v1.0", cmd_dimension.columns);
-	char message[65] = "PRESSIONE A TECLA \033[1;31mESPAÇO\033[0m PARA INICIAR UM NOVO TURNO";
-	centerText(message, cmd_dimension.columns + 10);
-
-	for (i = 0; i < (cmd_dimension.rows / 2 - 3); i++) {
-		printf("\n");
-	}
-
-	bottomLines();
-
-	system("pause >nul");
-}
 
 static void register_window() {
 	system(CLEAR_SCREEN_PROGRAM);
@@ -59,7 +31,6 @@ static void register_window() {
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
-
 
 	printf("DIGITE SEU NOME COMPLETO: ");
 	(void)scanf(" %[^\n]s", register_func.nome_completo);

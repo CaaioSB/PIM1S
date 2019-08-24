@@ -130,12 +130,14 @@
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="funcionario_library.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="splash_window.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="funcionario_library.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="splash_window.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
