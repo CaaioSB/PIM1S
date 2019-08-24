@@ -37,16 +37,6 @@ struct CMD_DIMENSION {
 	int columns;
 };
 
-//struct REGISTER {
-//	char nome_completo[1024];
-//	char email[1024];
-//	char rg[1024];
-//	char cpf[1024];
-//	char cep[1024];
-//	char usuario[1024];
-//	char senha[1024];
-//};
-
 struct LOGIN {
 	char usuario[1024];
 	char senha[1024];
@@ -88,11 +78,6 @@ static int get_cmd_dimension() {
 	return 1;
 }
 
-//void centerText(char* text, int fieldWidth) {
-//	int padlen = (fieldWidth - strlen(text)) / 2;
-//	printf("% *s % s % *s\n", padlen, "", text, padlen, "");
-//}
-
 int i;
 // FUN플O PARA MOSTRAR A TELA DE SPLASH (INTRODU플O)
 static void splash_window()
@@ -119,17 +104,6 @@ static void splash_window()
 
 	system("pause >nul");
 }
-
-
-
-//static void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
-//	FILE* arquivo;
-//	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
-//	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s\n", nome, email, rg, cpf, cep, usuario, senha);
-//	FecharArquivo(arquivo);
-//}
-
-//struct REGISTER register_func;
 
 static void register_window() {
 	system(CLEAR_SCREEN_PROGRAM);
@@ -214,31 +188,6 @@ static void principal_menu() {
 
 }
 
-
-// FUN플O PARA FAZER LINHAS COLORIDAS SUPERIORES
-//void topLines()
-//{
-//	for (i = 0; i < cmd_dimension.columns; i++) {
-//		red();
-//		printf("_");
-//		yellow();
-//		printf("_");
-//		reset();
-//	}
-//}
-
-//// FUN플O PARA FAZER LINHAS COLORIDAS INFERIORES
-//void bottomLines()
-//{
-//	for (i = 0; i < cmd_dimension.columns; i++) {
-//		yellow();
-//		printf("_");
-//		red();
-//		printf("_");
-//		reset();
-//	}
-//}
-
 static int start() {
 	setlocale(LC_ALL, "Portuguese");
 
@@ -259,12 +208,6 @@ static int start() {
 	system("pause >nul");
 	return 1;
 }
-
-
-
-
-
-
 
 struct LOGIN login;
 static void login_window() {
