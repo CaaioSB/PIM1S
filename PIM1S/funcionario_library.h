@@ -1,7 +1,7 @@
 #pragma once
 #include "funcionario_library.c"
 
-extern struct REGISTER;
+struct REGISTER;
 
 struct REGISTER register_func;
 

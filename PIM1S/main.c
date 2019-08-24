@@ -25,7 +25,7 @@ static void yellow() {
 }
 
 static void reset() {
-	printf("\033[0m");
+	printf("\033[0m");		
 }
 
 // CONSTANTES
