@@ -12,7 +12,6 @@
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
-
 // FUNÇÕES PARA ALTERAR AS CORES
 void red() {
 	printf("\033[1;31m");
@@ -46,7 +45,7 @@ struct REGISTER {
 };
 
 struct LOGIN {
-	char nome[1024];
+	char usuario[1024];
 	char senha[1024];
 };
 
@@ -118,7 +117,6 @@ void splash_window()
 	system("pause >nul");
 }
 
-
 void principal_menu() {
 	int op;
 
@@ -181,7 +179,6 @@ void bottomLines()
 	}
 }
 
-
 int main() {
 	setlocale(LC_ALL, "Portuguese");
 
@@ -217,7 +214,7 @@ FILE* AbreArquivo(char modo, char caminho[30]) {
 		break;
 	}
 	if (arquivo == NULL) {
-		printf("Nao foi possivel abrir o arquivo");
+		printf("Não foi possivel abrir o arquivo");
 		exit(0);
 	}
 	return arquivo;
@@ -227,11 +224,10 @@ void FecharArquivo(FILE* arquivo) {
 	fclose(arquivo);
 }
 
-
 void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
 	FILE* arquivo;
 	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
-	fprintf(arquivo, "%s %s %s %s %s %s %s\n", nome, email, rg, cpf, cep, usuario, senha);
+	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s\n", nome, email, rg, cpf, cep, usuario, senha);
 	FecharArquivo(arquivo);
 }
 
@@ -247,7 +243,7 @@ void register_window() {
 	}
 
 	printf("DIGITE SEU NOME COMPLETO: ");
-	(void)scanf(" %[^\n]s",register_func.nome_completo);
+	(void)scanf(" %[^\n]s", register_func.nome_completo);
 
 	printf("DIGITE SEU E-MAIL: ");
 	(void)scanf("%s", register_func.email);
@@ -278,13 +274,12 @@ void register_window() {
 	system("pause >nul");
 }
 
-
 struct LOGIN login;
 void login_window() {
-	printf("Login: ");
-	gets(login.nome);
+	printf("Usuário: ");
+	(void)scanf("%s", login.usuario);
 
 	printf("Senha: ");
-	gets(login.senha);
-	system("pause >nul");
+	(void)scanf("%s", login.senha);
+
 }
