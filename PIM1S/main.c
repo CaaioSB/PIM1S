@@ -16,16 +16,16 @@
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
 // FUNÇÕES PARA ALTERAR AS CORES
-static void red() {
+void red() {
 	printf("\033[1;31m");
 }
 
-static void yellow() {
+void yellow() {
 	printf("\033[1;33m");
 }
 
-static void reset() {
-	printf("\033[0m");		
+void reset() {
+	printf("\033[0m");
 }
 
 // CONSTANTES
@@ -80,7 +80,7 @@ static int get_cmd_dimension() {
 
 int i;
 // FUNÇÃO PARA MOSTRAR A TELA DE SPLASH (INTRODUÇÃO)
-static void splash_window()
+void splash_window()
 {
 
 	// LIMPA O CONSOLE
@@ -105,7 +105,7 @@ static void splash_window()
 	system("pause >nul");
 }
 
-static void register_window() {
+void register_window() {
 	system(CLEAR_SCREEN_PROGRAM);
 	topLines();
 	printf("\n\n");
@@ -150,7 +150,7 @@ static void register_window() {
 	system("pause >nul");
 }
 
-static void principal_menu() {
+void principal_menu() {
 	int op;
 
 	system(CLEAR_SCREEN_PROGRAM);
@@ -188,7 +188,7 @@ static void principal_menu() {
 
 }
 
-static int start() {
+int main() {
 	setlocale(LC_ALL, "Portuguese");
 
 	COORD coord;
