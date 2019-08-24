@@ -242,6 +242,7 @@ void register_window() {
 		printf("\n");
 	}
 
+
 	printf("DIGITE SEU NOME COMPLETO: ");
 	(void)scanf(" %[^\n]s", register_func.nome_completo);
 
@@ -263,13 +264,16 @@ void register_window() {
 	printf("DIGITE SUA SENHA DE LOGIN: ");
 	(void)scanf("%s", register_func.senha);
 
-	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
+	printf("\n\n");
+	centerText("O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!", cmd_dimension.columns);
 
 	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
 		printf("\n");
 	}
 
 	bottomLines();
+	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
+
 
 	system("pause >nul");
 }

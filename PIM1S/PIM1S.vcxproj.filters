@@ -24,9 +24,4 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="PIM1S.rc">
-      <Filter>Arquivos de Recurso</Filter>
-    </ResourceCompile>
-  </ItemGroup>
 </Project>
