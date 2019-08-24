@@ -8,6 +8,7 @@
 #include "util.h"
 #include "funcionario_library.h"
 #include "splash_window.h"
+#include "register_window.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
@@ -22,49 +23,49 @@ struct LOGIN {
 
 int i;
 
-static void register_window() {
-	system(CLEAR_SCREEN_PROGRAM);
-	topLines();
-	printf("\n\n");
-	centerText("REGISTRAR-SE - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
-
-	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
-		printf("\n");
-	}
-
-	printf("DIGITE SEU NOME COMPLETO: ");
-	(void)scanf(" %[^\n]s", register_func.nome_completo);
-
-	printf("DIGITE SEU E-MAIL: ");
-	(void)scanf("%s", register_func.email);
-
-	printf("DIGITE SEU RG: ");
-	(void)scanf("%s", register_func.rg);
-
-	printf("DIGITE SEU CPF: ");
-	(void)scanf("%s", register_func.cpf);
-
-	printf("DIGITE SEU CEP: ");
-	(void)scanf("%s", register_func.cep);
-
-	printf("DIGITE SEU USUÁRIO DE LOGIN: ");
-	(void)scanf("%s", register_func.usuario);
-
-	printf("DIGITE SUA SENHA DE LOGIN: ");
-	(void)scanf("%s", register_func.senha);
-
-	printf("\n\n");
-	centerText("O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!", cmd_dimension.columns);
-
-	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
-		printf("\n");
-	}
-
-	bottomLines();
-	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
-
-	system("pause >nul");
-}
+//static void register_window() {
+//	system(CLEAR_SCREEN_PROGRAM);
+//	topLines();
+//	printf("\n\n");
+//	centerText("REGISTRAR-SE - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+//
+//	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+//		printf("\n");
+//	}
+//
+//	printf("DIGITE SEU NOME COMPLETO: ");
+//	(void)scanf(" %[^\n]s", register_func.nome_completo);
+//
+//	printf("DIGITE SEU E-MAIL: ");
+//	(void)scanf("%s", register_func.email);
+//
+//	printf("DIGITE SEU RG: ");
+//	(void)scanf("%s", register_func.rg);
+//
+//	printf("DIGITE SEU CPF: ");
+//	(void)scanf("%s", register_func.cpf);
+//
+//	printf("DIGITE SEU CEP: ");
+//	(void)scanf("%s", register_func.cep);
+//
+//	printf("DIGITE SEU USUÁRIO DE LOGIN: ");
+//	(void)scanf("%s", register_func.usuario);
+//
+//	printf("DIGITE SUA SENHA DE LOGIN: ");
+//	(void)scanf("%s", register_func.senha);
+//
+//	printf("\n\n");
+//	centerText("O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!", cmd_dimension.columns);
+//
+//	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
+//		printf("\n");
+//	}
+//
+//	bottomLines();
+//	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
+//
+//	system("pause >nul");
+//}
 
 void principal_menu() {
 	int op;
@@ -81,15 +82,10 @@ void principal_menu() {
 	printf("1 - FAZER LOGIN\n");
 	printf("2 - REGISTRAR-SE\n");
 	printf("3 - ESQUECI MINHA SENHA\n");
+	printf("4 - SAIR\n");
 	printf("ESCOLHA UMA OPÇÃO DESEJADA: \n");
 
 	scanf_s("%d", &op);
-
-	for (i = 0; i < (cmd_dimension.rows / 2 - 4); i++) {
-		printf("\n");
-	}
-
-	bottomLines();
 
 	switch (op)
 	{
@@ -97,6 +93,11 @@ void principal_menu() {
 		break;
 	case 2:
 		register_window();
+		break;
+	case 3:
+		break;
+	case 4:
+		exit(0);
 		break;
 	}
 	system("pause >nul");
@@ -119,6 +120,9 @@ int main() {
 
 	if (GetKeyState(VK_SPACE) && 0x8000) {
 		principal_menu();
+	}
+	else {
+		return 0;
 	}
 
 	system("pause >nul");

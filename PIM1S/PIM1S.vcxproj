@@ -130,6 +130,7 @@
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="funcionario_library.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="register_window.c" />
     <ClCompile Include="splash_window.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="funcionario_library.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="register_window.h" />
     <ClInclude Include="splash_window.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
