@@ -5,11 +5,12 @@
 #include <locale.h>
 #include <new.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "util.h"
 
 struct REGISTER {
-	char nome_completo[1024];
+	char nome_completo[1024]; 
 	char email[1024];
 	char rg[1024];
 	char cpf[1024];
@@ -34,10 +35,21 @@ static bool LoginFuncionario(char usuario, char senha) {
 		exit(0);
 	}
 
-	char string[100];
+	char* string[100];
+	char* array[10];
+	int i = 0;
 
 	while (fgets(string, 100, arquivo) != NULL) {
-		printf("%s", string);
+		array[i] = strtok(string, "|");
+
+		while (array[i] != NULL) {
+			array[++i] = strtok(NULL, "|");
+		}
+
+		if (array[5] == usuario && array[6] == senha) {
+			printf("%s", "login feito");
+			break;
+		}
 	}
 
 	FecharArquivo(arquivo);
