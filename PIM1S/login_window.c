@@ -6,8 +6,8 @@
 #include "funcionario_library.h"
 #include "menu_principal.h"
 
-char usuario;
-char senha;
+char usuario[1024];
+char senha[1024];
 int opcao;
 
 void login_window() {
@@ -21,12 +21,12 @@ void login_window() {
 	}
 
 	printf("DIGITE SEU USUÁRIO: ");
-	(void)scanf("%s", usuario);
+	(void)scanf("%s", &usuario);
 
 	printf("DIGITE SUA SENHA: ");
-	(void)scanf("%s", senha);
+	(void)scanf("%s", &senha);
 
-	if (LoginFuncionario(usuario, senha)) {
+	if (LoginFuncionario(&usuario, &senha)) {
 		// Login realizado com sucesso!
 	}
 	else {

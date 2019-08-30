@@ -26,7 +26,7 @@ static void CadastrarFuncionario(char nome[30], char email[100], char rg[20], ch
 	FecharArquivo(arquivo);
 }
 
-static bool LoginFuncionario(char usuario, char senha) {
+static bool LoginFuncionario(char usuario[1024], char senha[1024]) {
 	FILE* arquivo;
 	arquivo = AbreArquivo('l', "C:\\SGP\\db\\tb_funcionario.txt");
 
@@ -41,14 +41,13 @@ static bool LoginFuncionario(char usuario, char senha) {
 
 	while (fgets(string, 100, arquivo) != NULL) {
 		array[i] = strtok(string, "|");
-
+		 
 		while (array[i] != NULL) {
 			array[++i] = strtok(NULL, "|");
 		}
 
-		if (array[5] == usuario && array[6] == senha) {
+		if (array[5] == &usuario && array[6] == &senha) {
 			printf("%s", "login feito");
-			break;
 		}
 	}
 
