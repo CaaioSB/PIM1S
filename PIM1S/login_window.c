@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "login_window.h"
 #include "util.h"
 #include "funcionario_library.h"
 #include "menu_principal.h"
+#define SIZE 1024
 
-char usuario[1024];
-char senha[1024];
+char usuario[SIZE];
+char senha[SIZE];
 int opcao;
 
 void login_window() {
@@ -21,19 +23,14 @@ void login_window() {
 	}
 
 	printf("DIGITE SEU USUÁRIO: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", &usuario);
 
 	printf("DIGITE SUA SENHA: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", &senha);
 
-	if (LoginFuncionario(&usuario, &senha)) {
-		// Login realizado com sucesso!
-	}
-	else {
-		/*  Falha: verifique seus dados.
-		*   Para alterar a senha digite: 1.
-		*	Para voltar ao menu digite : 2
-		*/
+	if (!LoginFuncionario(usuario, senha)) {
 		(void)scanf("%i", &opcao);
 
 		switch (opcao)
@@ -46,6 +43,5 @@ void login_window() {
 			break;
 		}
 	}
-
-	system("pause");    
-}	
+	system("pause");
+}

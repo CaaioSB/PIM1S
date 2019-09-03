@@ -12,17 +12,6 @@
 int i = 0;
 
 // FUNÇÕES PARA ALTERAR AS CORES
-static void red() {
-	printf("\033[1;31m");
-}
-
-static void yellow() {
-	printf("\033[1;33m");
-}
-
-static void reset() {
-	printf("\033[0m");
-}
 
 void centerText(char* text, int fieldWidth) {
 	int padlen = (fieldWidth - strlen(text)) / 2;
@@ -32,22 +21,16 @@ void centerText(char* text, int fieldWidth) {
 void topLines()
 {
 	for (i = 0; i < cmd_dimension.columns; i++) {
-		red();
-		printf("_");
-		yellow();
-		printf("_");
-		reset();
+		printf(RED "_" RESET );
+		printf(YELLOW "_" RESET );
 	}
 }
 
 void bottomLines()
 {
 	for (i = 0; i < cmd_dimension.columns; i++) {
-		yellow();
-		printf("_");
-		red();
-		printf("_");
-		reset();
+		printf(YELLOW "_" RESET);
+		printf(RED "_" RESET);
 	}
 }
 

@@ -15,30 +15,37 @@ void register_window() {
 	}
 
 	printf("DIGITE SEU NOME COMPLETO: ");
+	setbuf(stdin, NULL);
 	(void)scanf(" %[^\n]s", register_func.nome_completo);
 
 	printf("DIGITE SEU E-MAIL: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", register_func.email);
 
+	setbuf(stdin, NULL);
 	printf("DIGITE SEU RG: ");
 	(void)scanf("%s", register_func.rg);
 
 	printf("DIGITE SEU CPF: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", register_func.cpf);
 
 	printf("DIGITE SEU CEP: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", register_func.cep);
 
 	printf("DIGITE SEU USUÁRIO DE LOGIN: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", register_func.usuario);
 
 	printf("DIGITE SUA SENHA DE LOGIN: ");
+	setbuf(stdin, NULL);
 	(void)scanf("%s", register_func.senha);
 
 	printf("\n\n");
 
 	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
-	centerText("O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!", cmd_dimension.columns);
+	centerText( GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns);
 
 	Sleep(3000);
 

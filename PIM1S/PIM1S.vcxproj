@@ -131,6 +131,7 @@
     <ClCompile Include="funcionario_library.c" />
     <ClCompile Include="login_window.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="menu_pizzaria.cpp" />
     <ClCompile Include="menu_principal.c" />
     <ClCompile Include="register_window.c" />
     <ClCompile Include="splash_window.c" />
@@ -141,6 +142,7 @@
     <ClInclude Include="funcionario_library.h" />
     <ClInclude Include="login_window.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="menu_pizzaria.h" />
     <ClInclude Include="menu_principal.h" />
     <ClInclude Include="register_window.h" />
     <ClInclude Include="splash_window.h" />
