@@ -6,10 +6,10 @@
 #include <new.h>
 
 #include "util.h"
-#include "funcionario_library.h"
+#include "BibFuncionario.h"
 #include "splash_window.h"
-#include "register_window.h"
-#include "menu_principal.h"
+#include "RegFuncionario.h"
+#include "MenuPrincipal.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
@@ -33,7 +33,7 @@ int main() {
 	splash_window();
 
 	if (GetKeyState(VK_SPACE) && 0x8000) {
-		menu_principal();
+		MenuPrincipal();
 	}
 	else {
 		return 0;

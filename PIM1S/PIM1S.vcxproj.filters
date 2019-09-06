@@ -13,63 +13,111 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Início">
+      <UniqueIdentifier>{75ab729c-57d9-41d7-a500-77f106e43a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Gerenciamento Windows">
+      <UniqueIdentifier>{fbac4fc3-5692-4e50-97f6-ff4ff9bb89c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Gerencamento Biblioteca">
+      <UniqueIdentifier>{1eee552a-d122-439a-85df-5461f101367b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Gerenciamento Windows">
+      <UniqueIdentifier>{284f2ec7-59c3-47f5-a794-e93727889532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Gerenciamento Biblioteca">
+      <UniqueIdentifier>{b8840848-9f56-47b4-9fbd-54941183208b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\UTIL">
+      <UniqueIdentifier>{4c53776d-36d0-4047-a4f6-71e6cc7f4eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\UTIL">
+      <UniqueIdentifier>{cd687a94-4215-4d71-8c89-7d2eb60c6eab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Intro">
+      <UniqueIdentifier>{e69c318a-3fa7-446e-8d2a-cfe7a5e5e846}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.c">
-      <Filter>Arquivos de Recurso</Filter>
-    </ClCompile>
-    <ClCompile Include="util.c">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="funcionario_library.c">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="cmd_resolution.c">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Ingrediente.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
     <ClCompile Include="splash_window.c">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Origem\Intro</Filter>
     </ClCompile>
-    <ClCompile Include="register_window.c">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="RegFuncionario.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
-    <ClCompile Include="menu_principal.c">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="BibFuncionario.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
     </ClCompile>
-    <ClCompile Include="login_window.c">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="BibProduto.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
     </ClCompile>
-    <ClCompile Include="menu_pizzaria.cpp">
-      <Filter>Arquivos de Origem</Filter>
+    <ClCompile Include="Produto.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="BibIngrediente.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
+    <ClCompile Include="util.c">
+      <Filter>Arquivos de Origem\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_resolution.c">
+      <Filter>Arquivos de Origem\UTIL</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Arquivos de Origem\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPizzaria.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPrincipal.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Produtos.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
-    <ClInclude Include="util.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="funcionario_library.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="cmd_resolution.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="Ingrediente.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
     <ClInclude Include="splash_window.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Início</Filter>
     </ClInclude>
-    <ClInclude Include="register_window.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="RegFuncionario.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
-    <ClInclude Include="menu_principal.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="BibFuncionario.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
-    <ClInclude Include="login_window.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="BibProdutos.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
-    <ClInclude Include="menu_pizzaria.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+    <ClInclude Include="BibIngrediente.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Arquivos de Cabeçalho\Início</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_resolution.h">
+      <Filter>Arquivos de Cabeçalho\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Arquivos de Cabeçalho\UTIL</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPizzaria.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPrincipal.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,10 +1,10 @@
-#include "menu_principal.h"
+#include "MenuPrincipal.h"
 #include "util.h"
-#include "login_window.h"
+#include "Login.h"
 
 int i;
 
-void menu_principal() {
+void MenuPrincipal() {
 	int op;
 
 	system(CLEAR_SCREEN_PROGRAM);
@@ -27,10 +27,10 @@ void menu_principal() {
 	switch (op)
 	{
 	case 1:
-		login_window();
+		Login();
 		break;
 	case 2:
-		register_window();
+		RegFuncionario();
 		break;
 	case 3:
 		break;

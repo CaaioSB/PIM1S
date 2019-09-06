@@ -127,24 +127,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BibIngrediente.c" />
+    <ClCompile Include="BibProduto.c" />
     <ClCompile Include="cmd_resolution.c" />
-    <ClCompile Include="funcionario_library.c" />
-    <ClCompile Include="login_window.c" />
+    <ClCompile Include="BibFuncionario.c" />
+    <ClCompile Include="Ingrediente.c" />
+    <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="menu_pizzaria.cpp" />
-    <ClCompile Include="menu_principal.c" />
-    <ClCompile Include="register_window.c" />
+    <ClCompile Include="MenuPizzaria.c" />
+    <ClCompile Include="MenuPrincipal.c" />
+    <ClCompile Include="Produto.c" />
+    <ClCompile Include="RegFuncionario.c" />
     <ClCompile Include="splash_window.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BibFuncionario.h" />
+    <ClInclude Include="BibIngrediente.h" />
+    <ClInclude Include="BibProdutos.h" />
     <ClInclude Include="cmd_resolution.h" />
-    <ClInclude Include="funcionario_library.h" />
-    <ClInclude Include="login_window.h" />
+    <ClInclude Include="Ingrediente.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="menu_pizzaria.h" />
-    <ClInclude Include="menu_principal.h" />
-    <ClInclude Include="register_window.h" />
+    <ClInclude Include="MenuPizzaria.h" />
+    <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="Produtos.h" />
+    <ClInclude Include="RegFuncionario.h" />
     <ClInclude Include="splash_window.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

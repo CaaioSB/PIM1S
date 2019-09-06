@@ -1,7 +1,7 @@
 #include "cmd_resolution.h"
 #include "util.h"
-#include "funcionario_library.h"
-#include "menu_principal.h"
+#include "BibFuncionario.h"
+#include "MenuPrincipal.h"
 int i;
 
 void RegFuncionario() {
@@ -16,38 +16,38 @@ void RegFuncionario() {
 
 	printf("DIGITE SEU NOME COMPLETO: ");
 	setbuf(stdin, NULL);
-	(void)scanf(" %[^\n]s", register_func.nome_completo);
+	(void)scanf(" %[^\n]s", BFuncionario.nome_completo);
 
 	printf("DIGITE SEU E-MAIL: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", register_func.email);
+	(void)scanf("%s", BFuncionario.email);
 
 	setbuf(stdin, NULL);
 	printf("DIGITE SEU RG: ");
-	(void)scanf("%s", register_func.rg);
+	(void)scanf("%s", BFuncionario.rg);
 
 	printf("DIGITE SEU CPF: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", register_func.cpf);
+	(void)scanf("%s", BFuncionario.cpf);
 
 	printf("DIGITE SEU CEP: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", register_func.cep);
+	(void)scanf("%s", BFuncionario.cep);
 
 	printf("DIGITE SEU USUÁRIO DE LOGIN: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", register_func.usuario);
+	(void)scanf("%s", BFuncionario.usuario);
 
 	printf("DIGITE SUA SENHA DE LOGIN: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", register_func.senha);
+	(void)scanf("%s", BFuncionario.senha);
 
 	printf("\n\n");
 
-	CadastrarFuncionario(register_func.nome_completo, register_func.email, register_func.rg, register_func.cpf, register_func.cep, register_func.usuario, register_func.senha);
+	CadastrarFuncionario(BFuncionario.nome_completo, BFuncionario.email, BFuncionario.rg, BFuncionario.cpf, BFuncionario.cep, BFuncionario.usuario, BFuncionario.senha);
 	centerText( GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns);
 
 	Sleep(3000);
 
-	menu_principal();
+	MenuPrincipal();
 }

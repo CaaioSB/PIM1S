@@ -2,17 +2,17 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "login_window.h"
+#include "Login.h"
 #include "util.h"
-#include "funcionario_library.h"
-#include "menu_principal.h"
+#include "BibFuncionario.h"
+#include "MenuPrincipal.h"
 #define SIZE 1024
 
 char usuario[SIZE];
 char senha[SIZE];
 int opcao;
 
-void login_window() {
+void Login() {
 	system(CLEAR_SCREEN_PROGRAM);
 	topLines();
 	printf("\n\n");
@@ -31,6 +31,9 @@ void login_window() {
 	(void)scanf("%s", &senha);
 
 	if (!LoginFuncionario(usuario, senha)) {
+		centerText(RED "ESTE LOGIN NÃO É VALIDO" RESET, cmd_dimension.columns);
+		Sleep(3000);
+
 		(void)scanf("%i", &opcao);
 
 		switch (opcao)
@@ -39,7 +42,7 @@ void login_window() {
 			// alterar senha
 			break;
 		case 2:
-			menu_principal();
+			MenuPrincipal();
 			break;
 		}
 	}
