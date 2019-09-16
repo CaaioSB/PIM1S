@@ -12,3 +12,5 @@ static bool LoginFuncionario(char usuario[], char senha[]);
 
 static bool ListarFuncionarios();
 
+static int ContarFuncionarios();
+
