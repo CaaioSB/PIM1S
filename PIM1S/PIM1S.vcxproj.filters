@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Arquivos de Cabeçalho\Início">
-      <UniqueIdentifier>{75ab729c-57d9-41d7-a500-77f106e43a6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Arquivos de Origem\Gerenciamento Windows">
       <UniqueIdentifier>{fbac4fc3-5692-4e50-97f6-ff4ff9bb89c8}</UniqueIdentifier>
     </Filter>
@@ -37,25 +34,25 @@
     <Filter Include="Arquivos de Origem\Intro">
       <UniqueIdentifier>{e69c318a-3fa7-446e-8d2a-cfe7a5e5e846}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Intro">
+      <UniqueIdentifier>{75ab729c-57d9-41d7-a500-77f106e43a6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Cabeçalho\Gerenciamento Funcao">
+      <UniqueIdentifier>{5df88edf-ea77-45d9-b193-ae8bd9dd510a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\Gerenciamento Funcao">
+      <UniqueIdentifier>{200003fc-6eb1-4a7a-a036-05b3b2663091}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ingrediente.c">
-      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
-    </ClCompile>
     <ClCompile Include="splash_window.c">
       <Filter>Arquivos de Origem\Intro</Filter>
-    </ClCompile>
-    <ClCompile Include="RegFuncionario.c">
-      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
     <ClCompile Include="BibFuncionario.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
     </ClCompile>
     <ClCompile Include="BibProduto.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
-    </ClCompile>
-    <ClCompile Include="Produto.c">
-      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
     <ClCompile Include="BibIngrediente.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
@@ -72,37 +69,49 @@
     <ClCompile Include="MenuPizzaria.c">
       <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
-    <ClCompile Include="MenuPrincipal.c">
+    <ClCompile Include="MenuCliente.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuInicial.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuGerenciamento.c">
       <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
     <ClCompile Include="Login.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="Ingrediente.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="Produto.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="CadFuncionario.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="NovoPedido.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFuncionario.c">
       <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="AltFuncionario.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Produtos.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Ingrediente.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
-    </ClInclude>
     <ClInclude Include="splash_window.h">
-      <Filter>Arquivos de Cabeçalho\Início</Filter>
-    </ClInclude>
-    <ClInclude Include="RegFuncionario.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+      <Filter>Arquivos de Cabeçalho\Intro</Filter>
     </ClInclude>
     <ClInclude Include="BibFuncionario.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
-    </ClInclude>
-    <ClInclude Include="BibProdutos.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
     <ClInclude Include="BibIngrediente.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
-      <Filter>Arquivos de Cabeçalho\Início</Filter>
+      <Filter>Arquivos de Cabeçalho\Intro</Filter>
     </ClInclude>
     <ClInclude Include="cmd_resolution.h">
       <Filter>Arquivos de Cabeçalho\UTIL</Filter>
@@ -113,11 +122,38 @@
     <ClInclude Include="MenuPizzaria.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
-    <ClInclude Include="MenuPrincipal.h">
+    <ClInclude Include="MenuCliente.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuInicial.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuGerenciamento.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
     <ClInclude Include="Login.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="Ingrediente.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="Produtos.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="CadFuncionario.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="BibProduto.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
+    </ClInclude>
+    <ClInclude Include="NovoPedido.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFuncionario.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="AltFuncionario.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

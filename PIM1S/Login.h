@@ -1,3 +1,3 @@
 #pragma once
 
-void Login();
+extern void Login();

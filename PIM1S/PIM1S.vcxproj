@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AltFuncionario.c" />
     <ClCompile Include="BibIngrediente.c" />
     <ClCompile Include="BibProduto.c" />
     <ClCompile Include="cmd_resolution.c" />
@@ -134,25 +135,34 @@
     <ClCompile Include="Ingrediente.c" />
     <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="MenuFuncionario.c" />
+    <ClCompile Include="MenuGerenciamento.c" />
     <ClCompile Include="MenuPizzaria.c" />
-    <ClCompile Include="MenuPrincipal.c" />
+    <ClCompile Include="MenuInicial.c" />
+    <ClCompile Include="NovoPedido.c" />
     <ClCompile Include="Produto.c" />
-    <ClCompile Include="RegFuncionario.c" />
+    <ClCompile Include="MenuCliente.c" />
+    <ClCompile Include="CadFuncionario.c" />
     <ClCompile Include="splash_window.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AltFuncionario.h" />
     <ClInclude Include="BibFuncionario.h" />
     <ClInclude Include="BibIngrediente.h" />
-    <ClInclude Include="BibProdutos.h" />
+    <ClInclude Include="BibProduto.h" />
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="Ingrediente.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MenuFuncionario.h" />
+    <ClInclude Include="MenuGerenciamento.h" />
     <ClInclude Include="MenuPizzaria.h" />
-    <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="MenuInicial.h" />
+    <ClInclude Include="NovoPedido.h" />
     <ClInclude Include="Produtos.h" />
-    <ClInclude Include="RegFuncionario.h" />
+    <ClInclude Include="MenuCliente.h" />
+    <ClInclude Include="CadFuncionario.h" />
     <ClInclude Include="splash_window.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

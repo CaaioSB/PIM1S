@@ -11,6 +11,8 @@
 
 #include "util.h"
 #include "MenuPizzaria.h"
+#include "main.h"
+
 
 struct REGISTER {
 	char nome_completo[1024];
@@ -20,14 +22,19 @@ struct REGISTER {
 	char cep[1024];
 	char usuario[1024];
 	char senha[1024];
+	char funcao[1024];
 };
 
-static void CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10]) {
+static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
 	FILE* arquivo;
 	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
-	fprintf(arquivo, "%s|%s|%s|%s|%s|%s|%s|", nome, email, rg, cpf, cep, usuario, senha);
+	fprintf(arquivo, "%s;%s;%s;%s;%s;%s;%s;%s;\n", nome, email, rg, cpf, cep, usuario, senha, funcao);
+	printf("\n\n");
+	Sleep(3000);
 	FecharArquivo(arquivo);
+	return true;
 }
+
 
 static bool LoginFuncionario(char usuario[], char senha[]) {
 	int i = 0;
@@ -37,6 +44,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	char delimiter[] = ";";
 	char* values[1024];
 	FILE* arquivo;
+
 	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
 
 	if (arquivo == NULL)
@@ -70,15 +78,41 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		}
 
 		if (strcmp(usuario, values[5]) == 0 && strcmp(senha, values[6]) == 0) {
-			centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns);
-
+			printf("\n\n");
+			centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+			loggedNomeCompleto[0] = values[0];
+			printf("%s", loggedNomeCompleto[0]);
 			Sleep(3000);
-			mostrarMenuPrincipal();
+			menuPizzaria();
 			return true;
 		}
 		free(ptr);
 	}
 	return false;
+}
+
+static bool ListarFuncionarios() {
+	int x = 0;
+	int numLinhas2 = 0;
+	char* palavras2[50];
+	char line2[1024];
+	char delimiter2[] = ";";
+	FILE* arquivo2;
+	arquivo2 = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+
+	if (arquivo2 == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(line2, sizeof line2, arquivo2) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		palavras2[x] = strdup(line2);
+		printf("%s\n", palavras2[x]);
+		x++;
+
+		//Conta a quantidade de linhas
+		numLinhas2++;
+	}
 }
 
 // static bool trocarSenha(char senha[]) {}

@@ -2,12 +2,12 @@
 #include "util.h"
 #include "BibFuncionario.h"
 #include "MenuInicial.h"
-int i;
 
-void RegFuncionario() {
+bool CadFuncionario() {
+	int i = 0;
 	system(CLEAR_SCREEN_PROGRAM);
 	printf("\n\n");
-	centerText("REGISTRAR-SE - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+	centerText("CADASTRAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -47,10 +47,14 @@ void RegFuncionario() {
 	setbuf(stdin, NULL);
 	(void)scanf("%s", BFuncionario.funcao);
 
-	CadastrarFuncionario(BFuncionario.nome_completo, BFuncionario.email, BFuncionario.rg, BFuncionario.cpf, BFuncionario.cep, BFuncionario.usuario, BFuncionario.senha, BFuncionario.funcao);
-	centerText( GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns);
-
-	Sleep(3000);
-
-	menuPrincipal();
+	if (CadastrarFuncionario(BFuncionario.nome_completo, BFuncionario.email, BFuncionario.rg, BFuncionario.cpf, BFuncionario.cep, BFuncionario.usuario, BFuncionario.senha, BFuncionario.funcao)) {
+		centerText(GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
+		Sleep(3000);
+		return true;
+	}
+	else {
+		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 12);
+		Sleep(3000);
+		return false;
+	}
 }

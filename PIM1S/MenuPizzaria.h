@@ -1,3 +1,3 @@
 #pragma once
 
-void mostrarMenuPrincipal();
+extern void menuPizzaria();

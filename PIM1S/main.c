@@ -8,8 +8,8 @@
 #include "util.h"
 #include "BibFuncionario.h"
 #include "splash_window.h"
-#include "RegFuncionario.h"
-#include "MenuPrincipal.h"
+//#include "RegFuncionario.h"
+#include "MenuInicial.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
@@ -18,6 +18,7 @@
 static char title[25] = "SISTEMA DE PIZZARIA v1.0";
 
 int i;
+char LoggedNome[30];
 
 int main() {
 	setlocale(LC_ALL, "Portuguese");
@@ -33,7 +34,7 @@ int main() {
 	splash_window();
 
 	if (GetKeyState(VK_SPACE) && 0x8000) {
-		MenuPrincipal();
+		menuPrincipal();
 	}
 	else {
 		return 0;
