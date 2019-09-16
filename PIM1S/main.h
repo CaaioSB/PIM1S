@@ -1,7 +1,7 @@
 #pragma once
 
 // VARIÁVEL GLOBAL DE LOGIN
-static char loggedNomeCompleto[] = {""};
+static char loggedNomeCompleto[] = "";
 static char loggedEmail[] = {""};
 static char loggedRG[] = {""};
 static char loggedCPF[] = {""};

@@ -1,5 +1,5 @@
-#include "AltFuncionario.h"
 #include "BibFuncionario.h"
+#include "AltFuncionario.h"
 #include "util.h"
 
 void AltFuncionario() {

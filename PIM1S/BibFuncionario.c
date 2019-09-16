@@ -8,6 +8,7 @@
 #include <new.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "util.h"
 #include "MenuPizzaria.h"
@@ -80,8 +81,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		if (strcmp(usuario, values[5]) == 0 && strcmp(senha, values[6]) == 0) {
 			printf("\n\n");
 			centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
-			loggedNomeCompleto[0] = values[0];
-			printf("%s", loggedNomeCompleto[0]);
+			strcpy(loggedNomeCompleto, values[0]);
 			Sleep(3000);
 			menuPizzaria();
 			return true;
@@ -89,7 +89,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		free(ptr);
 	}
 	return false;
-}
+} 
 
 static bool ListarFuncionarios() {
 	int x = 0;
