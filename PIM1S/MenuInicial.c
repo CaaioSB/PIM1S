@@ -1,6 +1,7 @@
 #include "MenuInicial.h"
 #include "util.h"
 #include "Login.h"
+#include "BibFuncionario.h"
 
 int i;
 
@@ -27,7 +28,16 @@ inicio:
 		Login();
 		break;
 	case '2':
-		CadFuncionario();
+		if (ContarFuncionarios() >= 1) {
+			printf("\n\n");
+			centerText(RED "VOCÊ NÃO PODE REGISTRAR UM NOVO FUNCIONÁRIO, JÁ EXISTE UM GERENTE CADASTRADO." RESET, cmd_dimension.columns + 10);
+			centerText(YELLOW "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+			system("pause > nul");
+			goto inicio;
+		}
+		else {
+			CadFuncionario();
+		}
 		goto inicio;
 	case '3':
 		esqueciMinhaSenha();

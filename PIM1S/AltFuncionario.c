@@ -4,7 +4,7 @@
 
 void AltFuncionario() {
 	int opcao;
-inicio:
+	//inicio:
 	system(CLEAR_SCREEN_PROGRAM);
 	centerText("ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
 
@@ -16,10 +16,11 @@ inicio:
 	ListarFuncionarios();
 	opcao = _getch();
 
-	switch (opcao) {
-	case 1:
-		printf("vc seleciounou 1");
-		break;
-	}
+	char* teste = {""};
+
+	teste[0] = BuscarFuncionario(1);
+
+	printf("%s", teste[0]);
+	system("pause > nul");
 }
 

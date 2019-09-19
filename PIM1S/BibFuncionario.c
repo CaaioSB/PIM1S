@@ -29,7 +29,7 @@ struct REGISTER {
 static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
 	FILE* arquivo;
 	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
-	int id = ContarFuncionarios() + 1;
+	int id = (int)ContarFuncionarios() + 1;
 	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
 	printf("\n\n");
 	Sleep(3000);
@@ -90,7 +90,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		free(ptr);
 	}
 	return false;
-} 
+}
 
 static bool ListarFuncionarios() {
 	int x = 0;
@@ -117,12 +117,36 @@ static bool ListarFuncionarios() {
 	return true;
 }
 
-static int ContarFuncionarios() {
-	//int x = 0;
-	int numLinhas = 0;
-	//char* palavras2[50];
+static char BuscarFuncionario(int id) {
+	int numLinha = 1;
 	char line[1024];
-	//char delimiter2[] = ";";
+	FILE* arquivo;
+
+	/*
+	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
+	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
+	*/
+
+	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+
+	if (arquivo == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
+	{
+		if (id == numLinha) {
+			//dadosFuncionario[] = &line[1];
+			//printf("%s", dadosFuncionario);
+			return dadosFuncionario;
+			break;
+		}
+		numLinha++;
+	}
+}
+
+static int ContarFuncionarios() {
+	int numLinhas = 0;
+	char line[1024];
 	FILE* arquivo;
 	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
 

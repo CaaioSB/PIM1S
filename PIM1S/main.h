@@ -9,3 +9,6 @@ static char loggedCEP[] = {""};
 static char loggedUser[] = {""};
 static char loggedSenha[] = {""};
 static char loggedFuncao[] = {""};
+
+// DADOS DO FUNCIONÁRIO
+char dadosFuncionario[1024];
