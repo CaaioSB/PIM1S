@@ -1,4 +1,5 @@
 #include "cmd_resolution.h"
+#include <stdbool.h>
 
 #define CLEAR_SCREEN_PROGRAM "cls"
 
@@ -26,4 +27,8 @@ extern FILE* AbreArquivo(char modo, char caminho[30]);
 
 extern void FecharArquivo(FILE *arquivoo);
 
-char* replaceWord(const char* s, const char* oldW, const char* newW);
+//char* replaceWord(const char* s, const char* oldW, const char* newW);
+
+//bool startsWith(const char* pre, const char* str);
+
+//int prefix(const char* pre, const char* str);

@@ -8,6 +8,7 @@
 
 #include "util.h"
 #include "cmd_resolution.h"
+#include <stdbool.h>
 
 i = 0;
 

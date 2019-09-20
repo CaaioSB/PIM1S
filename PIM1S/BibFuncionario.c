@@ -122,6 +122,11 @@ static char BuscarFuncionario(int id) {
 	char line[1024];
 	FILE* arquivo;
 
+	int i = 0;
+	char* palavras[50];
+	char delimiter[] = ";";
+	char* values[9];
+
 	/*
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
@@ -134,10 +139,37 @@ static char BuscarFuncionario(int id) {
 
 	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
 	{
-		if (id == numLinha) {
-			//dadosFuncionario[] = &line[1];
-			//printf("%s", dadosFuncionario);
-			return dadosFuncionario;
+		palavras[numLinha] = strdup(dadosFuncionario);
+		if (dadosFuncionario[0] == '1')
+		{
+			int j = 0;
+			while (j < 1) {
+				char* ptr = strtok(palavras[numLinha], delimiter);
+				values[j] = ptr;
+				j++;
+
+				while (ptr != NULL && j < 9)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+
+				}
+			}
+
+			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+			idFuncionario = values[0];
+			nomeFuncionario = values[1];
+			emailFuncionario = values[2];
+			rgFuncionario = values[3];
+			cpfFuncionario = values[4];
+			cepFuncionario = values[5];
+			userFuncionario = values[6];
+			passFuncionario = values[7];
+			funcaoFuncionario = values[8];
 			break;
 		}
 		numLinha++;
