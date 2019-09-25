@@ -44,8 +44,9 @@ inicio:
 	default:
 		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 A 5)" RESET, cmd_dimension.columns);
 		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns);
-		system("pause");
+		Sleep(2000);
 		goto inicio;
+		system("pause > nul");
 
 	}
 }
