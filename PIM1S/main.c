@@ -6,10 +6,10 @@
 #include <new.h>
 
 #include "util.h"
-#include "BibFuncionario.h"
-#include "splash_window.h"
-//#include "RegFuncionario.h"
-#include "MenuInicial.h"
+//#include "BibFuncionario.h"
+//#include "splash_window.h"
+////#include "RegFuncionario.h"
+//#include "MenuInicial.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"

@@ -8,9 +8,9 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "cmd_resolution.h"
 #include "util.h"
 #include "MenuPizzaria.h"
+#include "main.h"
 
 struct PRODUTO {
 	char nome[100];
@@ -21,7 +21,7 @@ struct PRODUTO {
 
 static bool CadastrarProduto(char nome[100], char* tipo, int quantidade, double preco) {
 	FILE* arquivo;
-	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_produto.txt");
+	arquivo = AbreArquivo('a', tb_produto);
 	int id = (int)ContarProdutos() + 1;
 	if (fprintf(arquivo, "%d;%s;%s;%d;%.2f;\n", id, nome, tipo, quantidade, preco)) {
 		FecharArquivo(arquivo);
@@ -43,7 +43,7 @@ static int ContarProdutos() {
 	int numLinhas = 0;
 	char line[1024];
 	FILE* arquivo;
-	arquivo = fopen("C:\\SGP\\db\\tb_produto.txt", "r");
+	arquivo = fopen(tb_produto, "r");
 
 	if (arquivo == NULL)
 		return 0;

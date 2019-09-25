@@ -24,3 +24,7 @@ static char* cepFuncionario = { "" };
 static char* userFuncionario = { "" };
 static char* passFuncionario = { "" };
 static char* funcaoFuncionario = { "" };
+
+/* ARMAZENAMENTOS DO BANCO DE DADOS */
+static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";
+static char* tb_produto = "C:\\SGP\\db\\tb_produto.txt";

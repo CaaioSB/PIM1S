@@ -28,7 +28,7 @@ struct REGISTER {
 
 static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
 	FILE* arquivo;
-	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_funcionario.txt");
+	arquivo = AbreArquivo('a', tb_funcionario);
 	int id = (int)ContarFuncionarios() + 1;
 	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
 	printf("\n\n");
@@ -47,7 +47,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	char* values[1024];
 	FILE* arquivo;
 
-	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+	arquivo = fopen(tb_funcionario, "r");
 
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
@@ -99,7 +99,7 @@ static bool ListarFuncionarios() {
 	char line2[1024];
 	char delimiter2[] = ";";
 	FILE* arquivo2;
-	arquivo2 = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+	arquivo2 = fopen(tb_funcionario, "r");
 
 	if (arquivo2 == NULL)
 		return EXIT_FAILURE;
