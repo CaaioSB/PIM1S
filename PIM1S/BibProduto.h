@@ -1,5 +1,4 @@
-#pragma once
-class BibProdutos
-{
-};
+#pragma once#pragma once
+#include "BibProduto.c"
 
+struct PRODUTO;

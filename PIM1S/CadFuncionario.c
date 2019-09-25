@@ -53,7 +53,7 @@ bool CadFuncionario() {
 		return true;
 	}
 	else {
-		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 12);
+		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 9);
 		Sleep(3000);
 		return false;
 	}

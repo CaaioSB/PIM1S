@@ -99,6 +99,15 @@
     <ClCompile Include="AltFuncionario.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
+    <ClCompile Include="MenuProduto.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="CadProduto.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="AltProduto.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -153,6 +162,15 @@
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
     <ClInclude Include="AltFuncionario.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuProduto.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="CadProduto.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="AltProduto.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
   </ItemGroup>

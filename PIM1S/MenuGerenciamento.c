@@ -28,6 +28,7 @@ void MenuGerenciamento() {
 	case '2':
 		break;
 	case '3':
+		MenuProduto();
 		break;
 	case '4':
 		break;
