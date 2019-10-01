@@ -6,10 +6,10 @@
 #include <new.h>
 
 #include "util.h"
-#include "BibFuncionario.h"
-#include "splash_window.h"
-//#include "RegFuncionario.h"
-#include "MenuInicial.h"
+//#include "BibFuncionario.h"
+//#include "splash_window.h"
+////#include "RegFuncionario.h"
+//#include "MenuInicial.h"
 
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
@@ -23,8 +23,12 @@ char LoggedNome[30];
 int main() {
 	setlocale(LC_ALL, "Portuguese");
 
-	COORD coord;
-	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, &coord);
+	system("mode con COLS=700");
+	ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+	SendMessage(GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
+
+	/*COORD coord;
+	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_FULLSCREEN_MODE, &coord);*/
 
 	// Primeiro obtém o tamanho da janela CMD - será utilizada para construir os menus 
 	if (!get_cmd_dimension()) {

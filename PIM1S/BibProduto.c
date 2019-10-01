@@ -8,22 +8,22 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "cmd_resolution.h"
 #include "util.h"
 #include "MenuPizzaria.h"
+#include "main.h"
 
 struct PRODUTO {
-	char* nome;
+	char nome[100];
 	char* tipo;
 	int quantidade;
-	double preco;
-}newProduto;
+	float preco;
+};
 
-static bool CadastrarProduto(char nome, char tipo, int quantidade, double preco) {
+static bool CadastrarProduto(char nome[100], char* tipo, int quantidade, double preco) {
 	FILE* arquivo;
-	arquivo = AbreArquivo('a', "C:\\SGP\\db\\tb_produto.txt");
+	arquivo = AbreArquivo('a', tb_produto);
 	int id = (int)ContarProdutos() + 1;
-	if (fprintf(arquivo, "%d;%c;%c;%d;%.2f;\n", id, nome, tipo, quantidade, preco)) {
+	if (fprintf(arquivo, "%d;%s;%s;%d;%.2f;\n", id, nome, tipo, quantidade, preco)) {
 		FecharArquivo(arquivo);
 		printf("\n\n");
 		centerText(GREEN "O PRODUTO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
@@ -43,7 +43,7 @@ static int ContarProdutos() {
 	int numLinhas = 0;
 	char line[1024];
 	FILE* arquivo;
-	arquivo = fopen("C:\\SGP\\db\\tb_produto.txt", "r");
+	arquivo = fopen(tb_produto, "r");
 
 	if (arquivo == NULL)
 		return 0;

@@ -16,29 +16,30 @@ inicio:
 
 	printf("DIGITE O NOME DO PRODUTO: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%[^\n]s", newProduto.nome);
+	(void)scanf("%[^\n]s", &BProduto.nome);
 	printf("SELECIONE O TIPO DO PRODUTO: ");
 	printf(GREEN "\n1 " RESET "PIZZA SALGADA");
 	printf(GREEN "\n2 " RESET "PIZZA DOCE");
 	printf(GREEN "\n3 " RESET "POÇÃO");
 	printf(GREEN "\n4 " RESET "BEBIDA\n");
 	printf("OPÇÃO: ");
-	tipoProduto:
+tipoProduto:
+	setbuf(stdin, NULL);
 	op = _getch();
 
 	switch (op)
 	{
 	case '1':
-		newProduto.tipo = "PIZZA SALGADA";
+		BProduto.tipo = "PIZZA SALGADA";
 		break;
 	case '2':
-		newProduto.tipo = "PIZZA DOCE";
+		BProduto.tipo = "PIZZA DOCE";
 		break;
 	case '3':
-		newProduto.tipo = "POÇÃO";
+		BProduto.tipo = "POÇÃO";
 		break;
 	case '4':
-		newProduto.tipo = "BEBIDA";
+		BProduto.tipo = "BEBIDA";
 		break;
 	default:
 		printf(RED "SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 A 4)" RESET);
@@ -47,13 +48,13 @@ inicio:
 
 	printf("\nDIGITE A QUANTIDADE: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%d", &newProduto.quantidade);
+	(void)scanf("%d", &BProduto.quantidade);
 
 	printf("DIGITE O PREÇO: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%lf", &newProduto.preco);
+	(void)scanf("%f", &BProduto.preco);
 
-	if (CadastrarProduto(newProduto.nome, newProduto.tipo, newProduto.quantidade, newProduto.preco)) {
+	if (CadastrarProduto(BProduto.nome, BProduto.tipo, BProduto.quantidade, BProduto.preco)) {
 		MenuProduto();
 		setbuf(stdin, NULL);
 	}
