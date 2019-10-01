@@ -117,16 +117,18 @@ static bool ListarFuncionarios() {
 	return true;
 }
 
-static char BuscarFuncionario(int id) {
-	int numLinha = 1;
+static char AlterarFuncionario(int idFuncionario) {
+
+}
+
+static char BuscarFuncionario(char id) {
+	int numLinha = 0;
 	char line[1024];
 	FILE* arquivo;
 
 	int i = 0;
-	char* palavras[50];
-	char delimiter[] = ";";
 	char* values[9];
-	char* fileLine[100];
+	char* fileLine[1024];
 
 	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
 
@@ -135,54 +137,34 @@ static char BuscarFuncionario(int id) {
 		//Adiciona cada linha no vetor
 		fileLine[i] = strdup(line);
 		i++;
+		numLinha++;
 	}
 
+	char delimiter[] = ";";
+	for (int x = 0; x < numLinha; x++) {
+		int j = 0;
+		char* ptr = strtok(fileLine[x], delimiter);
+		values[j] = ptr;
+		j++;
+		while (ptr != NULL)
+		{
+			// Imprime os dados lidos do documento de texto
+			printf("'%s'\n", ptr);
+
+			ptr = strtok(NULL, delimiter);
+			values[j] = ptr;
+			j++;
+
+			if (strcmp(values[0], id) == 0) {
+				printf("TRUEEEEEEEEE");
+			}
+		}
+	}
 	/*
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
 	*/
-
-
-	if (arquivo == NULL)
-		return EXIT_FAILURE;
-
-	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
-	{
-		palavras[numLinha] = strdup(dadosFuncionario);
-		if (dadosFuncionario[0] == id)
-		{
-			int j = 0;
-			while (j < 1) {
-				char* ptr = strtok(palavras[numLinha], delimiter);
-				values[j] = ptr;
-				j++;
-
-				while (ptr != NULL && j < 9)
-				{
-					// Imprime os dados lidos do documento de texto
-					//printf("'%s'\n", ptr);
-
-					ptr = strtok(NULL, delimiter);
-					values[j] = ptr;
-					j++;
-
-				}
-			}
-
-			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
-			idFuncionario = values[0];
-			nomeFuncionario = values[1];
-			emailFuncionario = values[2];
-			rgFuncionario = values[3];
-			cpfFuncionario = values[4];
-			cepFuncionario = values[5];
-			userFuncionario = values[6];
-			passFuncionario = values[7];
-			funcaoFuncionario = values[8];
-			break;
-		}
-		numLinha++;
-	}
+	numLinha++;
 }
 
 static int ContarFuncionarios() {
