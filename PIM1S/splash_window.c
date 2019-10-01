@@ -17,7 +17,7 @@ void splash_window()
 		printf("\n");
 	}
 
-	centerText(RED "SISTEMA GERENCIADOR DE PIZZARIA v1.0", cmd_dimension.columns);
+	centerText(MAGENTA "PIZZABUG " WHITE "GERENCIADOR DE PIZZARIA", cmd_dimension.columns + 7);
 	char message[79] = YELLOW "PRESSIONE A TECLA " WHITE "ESPAÇO " YELLOW "PARA INICIAR UM NOVO TURNO" RESET;
 	centerText(message, cmd_dimension.columns + 19);
 

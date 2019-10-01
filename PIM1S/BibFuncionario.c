@@ -126,13 +126,22 @@ static char BuscarFuncionario(int id) {
 	char* palavras[50];
 	char delimiter[] = ";";
 	char* values[9];
+	char* fileLine[100];
+
+	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		fileLine[i] = strdup(line);
+		i++;
+	}
 
 	/*
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
 	*/
 
-	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
 
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
@@ -140,7 +149,7 @@ static char BuscarFuncionario(int id) {
 	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
 	{
 		palavras[numLinha] = strdup(dadosFuncionario);
-		if (dadosFuncionario[0] == '1')
+		if (dadosFuncionario[0] == id)
 		{
 			int j = 0;
 			while (j < 1) {
