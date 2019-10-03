@@ -18,7 +18,7 @@ void AltFuncionario() {
 	opcao = _getch();
 	//opcao = _getch();
 
-	BuscarFuncionario(opcao, 1);
+	BuscarFuncionario(opcao);
 	opc:
 	printf("O QUE VOCÊ DESEJA ALTERAR?");
 	setbuf(stdin, NULL);

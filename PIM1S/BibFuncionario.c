@@ -118,17 +118,22 @@ static bool ListarFuncionarios() {
 }
 
 static char AlterarFuncionario(int idFuncionario) {
-
+	/*  FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
+	*	DEPOIS DE DESENVOLVER ESSA STRING EU VOU TER QUE INSERIR
+	*	ELA EM UM ARQUIVO COMO BACKUP E DEPOIS DELETAR O ARQUICO ORIGINAL
+	*	APÓS DELETAR O ARQUIVO ORIGINAL, EU DEVO POR CADA QUE ESTAVA NO 
+	*/
 }
 
 static char BuscarFuncionario(char id) {
 	int numLinha = 0;
 	char line[1024];
+	char delimiter[] = ";";
 	FILE* arquivo;
-
+	char* palavras[50];
 	int i = 0;
 	char* values[9];
-	char* fileLine[1024];
+	char* fileLine[100];
 
 	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
 
@@ -137,34 +142,51 @@ static char BuscarFuncionario(char id) {
 		//Adiciona cada linha no vetor
 		fileLine[i] = strdup(line);
 		i++;
-		numLinha++;
 	}
 
-	char delimiter[] = ";";
-	for (int x = 0; x < numLinha; x++) {
-		int j = 0;
-		char* ptr = strtok(fileLine[x], delimiter);
-		values[j] = ptr;
-		j++;
-		while (ptr != NULL)
-		{
-			// Imprime os dados lidos do documento de texto
-			printf("'%s'\n", ptr);
-
-			ptr = strtok(NULL, delimiter);
-			values[j] = ptr;
-			j++;
-
-			if (strcmp(values[0], id) == 0) {
-				printf("TRUEEEEEEEEE");
-			}
-		}
-	}
 	/*
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
 	*/
-	numLinha++;
+
+	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+
+	if (arquivo == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
+	{
+		palavras[numLinha] = strdup(dadosFuncionario);
+			if (dadosFuncionario[0] == id)
+			{
+				int j = 0;
+				while (j < 1) {
+					char* ptr = strtok(palavras[numLinha], delimiter);
+					values[j] = ptr;
+					j++;
+					while (ptr != NULL && j < 9)
+					{
+						// Imprime os dados lidos do documento de texto
+						//printf("'%s'\n", ptr);
+						ptr = strtok(NULL, delimiter);
+						values[j] = ptr;
+						j++;
+					}
+				}
+				// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+				idFuncionario = values[0];
+				strcpy(nomeFuncionario, values[1]);
+				strcpy(emailFuncionario, values[2]);
+				strcpy(rgFuncionario, values[3]);
+				strcpy(cpfFuncionario, values[4]);
+				strcpy(cepFuncionario, values[5]);
+				strcpy(userFuncionario, values[6]);
+				strcpy(passFuncionario, values[7]);
+				strcpy(funcaoFuncionario, values[8]);
+				break;
+			}
+		numLinha++;
+	}
 }
 
 static int ContarFuncionarios() {

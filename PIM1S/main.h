@@ -15,15 +15,15 @@ static char loggedFuncao[] = {""};
 * 1;	Caio da Silva Batista;	caio_silvabatista@hotmail.com;	560179839;	49355294824;	06654230;	caio;	123;	Gerente;
 */
 static char dadosFuncionario[1024];
-static int idFuncionario;
-static char nomeFuncionario[] = { "" };
-static char emailFuncionario[] = { "" };
-static char rgFuncionario[] = { "" };
-static char cpfFuncionario[] = { "" };
-static char cepFuncionario[] = { "" };
-static char userFuncionario[] = { "" };
-static char passFuncionario[] = { "" };
-static char funcaoFuncionario[] = { "" };
+char* idFuncionario;
+static char nomeFuncionario[100];
+static char emailFuncionario[100];
+static char rgFuncionario[20];
+static char cpfFuncionario[11];
+static char cepFuncionario[10];
+static char userFuncionario[20];
+static char passFuncionario[20];
+static char funcaoFuncionario[50];
 
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
 static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";
