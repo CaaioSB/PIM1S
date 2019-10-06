@@ -78,7 +78,7 @@ void AltFuncionario() {
 		goto opc;
 	case '9':
 		// CHAMA O MÉTODO PARA CONFIRMAR
-		AlterarFuncionario(opcao);
+		AlterarFuncionario(opcao, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
 		break;
 	case '0':
 		centerText(RED "VOCÊ CANCELOU AS ALTERAÇÕES" RESET, cmd_dimension.columns + 11);

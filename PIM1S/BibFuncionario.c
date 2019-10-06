@@ -117,12 +117,52 @@ static bool ListarFuncionarios() {
 	return true;
 }
 
-static char AlterarFuncionario(int idFuncionario) {
+static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], char emailFuncionario[100], char rgFuncionario[20], char cpfFuncionario[11], char cepFuncionario[20], char userFuncionario[20], char passFuncionario[20], char funcaoFuncionario[50]) {
 	/*  FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
 	*	DEPOIS DE DESENVOLVER ESSA STRING EU VOU TER QUE INSERIR
 	*	ELA EM UM ARQUIVO COMO BACKUP E DEPOIS DELETAR O ARQUICO ORIGINAL
-	*	APÓS DELETAR O ARQUIVO ORIGINAL, EU DEVO POR CADA QUE ESTAVA NO 
+	*	APÓS DELETAR O ARQUIVO ORIGINAL, EU DEVO POR CADA QUE ESTAVA NO
 	*/
+
+	int numLinha = 0;
+	char line[1024];
+	char delimiter[] = ";";
+	FILE* arquivo;
+	FILE* newArquivo;
+	char* palavras[50];
+	int i = 0;
+	char* values[9];
+	char* fileLine[100];
+
+	printf("%s", dadosFuncionario);
+	arquivo = AbreArquivo('l', tb_funcionario);
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		if (i == (idFuncionario - 49)) {
+			snprintf(line, sizeof line, "%c;%s;%s;%s;%s;%s;%s;%s;%s;", idFuncionario, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
+			fileLine[i] = strdup(line);
+
+		}
+		else {
+			fileLine[i] = strdup(line);
+		}
+		i++;
+	}
+
+	FecharArquivo(arquivo);
+	//arquivo = fopen(tb_funcionario, "w+");
+	FILE* teste = fopen("C:\\SGP\\db\\arquivo.txt", "w");
+	if (teste == NULL) {
+		centerText(RED "\n\nOCORREU UM ARRO AO ALTERAR O FUNCIONÁRIO", cmd_dimension.columns + 4);
+	}
+	else {
+		fprintf(teste, "%c", 'a');
+		for (int x = 0; x < i; x++) {
+			printf(*fileLine);
+		}
+		fclose(teste);
+	}
 }
 
 static char BuscarFuncionario(char id) {
@@ -157,34 +197,34 @@ static char BuscarFuncionario(char id) {
 	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
 	{
 		palavras[numLinha] = strdup(dadosFuncionario);
-			if (dadosFuncionario[0] == id)
-			{
-				int j = 0;
-				while (j < 1) {
-					char* ptr = strtok(palavras[numLinha], delimiter);
+		if (dadosFuncionario[0] == id)
+		{
+			int j = 0;
+			while (j < 1) {
+				char* ptr = strtok(palavras[numLinha], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 9)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
 					values[j] = ptr;
 					j++;
-					while (ptr != NULL && j < 9)
-					{
-						// Imprime os dados lidos do documento de texto
-						//printf("'%s'\n", ptr);
-						ptr = strtok(NULL, delimiter);
-						values[j] = ptr;
-						j++;
-					}
 				}
-				// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
-				idFuncionario = values[0];
-				strcpy(nomeFuncionario, values[1]);
-				strcpy(emailFuncionario, values[2]);
-				strcpy(rgFuncionario, values[3]);
-				strcpy(cpfFuncionario, values[4]);
-				strcpy(cepFuncionario, values[5]);
-				strcpy(userFuncionario, values[6]);
-				strcpy(passFuncionario, values[7]);
-				strcpy(funcaoFuncionario, values[8]);
-				break;
 			}
+			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+			idFuncionario = values[0];
+			strcpy(nomeFuncionario, values[1]);
+			strcpy(emailFuncionario, values[2]);
+			strcpy(rgFuncionario, values[3]);
+			strcpy(cpfFuncionario, values[4]);
+			strcpy(cepFuncionario, values[5]);
+			strcpy(userFuncionario, values[6]);
+			strcpy(passFuncionario, values[7]);
+			strcpy(funcaoFuncionario, values[8]);
+			break;
+		}
 		numLinha++;
 	}
 }

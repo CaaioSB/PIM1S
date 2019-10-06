@@ -27,4 +27,5 @@ static char funcaoFuncionario[50];
 
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
 static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";
+static char* tb_funcionario2 = "C:\\SGP\\db\\tb_funcionario2.txt";
 static char* tb_produto = "C:\\SGP\\db\\tb_produto.txt";

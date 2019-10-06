@@ -12,7 +12,7 @@ static bool LoginFuncionario(char usuario[], char senha[]);
 
 static bool ListarFuncionarios();
 
-static char BuscarFuncionario(int id);
+static char BuscarFuncionario(char id);
 
 static int ContarFuncionarios();
 
