@@ -28,7 +28,7 @@ struct REGISTER {
 
 static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
 	FILE* arquivo;
-	arquivo = AbreArquivo('a', tb_funcionario);
+	arquivo = AbreArquivo('g', tb_funcionario);
 	int id = (int)ContarFuncionarios() + 1;
 	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
 	printf("\n\n");
@@ -46,8 +46,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	char delimiter[] = ";";
 	char* values[1024];
 	FILE* arquivo;
-
-	arquivo = fopen(tb_funcionario, "r");
+	arquivo = AbreArquivo('l', tb_funcionario);
 
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
@@ -57,9 +56,8 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		//Adiciona cada linha no vetor
 		palavras[i] = strdup(line);
 
-		i++;
-
 		//Conta a quantidade de linhas
+		i++;
 		numLinhas++;
 	}
 
@@ -84,36 +82,39 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
 			strcpy(loggedNomeCompleto, values[1]);
 			Sleep(3000);
+			FecharArquivo(arquivo);
 			menuPizzaria();
 			return true;
 		}
 		free(ptr);
 	}
+	FecharArquivo(arquivo);
 	return false;
 }
 
 static bool ListarFuncionarios() {
 	int x = 0;
-	int numLinhas2 = 0;
-	char* palavras2[50];
-	char line2[1024];
-	char delimiter2[] = ";";
-	FILE* arquivo2;
-	arquivo2 = fopen(tb_funcionario, "r");
+	int numLinhas = 0;
+	char* palavras[50];
+	char line[1024];
+	FILE* arquivo;
 
-	if (arquivo2 == NULL)
+	arquivo = AbreArquivo('l', tb_funcionario);
+	
+	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
-	while (fgets(line2, sizeof line2, arquivo2) != NULL)
+	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
-		palavras2[x] = strdup(line2);
-		printf("%s\n", palavras2[x]);
+		palavras[x] = strdup(line);
+		printf("%s\n", palavras[x]);
 		x++;
 
 		//Conta a quantidade de linhas
-		numLinhas2++;
+		numLinhas++;
 	}
+	FecharArquivo(arquivo);
 	return true;
 }
 
@@ -151,18 +152,26 @@ static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 	}
 
 	FecharArquivo(arquivo);
-	//arquivo = fopen(tb_funcionario, "w+");
-	FILE* teste = fopen("C:\\SGP\\db\\arquivo.txt", "w");
-	if (teste == NULL) {
+
+	FILE* newFile = AbreArquivo('g', tb_funcionario2);
+	if (newFile == NULL) {
 		centerText(RED "\n\nOCORREU UM ARRO AO ALTERAR O FUNCIONÁRIO", cmd_dimension.columns + 4);
 	}
 	else {
-		fprintf(teste, "%c", 'a');
 		for (int x = 0; x < i; x++) {
-			printf(*fileLine);
+			fprintf(newFile, "%s", fileLine[x]);
 		}
-		fclose(teste);
 	}
+	FecharArquivo(newFile);
+
+	if (remove(tb_funcionario) == 0) {
+		puts("Arquivo removido!");
+		rename(tb_funcionario2, tb_funcionario);
+	}
+	else {
+		perror("remove");
+	}
+	Sleep(10);
 }
 
 static char BuscarFuncionario(char id) {
@@ -170,12 +179,13 @@ static char BuscarFuncionario(char id) {
 	char line[1024];
 	char delimiter[] = ";";
 	FILE* arquivo;
+	FILE* arquivo2;
 	char* palavras[50];
 	int i = 0;
 	char* values[9];
 	char* fileLine[100];
 
-	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+	arquivo = AbreArquivo('l', tb_funcionario);
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
@@ -184,17 +194,18 @@ static char BuscarFuncionario(char id) {
 		i++;
 	}
 
+	FecharArquivo(arquivo);
 	/*
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
 	*/
+	
+	arquivo2 = AbreArquivo('l', tb_funcionario);
 
-	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
-
-	if (arquivo == NULL)
+	if (arquivo2 == NULL)
 		return EXIT_FAILURE;
 
-	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo) != NULL)
+	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo2) != NULL)
 	{
 		palavras[numLinha] = strdup(dadosFuncionario);
 		if (dadosFuncionario[0] == id)
@@ -223,25 +234,29 @@ static char BuscarFuncionario(char id) {
 			strcpy(userFuncionario, values[6]);
 			strcpy(passFuncionario, values[7]);
 			strcpy(funcaoFuncionario, values[8]);
+			FecharArquivo(arquivo2);
 			break;
 		}
 		numLinha++;
 	}
+	FecharArquivo(arquivo2);
 }
 
 static int ContarFuncionarios() {
 	int numLinhas = 0;
 	char line[1024];
 	FILE* arquivo;
-	arquivo = fopen("C:\\SGP\\db\\tb_funcionario.txt", "r");
+	arquivo = AbreArquivo('l', tb_funcionario);
 
 	if (arquivo == NULL)
-		return 0;
+		FecharArquivo(arquivo);
+	return 0;
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		numLinhas++;
 	}
+	FecharArquivo(arquivo);
 	return numLinhas;
 }
 
