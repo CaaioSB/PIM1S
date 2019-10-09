@@ -132,6 +132,7 @@
     <ClCompile Include="BibIngrediente.c" />
     <ClCompile Include="BibProduto.c" />
     <ClCompile Include="CadProduto.c" />
+    <ClCompile Include="Catalogo.c" />
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="BibFuncionario.c" />
     <ClCompile Include="Ingrediente.c" />
@@ -156,6 +157,7 @@
     <ClInclude Include="BibIngrediente.h" />
     <ClInclude Include="BibProduto.h" />
     <ClInclude Include="CadProduto.h" />
+    <ClInclude Include="Catalogo.h" />
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="Ingrediente.h" />
     <ClInclude Include="Login.h" />

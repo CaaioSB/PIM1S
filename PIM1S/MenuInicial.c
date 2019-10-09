@@ -9,7 +9,7 @@ void menuPrincipal() {
 	char op;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(YELLOW "MENU - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns + 8);
+	centerText(BLUE "MENU INICIAL - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 11);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -31,7 +31,7 @@ inicio:
 		if (ContarFuncionarios() >= 1) {
 			printf("\n\n");
 			centerText(RED "VOCÊ NÃO PODE REGISTRAR UM NOVO FUNCIONÁRIO, JÁ EXISTE UM GERENTE CADASTRADO." RESET, cmd_dimension.columns + 10);
-			centerText(YELLOW "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+			centerText(YELLOW "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 13);
 			system("pause > nul");
 			goto inicio;
 		}
@@ -45,11 +45,10 @@ inicio:
 		exit(0);
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 A 5)" RESET, cmd_dimension.columns);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA" YELLOW " (DE 1 A 3 ou 0)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 12);
 		system("pause > nul");
 		goto inicio;
 	}
-
 	system("pause > nul");
 }

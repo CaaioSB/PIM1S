@@ -5,7 +5,7 @@ void MenuFuncionario() {
 	int opcao;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText("MENU DO FUNCIONARIO - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+	centerText(BLUE "MENU DO FUNCIONARIO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 11);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -32,16 +32,15 @@ inicio:
 		MenuGerenciamento();
 		break;
 	case '0':
-		centerText(RED "\nVOCÊ ESCOLHEU SAIR...", cmd_dimension.columns);
+		centerText(RED "VOCÊ ESCOLHEU SAIR", cmd_dimension.columns + 4);
 		Sleep(2000);
 		exit(0);
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 A 5)" RESET, cmd_dimension.columns);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 5)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 12);
 		system("pause > nul");
 		goto inicio;
 	}
-
 	goto inicio;
 }

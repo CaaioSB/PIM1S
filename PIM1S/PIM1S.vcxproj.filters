@@ -108,6 +108,9 @@
     <ClCompile Include="AltProduto.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
+    <ClCompile Include="Catalogo.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="AltProduto.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="Catalogo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

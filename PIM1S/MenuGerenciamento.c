@@ -5,7 +5,7 @@ void MenuGerenciamento() {
 	int opcao;
 	inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(RED "GERENCIAMENTO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 10);
+	centerText(BLUE "GERENCIAMENTO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 11);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -39,12 +39,12 @@ void MenuGerenciamento() {
 	case '9':
 		menuPizzaria();
 	case '0':
-		centerText(RED "\nVOCÊ ESCOLHEU SAIR...", cmd_dimension.columns);
+		centerText(RED "\nVOCÊ ESCOLHEU SAIR...", cmd_dimension.columns + 4);
 		Sleep(2000);
 		exit(0);
 	default:
 		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 A 5)" RESET, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 11);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 12);
 		Sleep(2000);
 		goto inicio;
 		system("pause > nul");

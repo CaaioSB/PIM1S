@@ -8,7 +8,7 @@ void CadProduto() {
 	char op;
 	int opcao;
 inicio:
-	centerText(MAGENTA "CADASTRAR PRODUTO - PIZZABUG GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 15);
+	centerText(BOLDMAGENTA "CADASTRAR PRODUTO - PIZZABUG GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");

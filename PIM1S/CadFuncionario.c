@@ -6,8 +6,7 @@
 bool CadFuncionario() {
 	int i = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	printf("\n\n");
-	centerText("CADASTRAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns);
+	centerText(BOLDMAGENTA "CADASTRAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -53,7 +52,7 @@ bool CadFuncionario() {
 		return true;
 	}
 	else {
-		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 9);
+		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 10);
 		Sleep(3000);
 		return false;
 	}

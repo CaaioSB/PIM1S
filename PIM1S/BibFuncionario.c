@@ -100,7 +100,7 @@ static bool ListarFuncionarios() {
 	FILE* arquivo;
 
 	arquivo = AbreArquivo('l', tb_funcionario);
-	
+
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
@@ -165,10 +165,12 @@ static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 	FecharArquivo(newFile);
 
 	if (remove(tb_funcionario) == 0) {
-		puts("Arquivo removido!");
-		rename(tb_funcionario2, tb_funcionario);
+		if (rename(tb_funcionario2, tb_funcionario) == 0) {
+			centerText(GREEN "O FUNCIONÁRIO FOI ALTERADO COM SUCESSO", cmd_dimension.columns - 6);
+		}
 	}
 	else {
+		centerText(RED "\n\nOCORREU UM ERRO AO ALTERA O FUNCIONÁRIO", cmd_dimension.columns - 4);
 		perror("remove");
 	}
 	Sleep(10);
@@ -199,7 +201,7 @@ static char BuscarFuncionario(char id) {
 	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
 	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
 	*/
-	
+
 	arquivo2 = AbreArquivo('l', tb_funcionario);
 
 	if (arquivo2 == NULL)

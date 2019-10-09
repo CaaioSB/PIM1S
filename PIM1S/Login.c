@@ -16,12 +16,13 @@ int opcao;
 
 void Login() {
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(YELLOW "REGISTRAR-SE - SISTEMA GERENCIADOR DE PIZZARIA", cmd_dimension.columns + 8);
+	centerText(BOLDMAGENTA "MENU LOGIN - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf(YELLOW "      LOGIN\n" RESET);
+	printf(BLUE "      LOGIN\n" RESET);
 	printf("DIGITE SEU USUÁRIO: ");
 	setbuf(stdin, NULL);
 	(void)scanf("%s", &usuario);
@@ -34,12 +35,12 @@ void Login() {
 		menuPizzaria();
 	}
 	else {
-		printf("\n\n");
-		centerText(RED "ESTE LOGIN NÃO É VALIDO" RESET, cmd_dimension.columns + 4);
+		printf("\n");
+		centerText(RED "ESTE LOGIN NÃO É VALIDO, VOLTANDO AO MENU PRINCIPAL..." RESET, cmd_dimension.columns + 10);
 		Sleep(2000);
 		menuPrincipal();
 	}
-	system("pause");
+	system("pause >nul");
 }
 
 void esqueciMinhaSenha() {
