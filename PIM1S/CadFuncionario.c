@@ -12,7 +12,7 @@ bool CadFuncionario() {
 		printf("\n");
 	}
 
-	printf("DIGITE SEU NOME COMPLETO: ");
+	printf("DIGITE O NOME COMPLETO: ");
 	setbuf(stdin, NULL);
 	(void)scanf(" %[^\n]s", BFuncionario.nome_completo);
 

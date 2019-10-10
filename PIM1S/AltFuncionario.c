@@ -16,7 +16,6 @@ inicio:
 	printf(BLUE "SELECIONE UM FUNCIONÁRIO\n" RESET);
 	ListarFuncionarios();
 	opcao = _getch();
-	//opcao = _getch();
 
 	BuscarFuncionario(opcao);
 opc:
@@ -84,15 +83,23 @@ opc:
 		goto opc;
 	case '9':
 		// CHAMA O MÉTODO PARA CONFIRMAR
-		AlterarFuncionario(opcao, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
-		break;
+		if (AlterarFuncionario(opcao, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario)) {
+			centerText(GREEN "O FUNCIONÁRIO FOI ALTERADO COM SUCESSO", cmd_dimension.columns - 6);
+
+		}
+		else {
+			centerText(RED "OCORREU UM ERRO AO ALTERA O FUNCIONÁRIO", cmd_dimension.columns - 4);
+		}
+		Sleep(3000);
+		MenuFuncionario();
 	case '0':
 		centerText(RED "VOCÊ CANCELOU AS ALTERAÇÕES, VOLTANDO AO MENU" RESET, cmd_dimension.columns + 10);
 		MenuFuncionario();
 	default:
-		centerText(RED "SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 A 9)" RESET, cmd_dimension.columns + 18);
-		goto inicio;
-		break;
+		centerText(RED "SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 A 0)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		system("pause >nul");
+		goto opc;
 	}
 	system("pause > nul");
 }

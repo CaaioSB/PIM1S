@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Arquivos de Recurso">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Arquivos de Origem\Gerenciamento Windows">
       <UniqueIdentifier>{fbac4fc3-5692-4e50-97f6-ff4ff9bb89c8}</UniqueIdentifier>
     </Filter>
@@ -111,6 +107,9 @@
     <ClCompile Include="Catalogo.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
+    <ClCompile Include="BibCliente.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -176,8 +175,11 @@
     <ClInclude Include="AltProduto.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
+    <ClInclude Include="BibCliente.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
+    </ClInclude>
     <ClInclude Include="Catalogo.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

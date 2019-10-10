@@ -14,7 +14,6 @@
 #include "MenuPizzaria.h"
 #include "main.h"
 
-
 struct REGISTER {
 	char nome_completo[1024];
 	char email[1024];
@@ -32,7 +31,7 @@ static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], ch
 	int id = (int)ContarFuncionarios() + 1;
 	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
 	printf("\n\n");
-	Sleep(3000);
+	Sleep(2000);
 	FecharArquivo(arquivo);
 	return true;
 }
@@ -118,7 +117,7 @@ static bool ListarFuncionarios() {
 	return true;
 }
 
-static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], char emailFuncionario[100], char rgFuncionario[20], char cpfFuncionario[11], char cepFuncionario[20], char userFuncionario[20], char passFuncionario[20], char funcaoFuncionario[50]) {
+static bool AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], char emailFuncionario[100], char rgFuncionario[20], char cpfFuncionario[11], char cepFuncionario[20], char userFuncionario[20], char passFuncionario[20], char funcaoFuncionario[50]) {
 	/*  FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
 	*	DEPOIS DE DESENVOLVER ESSA STRING EU VOU TER QUE INSERIR
 	*	ELA EM UM ARQUIVO COMO BACKUP E DEPOIS DELETAR O ARQUICO ORIGINAL
@@ -134,8 +133,6 @@ static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 	int i = 0;
 	char* values[9];
 	char* fileLine[100];
-
-	printf("%s", dadosFuncionario);
 	arquivo = AbreArquivo('l', tb_funcionario);
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
@@ -166,14 +163,13 @@ static char AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 
 	if (remove(tb_funcionario) == 0) {
 		if (rename(tb_funcionario2, tb_funcionario) == 0) {
-			centerText(GREEN "O FUNCIONÁRIO FOI ALTERADO COM SUCESSO", cmd_dimension.columns - 6);
+			return true;
 		}
 	}
 	else {
-		centerText(RED "\n\nOCORREU UM ERRO AO ALTERA O FUNCIONÁRIO", cmd_dimension.columns - 4);
 		perror("remove");
+		return false;
 	}
-	Sleep(10);
 }
 
 static char BuscarFuncionario(char id) {

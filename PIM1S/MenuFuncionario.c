@@ -42,5 +42,4 @@ inicio:
 		system("pause > nul");
 		goto inicio;
 	}
-	goto inicio;
 }

@@ -1,4 +1,3 @@
-
 #include "splash_window.h"
 #include "cmd_resolution.h"
 #include "util.h"
