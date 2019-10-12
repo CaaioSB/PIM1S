@@ -35,3 +35,6 @@ static char* tb_cliente2 = "c:\\SGP\\db\\tb_cliente2.txt";
 
 static char* tb_produto = "c:\\SGP\\db\\tb_produto.txt";
 static char* tb_produto2 = "c:\\SGP\\db\\tb_produto2.txt";
+
+static char* tb_feedback = "c:\\SGP\\db\\tb_feedback";
+static char* tb_feedback2 = "c:\\SGP\\db\\tb_feedback2";

@@ -31,7 +31,6 @@ static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], ch
 	int id = (int)ContarFuncionarios() + 1;
 	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
 	printf("\n\n");
-	Sleep(2000);
 	FecharArquivo(arquivo);
 	return true;
 }

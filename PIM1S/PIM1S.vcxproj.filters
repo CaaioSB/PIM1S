@@ -110,6 +110,15 @@
     <ClCompile Include="BibCliente.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
     </ClCompile>
+    <ClCompile Include="MenuFeedback.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="CadFeedback.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="BibFeedback.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -180,6 +189,15 @@
     </ClInclude>
     <ClInclude Include="Catalogo.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFeedback.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="CadFeedback.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="BibFeedback.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

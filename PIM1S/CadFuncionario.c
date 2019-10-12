@@ -48,12 +48,12 @@ bool CadFuncionario() {
 
 	if (CadastrarFuncionario(BFuncionario.nome_completo, BFuncionario.email, BFuncionario.rg, BFuncionario.cpf, BFuncionario.cep, BFuncionario.usuario, BFuncionario.senha, BFuncionario.funcao)) {
 		centerText(GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
-		Sleep(3000);
+		Sleep(2000);
 		return true;
 	}
 	else {
 		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 10);
-		Sleep(3000);
+		Sleep(2000);
 		return false;
 	}
 }
