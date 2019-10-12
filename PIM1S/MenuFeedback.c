@@ -5,7 +5,7 @@ void MenuFeedback() {
 	int opcao;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BLUE "MENU DE FEEDBACK - SISTEMA GERENCIADOR DE PIZZARIA" RESET);
+	centerText(BLUE "MENU DE FEEDBACK - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 10);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -24,7 +24,7 @@ inicio:
 	case '2':
 		goto inicio;
 	case '9':
-		MenuPizzaria();
+		menuPizzaria();
 		break;
 	case '0':
 		centerText(RED "VOCÊ ESCOLHEU SAIR", cmd_dimension.columns + 4);
