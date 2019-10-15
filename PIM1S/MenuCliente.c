@@ -1,7 +1,7 @@
-//#include "BibCliente.h"
+#include "MenuCliente.h"
 #include "util.h"
 
-void menuCliente() {
+void MenuCliente() {
 	int opcao;
 	inicio:
 	system(CLEAR_SCREEN_PROGRAM);
@@ -12,17 +12,17 @@ void menuCliente() {
 		printf("\n");
 	}
 
-	printf(GREEN "1" RESET "CADASTRAR CLIENTE\n");
-	printf(GREEN "2" RESET "ALTERAR CLIENTE\n");
-	printf(GREEN "3" RESET "DESLIGAR CLIENTE\n");
-	printf(YELLOW "9" RESET "VOLTAR\n");
+	printf(GREEN "1" RESET " CADASTRAR CLIENTE\n");
+	printf(GREEN "2" RESET " ALTERAR CLIENTE\n");
+	printf(GREEN "3" RESET " REMOVER CLIENTE\n");
+	printf(YELLOW "9" RESET " VOLTAR\n");
 	printf(RED "0" RESET "SAIR\n");
 	opcao = _getch();
 
 	switch (opcao)
 	{
 	case '1':
-		//CadCliente();
+		CadCliente();
 		goto inicio;
 	case '2':
 		goto inicio;

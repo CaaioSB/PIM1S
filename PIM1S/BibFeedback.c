@@ -1,8 +1,3 @@
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdio.h>
-#include <string.h>
-
 #include "main.h"
 #include "util.h"
 
@@ -45,7 +40,7 @@ static bool ListarFeedbacks() {
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
-		palavras[x] = strdup(line);
+		palavras[x] = _strdup(line);
 		
 		printf("%s\n", palavras[x]);
 		x++;

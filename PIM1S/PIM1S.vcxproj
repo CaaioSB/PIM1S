@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="AltFuncionario.c" />
     <ClCompile Include="AltProduto.c" />
+    <ClCompile Include="BibCliente.c" />
     <ClCompile Include="BibFeedback.c" />
     <ClCompile Include="BibIngrediente.c" />
     <ClCompile Include="BibProduto.c" />
+    <ClCompile Include="CadCliente.c" />
     <ClCompile Include="CadFeedback.c" />
     <ClCompile Include="CadProduto.c" />
     <ClCompile Include="Catalogo.c" />
@@ -157,10 +159,12 @@
   <ItemGroup>
     <ClInclude Include="AltFuncionario.h" />
     <ClInclude Include="AltProduto.h" />
+    <ClInclude Include="BibCliente.h" />
     <ClInclude Include="BibFeedback.h" />
     <ClInclude Include="BibFuncionario.h" />
     <ClInclude Include="BibIngrediente.h" />
     <ClInclude Include="BibProduto.h" />
+    <ClInclude Include="CadCliente.h" />
     <ClInclude Include="CadFeedback.h" />
     <ClInclude Include="CadProduto.h" />
     <ClInclude Include="Catalogo.h" />

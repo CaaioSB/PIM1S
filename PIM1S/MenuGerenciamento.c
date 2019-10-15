@@ -26,6 +26,7 @@ void MenuGerenciamento() {
 		MenuFuncionario();
 		break;
 	case '2':
+		MenuCliente();
 		break;
 	case '3':
 		MenuProduto();
