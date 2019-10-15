@@ -26,13 +26,22 @@ struct REGISTER {
 };
 
 static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
-	FILE* arquivo;
-	arquivo = AbreArquivo('g', tb_funcionario);
 	int id = (int)ContarFuncionarios() + 1;
-	fprintf(arquivo, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
-	printf("\n\n");
-	FecharArquivo(arquivo);
-	return true;
+	FILE* file;
+	if (id == 1) {
+		file = fopen(tb_funcionario, "w");
+		fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
+		printf("\n\n");
+		fclose(file);
+		return true;
+	}
+	else {
+		file = fopen(tb_funcionario, "a");
+		fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
+		printf("\n\n");
+		fclose(file);
+		return true;
+	}
 }
 
 
@@ -117,7 +126,8 @@ static bool ListarFuncionarios() {
 }
 
 static bool AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], char emailFuncionario[100], char rgFuncionario[20], char cpfFuncionario[11], char cepFuncionario[20], char userFuncionario[20], char passFuncionario[20], char funcaoFuncionario[50]) {
-	/*  FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
+	/*
+	*	FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
 	*	DEPOIS DE DESENVOLVER ESSA STRING EU VOU TER QUE INSERIR
 	*	ELA EM UM ARQUIVO COMO BACKUP E DEPOIS DELETAR O ARQUICO ORIGINAL
 	*	APÓS DELETAR O ARQUIVO ORIGINAL, EU DEVO POR CADA QUE ESTAVA NO
@@ -242,18 +252,19 @@ static char BuscarFuncionario(char id) {
 static int ContarFuncionarios() {
 	int numLinhas = 0;
 	char line[1024];
-	FILE* arquivo;
-	arquivo = AbreArquivo('l', tb_funcionario);
+	FILE* file;
+	file = fopen(tb_funcionario, "r");
 
-	if (arquivo == NULL)
-		FecharArquivo(arquivo);
-	return 0;
+	if (file == NULL) {
+		FecharArquivo(file);
+		return 0;
+	}
 
-	while (fgets(line, sizeof line, arquivo) != NULL)
+	while (fgets(line, sizeof line, file) != NULL)
 	{
 		numLinhas++;
 	}
-	FecharArquivo(arquivo);
+	fclose(file);
 	return numLinhas;
 }
 

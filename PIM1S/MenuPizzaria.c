@@ -28,7 +28,7 @@ inicio:
 		MostrarCatalogo();
 		break;
 	case '3':
-		// FEEDBACK
+		menuFeedback();
 		break;
 	case '4':
 		MenuGerenciamento();

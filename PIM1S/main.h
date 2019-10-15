@@ -26,15 +26,15 @@ static char passFuncionario[20];
 static char funcaoFuncionario[50];
 
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
-static char* tb_funcionario = "c:\\SGP\\db\\tb_funcionario.txt";
-static char* tb_funcionario2 = "c:\\SGP\\db\\tb_funcionario2.txt";
+static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";
+static char* tb_funcionario2 = "C:\\SGP\\db\\tb_funcionario2.txt";
 
-static char* tb_cliente = "c:\\SGP\\db\\tb_cliente.txt";
-static char* tb_cliente2 = "c:\\SGP\\db\\tb_cliente2.txt";
+static char* tb_cliente = "C:\\SGP\\db\\tb_cliente.txt";
+static char* tb_cliente2 = "C:\\SGP\\db\\tb_cliente2.txt";
 
 
-static char* tb_produto = "c:\\SGP\\db\\tb_produto.txt";
-static char* tb_produto2 = "c:\\SGP\\db\\tb_produto2.txt";
+static char* tb_produto = "C:\\SGP\\db\\tb_produto.txt";
+static char* tb_produto2 = "C:\\SGP\\db\\tb_produto2.txt";
 
-static char* tb_feedback = "c:\\SGP\\db\\tb_feedback";
-static char* tb_feedback2 = "c:\\SGP\\db\\tb_feedback2";
+static char* tb_feedback = "C:\\SGP\\db\\tb_feedback.txt";
+static char* tb_feedback2 = "C:\\SGP\\db\\tb_feedback2.txt";

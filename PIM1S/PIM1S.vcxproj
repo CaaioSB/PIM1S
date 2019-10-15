@@ -89,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="AltFuncionario.c" />
     <ClCompile Include="AltProduto.c" />
-    <ClCompile Include="BibCliente.c" />
     <ClCompile Include="BibFeedback.c" />
     <ClCompile Include="BibIngrediente.c" />
     <ClCompile Include="BibProduto.c" />
@@ -139,6 +138,7 @@
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="BibFuncionario.c" />
     <ClCompile Include="Ingrediente.c" />
+    <ClCompile Include="LisFeedback.c" />
     <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="MenuFeedback.c" />
@@ -157,7 +157,6 @@
   <ItemGroup>
     <ClInclude Include="AltFuncionario.h" />
     <ClInclude Include="AltProduto.h" />
-    <ClInclude Include="BibCliente.h" />
     <ClInclude Include="BibFeedback.h" />
     <ClInclude Include="BibFuncionario.h" />
     <ClInclude Include="BibIngrediente.h" />
@@ -167,6 +166,7 @@
     <ClInclude Include="Catalogo.h" />
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="Ingrediente.h" />
+    <ClInclude Include="LisFeedback.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MenuFeedback.h" />

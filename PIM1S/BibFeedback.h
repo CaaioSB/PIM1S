@@ -4,3 +4,5 @@
 struct FEEDBACK;
 
 struct FEEDBACK BFeedback;
+
+static bool ListarFeedbacks();

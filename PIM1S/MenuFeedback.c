@@ -1,7 +1,7 @@
 #include "MenuFeedback.h"
 #include "util.h"
 
-void MenuFeedback() {
+void menuFeedback() {
 	int opcao;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
@@ -11,8 +11,8 @@ inicio:
 		printf("\n");
 	}
 
-	printf(GREEN "1" RESET " CADASTRAR FEEDBACK");
-	printf(GREEN "2" RESET " LISTAR FEEDBACKS");
+	printf(GREEN "1" RESET " CADASTRAR FEEDBACK\n");
+	printf(GREEN "2" RESET " LISTAR FEEDBACKS\n");
 	printf(YELLOW "9" RESET " VOLTAR\n");
 	printf(RED "0" RESET " SAIR\n");
 	opcao = _getch();
@@ -20,8 +20,10 @@ inicio:
 	switch (opcao)
 	{
 	case '1':
+		CadFeedback();
 		goto inicio;
 	case '2':
+		LisFeedback();
 		goto inicio;
 	case '9':
 		menuPizzaria();

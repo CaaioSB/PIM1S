@@ -107,9 +107,6 @@
     <ClCompile Include="Catalogo.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
-    <ClCompile Include="BibCliente.c">
-      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
-    </ClCompile>
     <ClCompile Include="MenuFeedback.c">
       <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
@@ -118,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="BibFeedback.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
+    <ClCompile Include="LisFeedback.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,9 +184,6 @@
     <ClInclude Include="AltProduto.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
-    <ClInclude Include="BibCliente.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
-    </ClInclude>
     <ClInclude Include="Catalogo.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
@@ -198,6 +195,9 @@
     </ClInclude>
     <ClInclude Include="BibFeedback.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
+    </ClInclude>
+    <ClInclude Include="LisFeedback.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
