@@ -77,12 +77,6 @@
     <ClCompile Include="Login.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
-    <ClCompile Include="Ingrediente.c">
-      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
-    </ClCompile>
-    <ClCompile Include="Produto.c">
-      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
-    </ClCompile>
     <ClCompile Include="CadFuncionario.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
@@ -158,12 +152,6 @@
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
     <ClInclude Include="Login.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
-    </ClInclude>
-    <ClInclude Include="Ingrediente.h">
-      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
-    </ClInclude>
-    <ClInclude Include="Produtos.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
     <ClInclude Include="CadFuncionario.h">

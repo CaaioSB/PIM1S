@@ -61,7 +61,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
-		palavras[i] = strdup(line);
+		palavras[i] = _strdup(line);
 
 		//Conta a quantidade de linhas
 		i++;
@@ -114,7 +114,7 @@ static bool ListarFuncionarios() {
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
-		palavras[x] = strdup(line);
+		palavras[x] = _strdup(line);
 		printf("%s\n", palavras[x]);
 		x++;
 
@@ -148,11 +148,11 @@ static bool AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 	{
 		if (i == (idFuncionario - 49)) {
 			snprintf(line, sizeof line, "%c;%s;%s;%s;%s;%s;%s;%s;%s;", idFuncionario, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
-			fileLine[i] = strdup(line);
+			fileLine[i] = _strdup(line);
 
 		}
 		else {
-			fileLine[i] = strdup(line);
+			fileLine[i] = _strdup(line);
 		}
 		i++;
 	}
@@ -197,7 +197,7 @@ static char BuscarFuncionario(char id) {
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
-		fileLine[i] = strdup(line);
+		fileLine[i] = _strdup(line);
 		i++;
 	}
 
@@ -214,7 +214,7 @@ static char BuscarFuncionario(char id) {
 
 	while (fgets(dadosFuncionario, sizeof dadosFuncionario, arquivo2) != NULL)
 	{
-		palavras[numLinha] = strdup(dadosFuncionario);
+		palavras[numLinha] = _strdup(dadosFuncionario);
 		if (dadosFuncionario[0] == id)
 		{
 			int j = 0;

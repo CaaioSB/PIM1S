@@ -26,6 +26,100 @@ static bool CadastrarCliente(char nome_completo[100], char telres[15], char telc
 	}
 }
 
+static char BuscarCliente(char id) {
+	int numLinha = 0;
+	char line[1024];
+	char delimiter[] = ";";
+	FILE* arquivo;
+	FILE* arquivo2;
+	char* palavras[50];
+	int i = 0;
+	char* values[9];
+	char* fileLine[100];
+
+	arquivo = fopen(tb_cliente, "r");
+	//arquivo = AbreArquivo('l', tb_cliente);
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		fileLine[i] = _strdup(line);
+		i++;
+	}
+
+	fclose(arquivo);
+	/*
+	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
+	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
+	*/
+
+	arquivo2 = fopen(tb_cliente, "r");
+	//arquivo2 = AbreArquivo('l', tb_cliente);
+
+	if (arquivo2 == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(dadosCliente, sizeof dadosCliente, arquivo2) != NULL)
+	{
+		palavras[numLinha] = _strdup(dadosCliente);
+		if (dadosCliente[0] == id)
+		{
+			int j = 0;
+			while (j < 1) {
+				char* ptr = strtok(palavras[numLinha], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 9)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+			}
+			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+			idCliente = values[0];
+			strcpy(nomeCliente, values[1]);
+			strcpy(telresCliente, values[2]);
+			strcpy(telcelCliente, values[3]);
+			strcpy(cpfCliente, values[4]);
+			strcpy(cepCliente, values[5]);
+			FecharArquivo(arquivo2);
+			break;
+		}
+		numLinha++;
+	}
+	FecharArquivo(arquivo2);
+}
+
+static bool ListarClientes() {
+	int x = 0;
+	int numLinhas = 0;
+	char* palavras[50];
+	char line[1024];
+	FILE* arquivo;
+
+	arquivo = fopen(tb_cliente, "rt");
+
+	if (arquivo == NULL) {
+		return EXIT_FAILURE;
+	}
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		palavras[x] = _strdup(line);
+		printf("%s\n", palavras[x]);
+		x++;
+
+		//Conta a quantidade de linhas
+		numLinhas++;
+	}
+	fclose(arquivo);
+	return true;
+}
+
 static int ContarClientes() {
 	int numLinhas = 0;
 	char line[1024];

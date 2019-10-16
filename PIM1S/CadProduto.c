@@ -24,22 +24,25 @@ inicio:
 	printf(GREEN "\n4 " RESET "BEBIDA\n");
 	printf("OP플O: ");
 tipoProduto:
-	setbuf(stdin, NULL);
 	op = _getch();
 
 	switch (op)
 	{
 	case '1':
-		BProduto.tipo = "PIZZA SALGADA";
+		strcpy(BProduto.tipo, "PIZZA SALGADA");
+		//BProduto.tipo = "PIZZA SALGADA";
 		break;
 	case '2':
-		BProduto.tipo = "PIZZA DOCE";
+		strcpy(BProduto.tipo, "PIZZA DOCE");
+		//BProduto.tipo = "PIZZA DOCE";
 		break;
 	case '3':
-		BProduto.tipo = "PO플O";
+		strcpy(BProduto.tipo, "PO플O");
+		//BProduto.tipo = "PO플O";
 		break;
 	case '4':
-		BProduto.tipo = "BEBIDA";
+		strcpy(BProduto.tipo, "BEBIDA");
+		//BProduto.tipo = "BEBIDA";
 		break;
 	default:
 		printf(RED "SELECIONE UMA OP플O V핶IDA " YELLOW "(DE 1 A 4)" RESET);

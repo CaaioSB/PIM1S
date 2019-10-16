@@ -25,6 +25,16 @@ static char userFuncionario[20];
 static char passFuncionario[20];
 static char funcaoFuncionario[50];
 
+
+/* TABELA CLIENTE */
+static char dadosCliente[1024];
+char* idCliente;
+static char nomeCliente[100];
+static char telresCliente[15];
+static char telcelCliente[16];
+static char cpfCliente[11];
+static char cepCliente[11];
+
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
 static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";
 static char* tb_funcionario2 = "C:\\SGP\\db\\tb_funcionario2.txt";

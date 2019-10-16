@@ -14,13 +14,12 @@ inicio:
 	printf(GREEN "1 " RESET "CADASTRAR PRODUTO\n");
 	printf(GREEN "2 " RESET "ALTERAR PRODUTO\n");
 	printf(GREEN "3 " RESET "REMOVER PRODUTO\n");
-	printf(YELLOW "4 " RESET "VOLTAR\n");
-	printf(RED "5 " RESET "SAIR\n");
+	printf(YELLOW "9 " RESET "VOLTAR\n");
+	printf(RED "0 " RESET "SAIR\n");
 	opcao = _getch();
 
 	switch (opcao) {
 	case '1':
-		setbuf(stdin, NULL);
 		CadProduto();
 		break;
 	case '2':
@@ -29,10 +28,10 @@ inicio:
 	case '3':
 		//RemProduto();
 		break;
-	case '4':
+	case '9': // Voltar
 		MenuGerenciamento();
 		break;
-	case '5':
+	case '0': // Sair
 		centerText(RED "\nVOCÊ ESCOLHEU SAIR...", cmd_dimension.columns + 4);
 		Sleep(2000);
 		exit(0);

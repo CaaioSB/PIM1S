@@ -3,3 +3,5 @@
 
 struct PRODUTO;
 struct PRODUTO BProduto;
+
+static bool ListarPizzas();

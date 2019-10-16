@@ -139,7 +139,6 @@
     <ClCompile Include="Catalogo.c" />
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="BibFuncionario.c" />
-    <ClCompile Include="Ingrediente.c" />
     <ClCompile Include="LisFeedback.c" />
     <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
@@ -150,7 +149,6 @@
     <ClCompile Include="MenuInicial.c" />
     <ClCompile Include="MenuProduto.c" />
     <ClCompile Include="NovoPedido.c" />
-    <ClCompile Include="Produto.c" />
     <ClCompile Include="MenuCliente.c" />
     <ClCompile Include="CadFuncionario.c" />
     <ClCompile Include="splash_window.c" />
@@ -169,7 +167,6 @@
     <ClInclude Include="CadProduto.h" />
     <ClInclude Include="Catalogo.h" />
     <ClInclude Include="cmd_resolution.h" />
-    <ClInclude Include="Ingrediente.h" />
     <ClInclude Include="LisFeedback.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />
@@ -180,7 +177,6 @@
     <ClInclude Include="MenuInicial.h" />
     <ClInclude Include="MenuProduto.h" />
     <ClInclude Include="NovoPedido.h" />
-    <ClInclude Include="Produtos.h" />
     <ClInclude Include="MenuCliente.h" />
     <ClInclude Include="CadFuncionario.h" />
     <ClInclude Include="splash_window.h" />
