@@ -24,26 +24,147 @@ struct REGISTER {
 	char senha[1024];
 	char funcao[1024];
 };
+// MAX = 3
+static int tentativas = 0;
 
-static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
-	int id = (int)ContarFuncionarios() + 1;
-	FILE* file;
-	if (id == 1) {
-		file = fopen(tb_funcionario, "w");
-		fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
-		printf("\n\n");
-		fclose(file);
-		return true;
+static bool validateEmail(char* email) {
+	int tam = strlen(email);
+	int arroba = 0, ponto = 0, antesPonto = 0, depoisPonto = 0, i;
+
+	for (i = 0; i < tam; i++) {
+		char c = email[i];
+		if (c == '@') {
+			if (arroba)
+				break; // não pode ter uma segunda @
+			arroba = 1;
+			if (i < 3)
+				break; // se @ vier antes de 3 caracteres, erro
+		}
+		else if (arroba) { // se já encontrou @
+			if (ponto) { // se já encontrou . depois de @
+				depoisPonto++;
+			}
+			else if (c == '.') {
+				ponto = 1;
+				if (antesPonto < 3) {
+					break; // se . depois de @ vier antes de 3 caracteres, erro
+				}
+			}
+			else {
+				antesPonto++;
+			}
+		}
+	} // for
+
+	if (i == tam && depoisPonto > 1) {
+		return false;
 	}
 	else {
-		file = fopen(tb_funcionario, "a");
-		fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
-		printf("\n\n");
-		fclose(file);
 		return true;
 	}
 }
 
+static bool validateCPF(char* cpf) {
+	if (sizeof(cpf) != 11) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+static bool validateCEP(char* cep) {
+	if (sizeof(cep) != 6) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
+	int errors = 0;
+	if (validateCPF(cpf)) {
+		centerText(RED "\nCPF INVÁLIDO!" RESET, cmd_dimension.columns + 10);
+		errors++;
+	}
+
+	if (validateEmail(email)) {
+		centerText(RED "\nE-MAIL INVÁLIDO!" RESET, cmd_dimension.columns + 10);
+		errors++;
+	}
+
+	if (validateCEP(cep)) {
+		centerText(RED "\nCEP INVÁLIDO!\n" RESET, cmd_dimension.columns + 10);
+		errors++;
+	}
+
+	if (errors == 0) {
+		int id = (int)ContarFuncionarios() + 1;
+		FILE* file;
+		if (id == 1) {
+			file = fopen(tb_funcionario, "w");
+			fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
+			printf("\n\n");
+			fclose(file);
+			return true;
+		}
+		else {
+			file = fopen(tb_funcionario, "a");
+			fprintf(file, "%d;%s;%s;%s;%s;%s;%s;%s;%s;\n", id, nome, email, rg, cpf, cep, usuario, senha, funcao);
+			printf("\n\n");
+			fclose(file);
+			return true;
+		}
+	}
+	else {
+		return false;
+	}
+}
+
+#define MAX_STR_SIZE	6
+#define MIN_STR_SIZE	6
+char* captcha;
+
+static char generateCaptcha() {
+	char* validchars = "abcdefghijklmnopqrstuvwxyz";
+	register int i;
+	int str_len;
+
+	// inicia o contador aleatório
+	srand(time(NULL));
+
+	// novo tamanho
+	str_len = (rand() % MAX_STR_SIZE);
+
+	// checa tamanho
+	str_len += (str_len < MIN_STR_SIZE) ? MIN_STR_SIZE : 0;
+
+	// aloca memoria
+	captcha = (char*)malloc((str_len + 1) * sizeof(char));
+	if (!captcha) {
+		printf("[*] Erro ao alocar memoria.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	// gera string aleatória
+	for (i = 0; i < str_len; i++) {
+		captcha[i] = validchars[rand() % strlen(validchars)];
+		captcha[i + 1] = 0x0;
+	}
+
+	// imprive informações
+	printf(YELLOW "\n[*]" RESET " DIGITE O CAPTCHA SEGUINTE PARA PROSSEGUIR: %s\n", captcha);
+}
+
+static bool valideCaptcha(char* userCaptcha) {
+	if (strcmp(captcha, userCaptcha) == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 static bool LoginFuncionario(char usuario[], char senha[]) {
 	int i = 0;
@@ -83,31 +204,76 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			j++;
 
 		}
-
-		if (strcmp(usuario, values[6]) == 0) {
-			if (strcmp(senha, values[7]) == 0) {
-				printf("\n\n");
-				centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
-				strcpy(loggedNomeCompleto, values[1]);
-				Sleep(3000);
-				FecharArquivo(arquivo);
-				menuPizzaria();
-				return true;
+		if (tentativas >= 3) {
+			generateCaptcha();
+			char userCaptcha[100];
+			(void)scanf(" %[^\n]s", &userCaptcha);
+			if (valideCaptcha(userCaptcha)) {
+				if (strcmp(usuario, values[6]) == 0) {
+					if (strcmp(senha, values[7]) == 0) {
+						printf("\n\n");
+						centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+						strcpy(loggedNomeCompleto, values[1]);
+						Sleep(3000);
+						FecharArquivo(arquivo);
+						menuPizzaria();
+						return true;
+					}
+					else {
+						printf("\n\n");
+						centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+						Sleep(3000);
+						FecharArquivo(arquivo);
+						tentativas++;
+						return false;
+					}
+				}
+				else {
+					printf("\n\n");
+					centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+					Sleep(3000);
+					FecharArquivo(arquivo);
+					tentativas++;
+					return false;
+				}
 			}
 			else {
 				printf("\n\n");
-				centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+				centerText(RED "CAPTCHA INCORRETO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
 				Sleep(3000);
 				FecharArquivo(arquivo);
+				tentativas++;
 				return false;
 			}
 		}
 		else {
-			printf("\n\n");
-			centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
-			Sleep(3000);
-			FecharArquivo(arquivo);
-			return false;
+			if (strcmp(usuario, values[6]) == 0) {
+				if (strcmp(senha, values[7]) == 0) {
+					printf("\n\n");
+					centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+					strcpy(loggedNomeCompleto, values[1]);
+					Sleep(3000);
+					FecharArquivo(arquivo);
+					menuPizzaria();
+					return true;
+				}
+				else {
+					printf("\n\n");
+					centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+					Sleep(3000);
+					FecharArquivo(arquivo);
+					tentativas++;
+					return false;
+				}
+			}
+			else {
+				printf("\n\n");
+				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+				Sleep(3000);
+				FecharArquivo(arquivo);
+				tentativas++;
+				return false;
+			}
 		}
 		free(ptr);
 	}
