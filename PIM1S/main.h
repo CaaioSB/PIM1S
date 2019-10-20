@@ -2,13 +2,13 @@
 
 // VARIÁVEL GLOBAL DE LOGIN
 static char loggedNomeCompleto[] = "";
-static char loggedEmail[] = {""};
-static char loggedRG[] = {""};
-static char loggedCPF[] = {""};
-static char loggedCEP[] = {""};
-static char loggedUser[] = {""};
-static char loggedSenha[] = {""};
-static char loggedFuncao[] = {""};
+static char loggedEmail[] = { "" };
+static char loggedRG[] = { "" };
+static char loggedCPF[] = { "" };
+static char loggedCEP[] = { "" };
+static char loggedUser[] = { "" };
+static char loggedSenha[] = { "" };
+static char loggedFuncao[] = { "" };
 
 /* TABELA FUNCIONARIO
 * ID[0]	NOME[1]					EMAIL[2]						RG[3]		CPF[4]			CEP[5]		USER[6]	PASS[7]	FUNÇÃO[8]
@@ -34,6 +34,13 @@ static char telresCliente[15];
 static char telcelCliente[16];
 static char cpfCliente[11];
 static char cepCliente[11];
+
+/* CARRINHO DE COMPRAS */
+static char carrinhoCompras[1024];
+static char* idProdutoCarrinho[25];
+static int qntProdutoCarrinho = -1;
+static char* nomeProdutoCarrinho[25];
+static float totalProdutoCarrinho;
 
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
 static char* tb_funcionario = "C:\\SGP\\db\\tb_funcionario.txt";

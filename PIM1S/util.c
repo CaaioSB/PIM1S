@@ -26,7 +26,7 @@ void centerText(char* text, int fieldWidth) {
 //		printf(YELLOW "_" RESET );
 //	}
 //}
-//
+
 //void bottomLines()
 //{
 //	for (i = 0; i < cmd_dimension.columns; i++) {

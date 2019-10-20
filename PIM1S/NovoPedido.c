@@ -13,6 +13,8 @@ struct Pedido
 
 void NovoPedido() {
 	int opcao;
+	int loop = 0;
+	char idProduto;
 	char idCliente[5];
 	system(CLEAR_SCREEN_PROGRAM);
 	centerText(BOLDMAGENTA "NOVO PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
@@ -80,15 +82,20 @@ novoPedido:
 	printf(MAGENTA "O QUE DESEJA FAZER?\n" RESET);
 	printf(GREEN "1" RESET " ADICIONAR PRODUTO\n");
 	printf(GREEN "2" RESET " REMOVER PRODUTO\n");
-	printf(RED "3" RESET " CANCELAR PEDIDO\n");
+	printf(GREEN "3" RESET " FINALIZAR PEDIDO\n");
+	printf(RED "9" RESET " CANCELAR PEDIDO\n");
 	opcao = _getch();
 
 	switch (opcao) {
 	case '1':
 		goto adcProduto;
 	case '2':
-		break;
+		goto removerProduto;
 	case '3':
+		
+		break;
+	case '9':
+
 		break;
 	}
 
@@ -134,7 +141,38 @@ adcPizza:
 
 	printf(MAGENTA "SELECIONE A PIZZA:\n" RESET);
 	ListarPizzas();
-	(void)scanf("%d", &opcao);
+	setbuf(stdin, NULL);
+	(void)scanf("%c", &idProduto);
 
-	//BuscarPizza(opcao);
+	if (AdicionarCarrinho(idProduto)) {
+		printf(GREEN "A %s FOI ADICIONADA COM SUCESSO!" RESET, nomeProdutoCarrinho[qntProdutoCarrinho]);
+		Sleep(3000);
+		goto novoPedido;
+	}
+	else {
+		qntProdutoCarrinho--;
+		printf(RED "A PIZZA NÃO FOI ADICIONADA!" RESET);
+		Sleep(3000);
+		goto novoPedido;
+	}
+
+removerProduto:
+	opcao = 0;
+	system(CLEAR_SCREEN_PROGRAM);
+	printf("\n\n");
+	centerText(BOLDMAGENTA "ADICIONAR PIZZA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+
+	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
+	{
+		printf("\n");
+	}
+
+	printf(MAGENTA "SELECIONE O PRODUTO QUE DESEJA REMOVER\n" RESET);
+	for (loop; loop < qntProdutoCarrinho; loop++) {
+		printf(GREEN "%d" RESET " %s", loop, nomeProdutoCarrinho[loop]);
+	}
+	opcao = _getch();
+
+	qntProdutoCarrinho--;
+	free(nomeProdutoCarrinho[opcao]);
 }

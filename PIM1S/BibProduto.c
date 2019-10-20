@@ -16,7 +16,7 @@ struct PRODUTO {
 	char* id;
 	char nome[100];
 	char tipo[50];
-	int* quantidade;
+	int quantidade;
 	float preco;
 };
 
@@ -80,7 +80,7 @@ static bool ListarPizzas() {
 		//Adiciona cada linha no vetor
 		palavras[x] = _strdup(line);
 		if (strstr(palavras[x], "PIZZA") != NULL) {
-			printf("%s\n", palavras[x]);
+			//printf("%s\n", palavras[x]);
 			while (j < 1) {
 				char* ptr = strtok(palavras[x], delimiter);
 				values[j] = ptr;
@@ -96,9 +96,10 @@ static bool ListarPizzas() {
 				Pizzas.id = values[0];
 				strcpy(Pizzas.nome, values[1]);
 				strcpy(Pizzas.tipo, values[2]);
+				//int quantidade = atoi(values[3]);
 				Pizzas.quantidade = atoi(values[3]);
 				Pizzas.preco = atoll(values[4]);
-				printf(GREEN "%p " RESET "%s", Pizzas.id, Pizzas.nome);
+				printf(GREEN "%s " RESET "%s\n", Pizzas.id, Pizzas.nome);
 			}
 		}
 
@@ -151,4 +152,67 @@ static int ContarProdutos() {
 		numLinhas++;
 	}
 	return numLinhas;
+}
+
+static bool AdicionarCarrinho(char id) {
+	int numLinha = 0;
+	char line[1024];
+	char delimiter[] = ";";
+	FILE* arquivo;
+	FILE* arquivo2;
+	char* palavras[50];
+	int i = 0;
+	char* values[9];
+	char* fileLine[100];
+
+	arquivo = AbreArquivo('l', tb_produto);
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		fileLine[i] = _strdup(line);
+		i++;
+	}
+
+	FecharArquivo(arquivo);
+	/*
+	* O NÚMERO DA LINHA É O MESMO QUE O CÓDIGO DO FUNCIONÁRIO
+	* ENTÃO: SE LINHA É IGUAL A 15, O CÓDIGO DO FUNCIONÁRIO TAMBÉM SERÁ 15
+	*/
+
+	arquivo2 = AbreArquivo('l', tb_produto);
+
+	if (arquivo2 == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(carrinhoCompras, sizeof carrinhoCompras, arquivo2) != NULL)
+	{
+		palavras[numLinha] = _strdup(carrinhoCompras);
+		if (carrinhoCompras[0] == id)
+		{
+			qntProdutoCarrinho++;
+			int j = 0;
+			while (j < 1) {
+				char* ptr = strtok(palavras[numLinha], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 9)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+			}
+			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+			idProdutoCarrinho[qntProdutoCarrinho] = values[0];
+			nomeProdutoCarrinho[qntProdutoCarrinho] = values[1];
+			totalProdutoCarrinho += atoll(values[4]);
+			FecharArquivo(arquivo2);
+			return true;
+		}
+		numLinha++;
+	}
+	FecharArquivo(arquivo2);
 }
