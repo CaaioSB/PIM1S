@@ -84,14 +84,30 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 
 		}
 
-		if (strcmp(usuario, values[6]) == 0 && strcmp(senha, values[7]) == 0) {
+		if (strcmp(usuario, values[6]) == 0) {
+			if (strcmp(senha, values[7]) == 0) {
+				printf("\n\n");
+				centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+				strcpy(loggedNomeCompleto, values[1]);
+				Sleep(3000);
+				FecharArquivo(arquivo);
+				menuPizzaria();
+				return true;
+			}
+			else {
+				printf("\n\n");
+				centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+				Sleep(3000);
+				FecharArquivo(arquivo);
+				return false;
+			}
+		}
+		else {
 			printf("\n\n");
-			centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
-			strcpy(loggedNomeCompleto, values[1]);
+			centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
 			Sleep(3000);
 			FecharArquivo(arquivo);
-			menuPizzaria();
-			return true;
+			return false;
 		}
 		free(ptr);
 	}

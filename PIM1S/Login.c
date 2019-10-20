@@ -35,9 +35,6 @@ void Login() {
 		menuPizzaria();
 	}
 	else {
-		printf("\n");
-		centerText(RED "ESTE LOGIN NÃO É VALIDO, VOLTANDO AO MENU PRINCIPAL..." RESET, cmd_dimension.columns + 10);
-		Sleep(2000);
 		menuPrincipal();
 	}
 	system("pause >nul");
