@@ -119,9 +119,8 @@ adcProduto:
 	switch (opcao) {
 	case '1':
 		goto adcPizza;
-		break;
 	case '2':
-		break;
+		goto adcBebida;
 	case '3':
 		break;
 	case '9':
@@ -152,6 +151,34 @@ adcPizza:
 	else {
 		qntProdutoCarrinho--;
 		printf(RED "A PIZZA NÃO FOI ADICIONADA!" RESET);
+		Sleep(3000);
+		goto novoPedido;
+	}
+
+adcBebida:
+	opcao = 0;
+	system(CLEAR_SCREEN_PROGRAM);
+	printf("\n\n");
+	centerText(BOLDMAGENTA "ADICIONAR BEBIDA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+
+	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
+	{
+		printf("\n");
+	}
+
+	printf(MAGENTA "SELECIONE A BEBIDA:\n" RESET);
+	ListarBebidas();
+	setbuf(stdin, NULL);
+	(void)scanf("%c", &idProduto);
+
+	if (AdicionarCarrinho(idProduto)) {
+		printf(GREEN "A PRODUTO: %s FOI ADICIONADO COM SUCESSO!" RESET, nomeProdutoCarrinho[qntProdutoCarrinho]);
+		Sleep(3000);
+		goto novoPedido;
+	}
+	else {
+		qntProdutoCarrinho--;
+		printf(RED "A BEBIDA NÃO FOI ADICIONADA!" RESET);
 		Sleep(3000);
 		goto novoPedido;
 	}

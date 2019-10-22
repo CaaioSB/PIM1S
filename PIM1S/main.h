@@ -35,6 +35,14 @@ static char telcelCliente[16];
 static char cpfCliente[11];
 static char cepCliente[11];
 
+/* TABELA PRODUTO */
+static char dadosProduto[1024];
+char* idProduto;
+static char nomeProduto[100];
+static char tipoProduto[50];
+static int quantidadeProduto;
+static float precoProduto;
+
 /* CARRINHO DE COMPRAS */
 static char carrinhoCompras[1024];
 static char* idProdutoCarrinho[25];

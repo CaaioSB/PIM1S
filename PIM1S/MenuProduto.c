@@ -23,7 +23,7 @@ inicio:
 		CadProduto();
 		break;
 	case '2':
-		//AltProduto();
+		AltProduto();
 		break;
 	case '3':
 		//RemProduto();

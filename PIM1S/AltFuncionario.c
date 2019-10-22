@@ -42,42 +42,42 @@ opc:
 	switch (alt)
 	{
 	case '1':
-		printf("DIGITE O NOVO NOME: " RED "(NOME ANTIGO: %s%s", nomeFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO NOME: " RED "(NOME ATUAL: %s%s", nomeFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%[^\n]s", nomeFuncionario);
 		goto opc;
 	case '2':
-		printf("DIGITE O NOVO EMAIL: " RED "(EMAIL ANTIGO: %s%s", emailFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO EMAIL: " RED "(EMAIL ATUAL: %s%s", emailFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", emailFuncionario);
 		goto opc;
 	case '3':
-		printf("DIGITE O NOVO RG: " RED "(RG ANTIGO: %s%s", rgFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO RG: " RED "(RG ATUAL: %s%s", rgFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", rgFuncionario);
 		goto opc;
 	case '4':
-		printf("DIGITE O NOVO CPF: " RED "(CPF ANTIGO: %s%s", cpfFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO CPF: " RED "(CPF ATUAL: %s%s", cpfFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cpfFuncionario);
 		goto opc;
 	case '5':
-		printf("DIGITE O NOVO CEP: " RED "(CEP ANTIGO: %s%s", cepFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO CEP: " RED "(CEP ATUAL: %s%s", cepFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cepFuncionario);
 		goto opc;
 	case '6':
-		printf("DIGITE O NOVO USUÁRIO: " RED "USUÁRIO ANTIGO: %s%s", userFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO USUÁRIO: " RED "USUÁRIO ATUAL: %s%s", userFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", userFuncionario);
 		goto opc;
 	case '7':
-		printf("DIGITE A NOVA SENHA: " RED "SENHA ANTIGA: %s%s", passFuncionario, ")\n" RESET);
+		printf("DIGITE A NOVA SENHA: " RED "SENHA ATUAL: %s%s", passFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", passFuncionario);
 		goto opc;
 	case '8':
-		printf("DIGITE A NOVA FUNÇÃO: " RED "FUNÇÃO ANTIGA: %s%s", funcaoFuncionario, ")\n" RESET);
+		printf("DIGITE A NOVA FUNÇÃO: " RED "FUNÇÃO ATUAL: %s%s", funcaoFuncionario, ")\n" RESET);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", funcaoFuncionario);
 		goto opc;
@@ -103,4 +103,3 @@ opc:
 	}
 	system("pause > nul");
 }
-
