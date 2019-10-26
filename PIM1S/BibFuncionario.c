@@ -24,6 +24,7 @@ struct REGISTER {
 	char senha[1024];
 	char funcao[1024];
 };
+
 // MAX = 3
 static int tentativas = 0;
 

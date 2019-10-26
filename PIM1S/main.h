@@ -46,8 +46,9 @@ static float precoProduto;
 /* CARRINHO DE COMPRAS */
 static char carrinhoCompras[1024];
 static char* idProdutoCarrinho[25];
-static int qntProdutoCarrinho = -1;
+static int qntProdutoCarrinho = 0;
 static char* nomeProdutoCarrinho[25];
+static float precoProdutoCarrinho[25];
 static float totalProdutoCarrinho;
 
 /* ARMAZENAMENTOS DO BANCO DE DADOS */
@@ -63,3 +64,6 @@ static char* tb_produto2 = "C:\\SGP\\db\\tb_produto2.txt";
 
 static char* tb_feedback = "C:\\SGP\\db\\tb_feedback.txt";
 static char* tb_feedback2 = "C:\\SGP\\db\\tb_feedback2.txt";
+
+static char* tb_pedido = "C:\\SGP\\db\\tb_pedido.txt";
+static char* tb_pedido2 = "C:\\SGP\\db\\tb_pedido2.txt";

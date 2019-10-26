@@ -92,8 +92,7 @@ novoPedido:
 	case '2':
 		goto removerProduto;
 	case '3':
-		
-		break;
+		goto finalizarPedido;
 	case '9':
 
 		break;
@@ -186,7 +185,6 @@ adcBebida:
 removerProduto:
 	opcao = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	printf("\n\n");
 	centerText(BOLDMAGENTA "ADICIONAR PIZZA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
@@ -202,4 +200,22 @@ removerProduto:
 
 	qntProdutoCarrinho--;
 	free(nomeProdutoCarrinho[opcao]);
+
+finalizarPedido:
+	opcao = 0;
+	system(CLEAR_SCREEN_PROGRAM);
+	centerText(BOLDMAGENTA "FINALIZAR PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+
+	for (int i = 0; i < ((cmd_dimension.rows / 2 - 3) - qntProdutoCarrinho) + 4; i++) {
+		printf("\n");
+	}
+
+	printf(MAGENTA "%+40s\n" RESET, "FINALIZANDO PEDIDO");
+	printf(BLUE "%-15s" RED "%-32s" YELLOW "%-0s\n" RESET, "ID", "PRODUTO", "PREÇO");
+	for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
+		printf(BLUE "%-15d" RESET "%-32s" YELLOW "R$ %-0.2f\n" RESET, prod, nomeProdutoCarrinho[prod], precoProdutoCarrinho[prod]);
+	}
+	printf(RESET "_______________________________________________________\n");
+	printf(GREEN "%+50s%0.2f" RESET, "TOTAL: R$ ", totalProdutoCarrinho);
+	system("pause > nul");
 }

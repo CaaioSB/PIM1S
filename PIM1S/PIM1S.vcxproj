@@ -132,6 +132,7 @@
     <ClCompile Include="BibCliente.c" />
     <ClCompile Include="BibFeedback.c" />
     <ClCompile Include="BibIngrediente.c" />
+    <ClCompile Include="BibPedido.c" />
     <ClCompile Include="BibProduto.c" />
     <ClCompile Include="CadCliente.c" />
     <ClCompile Include="CadFeedback.c" />
@@ -161,6 +162,7 @@
     <ClInclude Include="BibFeedback.h" />
     <ClInclude Include="BibFuncionario.h" />
     <ClInclude Include="BibIngrediente.h" />
+    <ClInclude Include="BibPedido.h" />
     <ClInclude Include="BibProduto.h" />
     <ClInclude Include="CadCliente.h" />
     <ClInclude Include="CadFeedback.h" />

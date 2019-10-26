@@ -119,6 +119,9 @@
     <ClCompile Include="CadCliente.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
+    <ClCompile Include="BibPedido.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -198,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="CadCliente.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="BibPedido.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

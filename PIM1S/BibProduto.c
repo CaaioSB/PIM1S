@@ -108,6 +108,7 @@ static bool ListarPizzas() {
 		numLinhas++;
 	}
 	FecharArquivo(arquivo);
+	printf("\n");
 	return true;
 }
 
@@ -160,6 +161,7 @@ static bool ListarBebidas() {
 		numLinhas++;
 	}
 	FecharArquivo(arquivo);
+	printf("\n");
 	return true;
 }
 
@@ -225,7 +227,7 @@ static bool AlterarProduto(char idProduto, char nomeProduto[100], char tipoProdu
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		if (i == (idProduto - 49)) {
-			snprintf(line, sizeof line, "%c;%s;%s;%d;%0.2f;", idProduto, nomeProduto, tipoProduto,  qntProduto, precoProduto);
+			snprintf(line, sizeof line, "%c;%s;%s;%d;%0.2f;", idProduto, nomeProduto, tipoProduto, qntProduto, precoProduto);
 			fileLine[i] = _strdup(line);
 		}
 		else {
@@ -312,6 +314,7 @@ static bool AdicionarCarrinho(char id) {
 			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
 			idProdutoCarrinho[qntProdutoCarrinho] = values[0];
 			nomeProdutoCarrinho[qntProdutoCarrinho] = values[1];
+			precoProdutoCarrinho[qntProdutoCarrinho] = atoll(values[4]);
 			totalProdutoCarrinho += atoll(values[4]);
 			FecharArquivo(arquivo2);
 			return true;
