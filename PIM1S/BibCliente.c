@@ -2,6 +2,7 @@
 #include "util.h"
 
 struct Cliente {
+	char* id;
 	char nome_completo[1024];
 	char telres[1024];
 	char telcel[1024];
@@ -94,10 +95,14 @@ static char BuscarCliente(char id) {
 }
 
 static bool ListarClientes() {
+	struct Cliente Clientes;
 	int x = 0;
+	int j = 0;
 	int numLinhas = 0;
 	char* palavras[50];
 	char line[1024];
+	char* values[5];
+	char delimiter[] = ";";
 	FILE* arquivo;
 
 	arquivo = fopen(tb_cliente, "rt");
@@ -106,13 +111,25 @@ static bool ListarClientes() {
 		return EXIT_FAILURE;
 	}
 
+	printf(GREEN "%-15s" GREEN "%-32s" GREEN "%-0s\n" GREEN, "ID", "NOME DO CLIENTE", "TELEFONE CELULAR");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
 		palavras[x] = _strdup(line);
-		printf("%s\n", palavras[x]);
+		char* ptr = strtok(palavras[x], delimiter);
+		values[j] = ptr;
+		j++;
+		while (ptr != NULL && j < 5) {
+			ptr = strtok(NULL, delimiter);
+			values[j] = ptr;
+			j++;
+		}
+		Clientes.id = values[0];
+		strcpy(Clientes.nome_completo, values[1]);
+		strcpy(Clientes.telcel, values[2]);
+		printf(WHITE "%-14s " WHITE "%-32s" WHITE "%-0s\n" RESET, Clientes.id, Clientes.nome_completo, Clientes.telcel);
+		j = 0;
 		x++;
-
 		//Conta a quantidade de linhas
 		numLinhas++;
 	}

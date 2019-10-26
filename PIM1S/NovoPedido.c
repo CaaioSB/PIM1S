@@ -10,12 +10,15 @@ struct Pedido
 	char Observacao[500];
 	double Total;
 };
-
 void NovoPedido() {
 	int opcao;
-	int loop = 0;
+	int posicao = 1;
+	//int loop = 0;
 	char idProduto;
 	char idCliente[5];
+cliente:
+	opcao = 0;
+	//loop = 1;
 	system(CLEAR_SCREEN_PROGRAM);
 	centerText(BOLDMAGENTA "NOVO PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
@@ -23,7 +26,6 @@ void NovoPedido() {
 	{
 		printf("\n");
 	}
-cliente:
 	printf(MAGENTA "O CLIENTE POSSUI UM CADASTRO ATIVO NA PIZZARIA?\n" RESET);
 	printf(GREEN "1" RESET " SIM\n");
 	printf(RED "2" RESET " NÃO\n");
@@ -34,6 +36,11 @@ cliente:
 		goto selCliente;
 	case '2':
 		CadCliente();
+		goto cliente;
+	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 2)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		system("pause > nul");
 		goto cliente;
 	}
 
@@ -47,13 +54,22 @@ selCliente:
 		printf("\n");
 	}
 
-	printf(MAGENTA "SELECIONE O CLIENTE PELO ID\n" RESET);
+	printf(MAGENTA "%+47s\n" RESET, "SELECIONE O CLIENTE PELO ID");
 	ListarClientes();
 	printf("\n");
 	setbuf(stdin, NULL);
 	(void)scanf("%c", idCliente);
 
 	BuscarCliente(idCliente[0]);
+confCliente:
+	opcao = 0;
+	system(CLEAR_SCREEN_PROGRAM);
+	centerText(BOLDMAGENTA "SELECIONAR CLIENTE - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+
+	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
+	{
+		printf("\n");
+	}
 	printf("VOCÊ ESTA FAZENDO UM NOVO PEDIDO PARA: " YELLOW "%s" RESET "?\n", nomeCliente);
 	printf(GREEN "1" RESET " SIM\n");
 	printf(RED "2" RESET " NÃO\n");
@@ -65,6 +81,9 @@ selCliente:
 	case '2':
 		goto cliente;
 	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 2)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		system("pause > nul");
 		goto selCliente;
 	}
 
@@ -94,8 +113,13 @@ novoPedido:
 	case '3':
 		goto finalizarPedido;
 	case '9':
-
+		menuPizzaria();
 		break;
+	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 3 ou 9)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto novoPedido;
 	}
 
 adcProduto:
@@ -124,12 +148,16 @@ adcProduto:
 		break;
 	case '9':
 		goto novoPedido;
+	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 3 OU 9)" RESET, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto adcProduto;
 	}
 
 adcPizza:
 	opcao = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	printf("\n\n");
 	centerText(BOLDMAGENTA "ADICIONAR PIZZA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
@@ -145,19 +173,18 @@ adcPizza:
 	if (AdicionarCarrinho(idProduto)) {
 		printf(GREEN "A %s FOI ADICIONADA COM SUCESSO!" RESET, nomeProdutoCarrinho[qntProdutoCarrinho]);
 		Sleep(3000);
-		goto novoPedido;
+		goto adcProduto;
 	}
 	else {
 		qntProdutoCarrinho--;
 		printf(RED "A PIZZA NÃO FOI ADICIONADA!" RESET);
 		Sleep(3000);
-		goto novoPedido;
+		goto adcProduto;
 	}
 
 adcBebida:
 	opcao = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	printf("\n\n");
 	centerText(BOLDMAGENTA "ADICIONAR BEBIDA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
@@ -173,33 +200,47 @@ adcBebida:
 	if (AdicionarCarrinho(idProduto)) {
 		printf(GREEN "A PRODUTO: %s FOI ADICIONADO COM SUCESSO!" RESET, nomeProdutoCarrinho[qntProdutoCarrinho]);
 		Sleep(3000);
-		goto novoPedido;
+		goto adcProduto;
 	}
 	else {
 		qntProdutoCarrinho--;
 		printf(RED "A BEBIDA NÃO FOI ADICIONADA!" RESET);
 		Sleep(3000);
-		goto novoPedido;
+		goto adcProduto;
 	}
 
 removerProduto:
 	opcao = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "ADICIONAR PIZZA - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "REMOVER PRODUTO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
 	{
 		printf("\n");
 	}
 
-	printf(MAGENTA "SELECIONE O PRODUTO QUE DESEJA REMOVER\n" RESET);
-	for (loop; loop < qntProdutoCarrinho; loop++) {
-		printf(GREEN "%d" RESET " %s", loop, nomeProdutoCarrinho[loop]);
+	printf(MAGENTA "SELECIONE O PRODUTO QUE DESEJA REMOVER " WHITE "OU" RED " 0 " WHITE "PARA VOLTAR\n" RESET);
+	for (int loop = 1; loop < qntProdutoCarrinho + 1; loop++) {
+		printf(GREEN "%d" RESET " %s\n", loop, nomeProdutoCarrinho[loop]);
 	}
-	opcao = _getch();
+	(void)scanf("%i", &opcao);
 
-	qntProdutoCarrinho--;
-	free(nomeProdutoCarrinho[opcao]);
+	if (opcao != 0) {
+		qntProdutoCarrinho--;
+		nomeProdutoCarrinho[opcao] = NULL;
+
+		for (posicao; posicao <= qntProdutoCarrinho; posicao++) {
+			if (nomeProdutoCarrinho[posicao] == NULL) {
+				int next = posicao + 1;
+				nomeProdutoCarrinho[posicao] = nomeProdutoCarrinho[next];
+				nomeProdutoCarrinho[next] = NULL;
+			}
+		}
+	}
+	else {
+		goto novoPedido;
+	}
+	goto novoPedido;
 
 finalizarPedido:
 	opcao = 0;
@@ -211,11 +252,11 @@ finalizarPedido:
 	}
 
 	printf(MAGENTA "%+40s\n" RESET, "FINALIZANDO PEDIDO");
-	printf(BLUE "%-15s" RED "%-32s" YELLOW "%-0s\n" RESET, "ID", "PRODUTO", "PREÇO");
+	printf(BLUE "%-15s" BLUE "%-32s" BLUE "%-0s\n" RESET, "ID", "PRODUTO", "PREÇO");
 	for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
-		printf(BLUE "%-15d" RESET "%-32s" YELLOW "R$ %-0.2f\n" RESET, prod, nomeProdutoCarrinho[prod], precoProdutoCarrinho[prod]);
+		printf(WHITE "%-15d" WHITE "%-32s" WHITE "R$ %-0.2f\n" RESET, prod, nomeProdutoCarrinho[prod], precoProdutoCarrinho[prod]);
 	}
-	printf(RESET "_______________________________________________________\n");
+	printf(WHITE "________________________________________________________\n");
 	printf(GREEN "%+50s%0.2f" RESET, "TOTAL: R$ ", totalProdutoCarrinho);
 	system("pause > nul");
 }

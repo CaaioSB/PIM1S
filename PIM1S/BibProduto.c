@@ -311,7 +311,7 @@ static bool AdicionarCarrinho(char id) {
 					j++;
 				}
 			}
-			// PEGANDO OS DADOS DO FUNCIONÁRIO REQUERIDO
+			// PEGANDO OS DADOS DO PRODUTO REQUERIDO
 			idProdutoCarrinho[qntProdutoCarrinho] = values[0];
 			nomeProdutoCarrinho[qntProdutoCarrinho] = values[1];
 			precoProdutoCarrinho[qntProdutoCarrinho] = atoll(values[4]);
@@ -319,10 +319,11 @@ static bool AdicionarCarrinho(char id) {
 			FecharArquivo(arquivo2);
 			return true;
 		}
-		numLinha++;
 	}
+	numLinha++;
 	FecharArquivo(arquivo2);
 }
+
 
 static char BuscarProduto(char id) {
 	int numLinha = 0;
