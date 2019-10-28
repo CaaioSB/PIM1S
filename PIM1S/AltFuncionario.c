@@ -7,77 +7,77 @@ void AltFuncionario() {
 	int alt;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf(BLUE "SELECIONE UM FUNCIONÁRIO\n" RESET);
+	printf(BLUE "SELECIONE UM FUNCIONÁRIO\n" WHITE);
 	ListarFuncionarios();
 	opcao = _getch();
 
 	BuscarFuncionario(opcao);
 opc:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 	printf("O QUE VOCÊ DESEJA ALTERAR?");
 	setbuf(stdin, NULL);
-	printf(GREEN "\n1 " RESET "NOME");
-	printf(GREEN "\n2 " RESET "EMAIL");
-	printf(GREEN "\n3 " RESET "RG");
-	printf(GREEN "\n4 " RESET "CPF");
-	printf(GREEN "\n5 " RESET "CEP");
-	printf(GREEN "\n6 " RESET "USUÁRIO");
-	printf(GREEN "\n7 " RESET "SENHA");
-	printf(GREEN "\n8 " RESET "CARGO");
-	printf(YELLOW "\n9 " RESET "CONFIRMAR");
-	printf(RED "\n0 " RESET "CANCELAR\n");
+	printf(GREEN "\n1 " WHITE "NOME");
+	printf(GREEN "\n2 " WHITE "EMAIL");
+	printf(GREEN "\n3 " WHITE "RG");
+	printf(GREEN "\n4 " WHITE "CPF");
+	printf(GREEN "\n5 " WHITE "CEP");
+	printf(GREEN "\n6 " WHITE "USUÁRIO");
+	printf(GREEN "\n7 " WHITE "SENHA");
+	printf(GREEN "\n8 " WHITE "CARGO");
+	printf(YELLOW "\n9 " WHITE "CONFIRMAR");
+	printf(RED "\n0 " WHITE "CANCELAR\n");
 	alt = _getch();
 
 	switch (alt)
 	{
 	case '1':
-		printf("DIGITE O NOVO NOME: " RED "(NOME ATUAL: %s%s", nomeFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO NOME: " RED "(NOME ATUAL: %s%s", nomeFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%[^\n]s", nomeFuncionario);
 		goto opc;
 	case '2':
-		printf("DIGITE O NOVO EMAIL: " RED "(EMAIL ATUAL: %s%s", emailFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO EMAIL: " RED "(EMAIL ATUAL: %s%s", emailFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", emailFuncionario);
 		goto opc;
 	case '3':
-		printf("DIGITE O NOVO RG: " RED "(RG ATUAL: %s%s", rgFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO RG: " RED "(RG ATUAL: %s%s", rgFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", rgFuncionario);
 		goto opc;
 	case '4':
-		printf("DIGITE O NOVO CPF: " RED "(CPF ATUAL: %s%s", cpfFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO CPF: " RED "(CPF ATUAL: %s%s", cpfFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cpfFuncionario);
 		goto opc;
 	case '5':
-		printf("DIGITE O NOVO CEP: " RED "(CEP ATUAL: %s%s", cepFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO CEP: " RED "(CEP ATUAL: %s%s", cepFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cepFuncionario);
 		goto opc;
 	case '6':
-		printf("DIGITE O NOVO USUÁRIO: " RED "USUÁRIO ATUAL: %s%s", userFuncionario, ")\n" RESET);
+		printf("DIGITE O NOVO USUÁRIO: " RED "USUÁRIO ATUAL: %s%s", userFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", userFuncionario);
 		goto opc;
 	case '7':
-		printf("DIGITE A NOVA SENHA: " RED "SENHA ATUAL: %s%s", passFuncionario, ")\n" RESET);
+		printf("DIGITE A NOVA SENHA: " RED "SENHA ATUAL: %s%s", passFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", passFuncionario);
 		goto opc;
 	case '8':
-		printf("DIGITE A NOVA FUNÇÃO: " RED "FUNÇÃO ATUAL: %s%s", funcaoFuncionario, ")\n" RESET);
+		printf("DIGITE A NOVA FUNÇÃO: " RED "FUNÇÃO ATUAL: %s%s", funcaoFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", funcaoFuncionario);
 		goto opc;
@@ -93,11 +93,11 @@ opc:
 		Sleep(3000);
 		MenuFuncionario();
 	case '0':
-		centerText(RED "VOCÊ CANCELOU AS ALTERAÇÕES, VOLTANDO AO MENU" RESET, cmd_dimension.columns + 10);
+		centerText(RED "VOCÊ CANCELOU AS ALTERAÇÕES, VOLTANDO AO MENU" WHITE, cmd_dimension.columns + 10);
 		MenuFuncionario();
 	default:
-		centerText(RED "SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 A 0)" RESET, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" RESET, cmd_dimension.columns + 12);
+		centerText(RED "SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 A 0)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
 		system("pause >nul");
 		goto opc;
 	}

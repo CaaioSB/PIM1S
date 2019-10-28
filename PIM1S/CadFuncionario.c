@@ -6,7 +6,7 @@
 bool CadFuncionario() {
 	int i = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "CADASTRAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "CADASTRAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -47,12 +47,12 @@ bool CadFuncionario() {
 	(void)scanf("%s", BFuncionario.funcao);
 
 	if (CadastrarFuncionario(BFuncionario.nome_completo, BFuncionario.email, BFuncionario.rg, BFuncionario.cpf, BFuncionario.cep, BFuncionario.usuario, BFuncionario.senha, BFuncionario.funcao)) {
-		centerText(GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
+		centerText(GREEN "O FUNCIONÁRIO FOI CADASTRADO COM SUCESSO!" WHITE, cmd_dimension.columns + 12);
 		Sleep(2000);
 		return true;
 	}
 	else {
-		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 10);
+		centerText(RED "O FUNCIONÁRIO NÃO FOI CADASTRADO!" WHITE, cmd_dimension.columns + 10);
 		Sleep(2000);
 		return false;
 	}

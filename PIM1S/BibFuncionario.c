@@ -86,17 +86,17 @@ static bool validateCEP(char* cep) {
 static bool CadastrarFuncionario(char nome[30], char email[100], char rg[20], char cpf[11], char cep[8], char usuario[10], char senha[10], char funcao[100]) {
 	int errors = 0;
 	if (validateCPF(cpf)) {
-		centerText(RED "\nCPF INVÁLIDO!" RESET, cmd_dimension.columns + 10);
+		centerText(RED "\nCPF INVÁLIDO!" WHITE, cmd_dimension.columns + 10);
 		errors++;
 	}
 
 	if (validateEmail(email)) {
-		centerText(RED "\nE-MAIL INVÁLIDO!" RESET, cmd_dimension.columns + 10);
+		centerText(RED "\nE-MAIL INVÁLIDO!" WHITE, cmd_dimension.columns + 10);
 		errors++;
 	}
 
 	if (validateCEP(cep)) {
-		centerText(RED "\nCEP INVÁLIDO!\n" RESET, cmd_dimension.columns + 10);
+		centerText(RED "\nCEP INVÁLIDO!\n" WHITE, cmd_dimension.columns + 10);
 		errors++;
 	}
 
@@ -155,7 +155,7 @@ static char generateCaptcha() {
 	}
 
 	// imprive informações
-	printf(YELLOW "\n[*]" RESET " DIGITE O CAPTCHA SEGUINTE PARA PROSSEGUIR: %s\n", captcha);
+	printf(YELLOW "\n[*]" WHITE " DIGITE O CAPTCHA SEGUINTE PARA PROSSEGUIR: %s\n", captcha);
 }
 
 static bool valideCaptcha(char* userCaptcha) {
@@ -213,7 +213,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 				if (strcmp(usuario, values[6]) == 0) {
 					if (strcmp(senha, values[7]) == 0) {
 						printf("\n\n");
-						centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+						centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
 						strcpy(loggedNomeCompleto, values[1]);
 						Sleep(3000);
 						FecharArquivo(arquivo);
@@ -222,7 +222,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 					}
 					else {
 						printf("\n\n");
-						centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+						centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 						Sleep(3000);
 						FecharArquivo(arquivo);
 						tentativas++;
@@ -231,7 +231,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 				}
 				else {
 					printf("\n\n");
-					centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+					centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 					Sleep(3000);
 					FecharArquivo(arquivo);
 					tentativas++;
@@ -240,7 +240,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			}
 			else {
 				printf("\n\n");
-				centerText(RED "CAPTCHA INCORRETO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+				centerText(RED "CAPTCHA INCORRETO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 				Sleep(3000);
 				FecharArquivo(arquivo);
 				tentativas++;
@@ -251,7 +251,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			if (strcmp(usuario, values[6]) == 0) {
 				if (strcmp(senha, values[7]) == 0) {
 					printf("\n\n");
-					centerText(GREEN "LOGIN REALIZADO" RESET, cmd_dimension.columns + 10);
+					centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
 					strcpy(loggedNomeCompleto, values[1]);
 					Sleep(3000);
 					FecharArquivo(arquivo);
@@ -260,7 +260,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 				}
 				else {
 					printf("\n\n");
-					centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+					centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 					Sleep(3000);
 					FecharArquivo(arquivo);
 					tentativas++;
@@ -269,7 +269,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			}
 			else {
 				printf("\n\n");
-				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" RESET, cmd_dimension.columns + 10);
+				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 				Sleep(3000);
 				FecharArquivo(arquivo);
 				tentativas++;

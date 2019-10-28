@@ -7,17 +7,17 @@ void menuPizzaria() {
 	char opcao;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BLUE "MENU PRINCIPAL - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 11);
+	centerText(BLUE "MENU PRINCIPAL - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 11);
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf(GREEN "1" RESET " NOVO PEDIDO\n");
-	printf(GREEN "2" RESET " CATÁLOGO\n");
-	printf(GREEN "3" RESET " FEEDBACK\n");
-	printf(GREEN "4" RESET " GERENCIAMENTO\n");
-	printf(YELLOW "9" RESET " DESLOGAR\n");
-	printf(RED "0" RESET " SAIR\n");
+	printf(GREEN "1" WHITE " NOVO PEDIDO\n");
+	printf(GREEN "2" WHITE " CATÁLOGO\n");
+	printf(GREEN "3" WHITE " FEEDBACK\n");
+	printf(GREEN "4" WHITE " GERENCIAMENTO\n");
+	printf(YELLOW "9" WHITE " DESLOGAR\n");
+	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
 
 	switch (opcao) {
@@ -44,8 +44,8 @@ inicio:
 		exit(0);
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA" YELLOW " (DE 1 A 5)" RESET, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 12);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA" YELLOW " (DE 1 A 5)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
 		system("pause > nul");
 		goto inicio;
 	}

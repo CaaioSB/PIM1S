@@ -28,14 +28,14 @@ static bool CadastrarProduto(char nome[100], char* tipo, int quantidade, double 
 		if (fprintf(file, "%d;%s;%s;%d;%.2f;\n", id, nome, tipo, quantidade, preco)) {
 			FecharArquivo(file);
 			printf("\n\n");
-			centerText(GREEN "O PRODUTO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
+			centerText(GREEN "O PRODUTO FOI CADASTRADO COM SUCESSO!" WHITE, cmd_dimension.columns + 12);
 			Sleep(3000);
 			return true;
 		}
 		else {
 			FecharArquivo(file);
 			printf("\n\n");
-			centerText(RED "O PRODUTO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 9);
+			centerText(RED "O PRODUTO NÃO FOI CADASTRADO!" WHITE, cmd_dimension.columns + 9);
 			Sleep(3000);
 			return false;
 		}
@@ -45,14 +45,14 @@ static bool CadastrarProduto(char nome[100], char* tipo, int quantidade, double 
 		if (fprintf(file, "%d;%s;%s;%d;%.2f;\n", id, nome, tipo, quantidade, preco)) {
 			FecharArquivo(file);
 			printf("\n\n");
-			centerText(GREEN "O PRODUTO FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
+			centerText(GREEN "O PRODUTO FOI CADASTRADO COM SUCESSO!" WHITE, cmd_dimension.columns + 12);
 			Sleep(3000);
 			return true;
 		}
 		else {
 			FecharArquivo(file);
 			printf("\n\n");
-			centerText(RED "O PRODUTO NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 9);
+			centerText(RED "O PRODUTO NÃO FOI CADASTRADO!" WHITE, cmd_dimension.columns + 9);
 			Sleep(3000);
 			return false;
 		}
@@ -99,7 +99,7 @@ static bool ListarPizzas() {
 				//int quantidade = atoi(values[3]);
 				Pizzas.quantidade = atoi(values[3]);
 				Pizzas.preco = atoll(values[4]);
-				printf(GREEN "%s " RESET "%s", Pizzas.id, Pizzas.nome);
+				printf(GREEN "%s " WHITE "%s", Pizzas.id, Pizzas.nome);
 			}
 		}
 
@@ -152,7 +152,7 @@ static bool ListarBebidas() {
 				//int quantidade = atoi(values[3]);
 				Bebidas.quantidade = atoi(values[3]);
 				Bebidas.preco = atoll(values[4]);
-				printf(GREEN "%s " RESET "%s", Bebidas.id, Bebidas.nome);
+				printf(GREEN "%s " WHITE "%s", Bebidas.id, Bebidas.nome);
 			}
 		}
 

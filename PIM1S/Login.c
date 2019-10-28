@@ -16,13 +16,13 @@ int opcao;
 
 void Login() {
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "MENU LOGIN - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "MENU LOGIN - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf(BLUE "      LOGIN\n" RESET);
+	printf(BLUE "      LOGIN\n" WHITE);
 	printf("DIGITE SEU USUÁRIO: ");
 	setbuf(stdin, NULL);
 	(void)scanf("%s", &usuario);

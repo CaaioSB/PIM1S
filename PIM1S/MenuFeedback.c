@@ -5,16 +5,16 @@ void menuFeedback() {
 	int opcao;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BLUE "MENU DE FEEDBACK - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 10);
+	centerText(BLUE "MENU DE FEEDBACK - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 10);
 
 	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
 	}
 
-	printf(GREEN "1" RESET " CADASTRAR FEEDBACK\n");
-	printf(GREEN "2" RESET " LISTAR FEEDBACKS\n");
-	printf(YELLOW "9" RESET " VOLTAR\n");
-	printf(RED "0" RESET " SAIR\n");
+	printf(GREEN "1" WHITE " CADASTRAR FEEDBACK\n");
+	printf(GREEN "2" WHITE " LISTAR FEEDBACKS\n");
+	printf(YELLOW "9" WHITE " VOLTAR\n");
+	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
 
 	switch (opcao)
@@ -34,8 +34,8 @@ inicio:
 		exit(0);
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 5)" RESET, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" RESET, cmd_dimension.columns + 12);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 5)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
 		system("pause > nul");
 		goto inicio;
 	}

@@ -6,7 +6,7 @@
 bool CadCliente() {
 	int i = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "CADASTRAR CLIENTE - SISTEMA GERENCIADOR DE PIZZARIA" RESET, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "CADASTRAR CLIENTE - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
 	for (i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
 		printf("\n");
@@ -34,13 +34,13 @@ bool CadCliente() {
 
 	if (CadastrarCliente(BCliente.nome_completo, BCliente.telres, BCliente.telcel, BCliente.cpf, BCliente.cep))
 	{
-		centerText(GREEN "O CLIENTE FOI CADASTRADO COM SUCESSO!" RESET, cmd_dimension.columns + 12);
+		centerText(GREEN "O CLIENTE FOI CADASTRADO COM SUCESSO!" WHITE, cmd_dimension.columns + 12);
 		Sleep(2000);
 		return true;
 	}
 	else
 	{
-		centerText(RED "O CLIENTE NÃO FOI CADASTRADO!" RESET, cmd_dimension.columns + 10);
+		centerText(RED "O CLIENTE NÃO FOI CADASTRADO!" WHITE, cmd_dimension.columns + 10);
 		Sleep(2000);
 		return false;
 	}

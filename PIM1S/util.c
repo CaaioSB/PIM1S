@@ -22,16 +22,16 @@ void centerText(char* text, int fieldWidth) {
 //void topLines()
 //{
 //	for (i = 0; i < cmd_dimension.columns; i++) {
-//		printf(RED "_" RESET );
-//		printf(YELLOW "_" RESET );
+//		printf(RED "_" WHITE );
+//		printf(YELLOW "_" WHITE );
 //	}
 //}
 
 //void bottomLines()
 //{
 //	for (i = 0; i < cmd_dimension.columns; i++) {
-//		printf(YELLOW "_" RESET);
-//		printf(RED "_" RESET);
+//		printf(YELLOW "_" WHITE);
+//		printf(RED "_" WHITE);
 //	}
 //}
 

@@ -127,7 +127,7 @@ static bool ListarClientes() {
 		Clientes.id = values[0];
 		strcpy(Clientes.nome_completo, values[1]);
 		strcpy(Clientes.telcel, values[2]);
-		printf(WHITE "%-14s " WHITE "%-32s" WHITE "%-0s\n" RESET, Clientes.id, Clientes.nome_completo, Clientes.telcel);
+		printf(WHITE "%-14s " WHITE "%-32s" WHITE "%-0s\n" WHITE, Clientes.id, Clientes.nome_completo, Clientes.telcel);
 		j = 0;
 		x++;
 		//Conta a quantidade de linhas
