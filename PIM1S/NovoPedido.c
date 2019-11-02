@@ -1,8 +1,8 @@
-#include "NovoPedido.h"
 #include "util.h"
 #include "main.h"
 #include "BibCliente.h"
 #include "BibProduto.h"
+#include "BibPedido.h"
 
 struct Pedido
 {
@@ -101,7 +101,7 @@ novoPedido:
 	printf(MAGENTA "O QUE DESEJA FAZER?\n" WHITE);
 	printf(GREEN "1" WHITE " ADICIONAR PRODUTO\n");
 	printf(GREEN "2" WHITE " REMOVER PRODUTO\n");
-	printf(GREEN "3" WHITE " FINALIZAR PEDIDO\n");
+	printf(GREEN "3" WHITE " RESUMO PEDIDO\n");
 	printf(RED "9" WHITE " CANCELAR PEDIDO\n");
 	opcao = _getch();
 
@@ -111,7 +111,7 @@ novoPedido:
 	case '2':
 		goto removerProduto;
 	case '3':
-		goto finalizarPedido;
+		goto resumoPedido;
 	case '9':
 		menuPizzaria();
 		break;
@@ -242,23 +242,23 @@ removerProduto:
 	}
 	goto novoPedido;
 
-finalizarPedido:
+resumoPedido:
 	opcao = 0;
 	system(CLEAR_SCREEN_PROGRAM);
-	centerText(BOLDMAGENTA "FINALIZAR PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+	centerText(BOLDMAGENTA "RESUMO PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
 
-	for (int i = 0; i < ((cmd_dimension.rows / 2 - 3) - qntProdutoCarrinho) + 7; i++) {
+	for (int i = 0; i < (((cmd_dimension.rows / 2 - 3) - qntProdutoCarrinho)); i++) {
 		printf("\n");
 	}
 
-	printf(MAGENTA "%+40s\n" WHITE, "FINALIZANDO PEDIDO");
+	printf(MAGENTA "%+40s\n" WHITE, "RESUMO PEDIDO");
 	printf(BLUE "%-15s" BLUE "%-32s" BLUE "%-0s\n" WHITE, "ID", "PRODUTO", "PREÇO");
 	for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
 		printf(WHITE "%-15d" WHITE "%-32s" WHITE "R$ %-0.2f\n" WHITE, prod, nomeProdutoCarrinho[prod], precoProdutoCarrinho[prod]);
 	}
 	printf(WHITE "________________________________________________________\n");
-	printf(GREEN "%+50s%0.2f" WHITE, "TOTAL: R$ \n\n", totalProdutoCarrinho);
-	printf(WHITE "O QUE DESEJA FAZER?\n");
+	printf(GREEN "%+50s%0.2f" WHITE, "TOTAL: R$ ", totalProdutoCarrinho);
+	printf(WHITE "\n\nO QUE DESEJA FAZER?\n");
 	printf(GREEN "1" WHITE " CONTINUAR PEDIDO\n");
 	printf(GREEN "2" WHITE " FINALIZAR PEDIDO\n");
 	printf(RED "3" WHITE " CANCELAR PEDIDO\n");
@@ -268,12 +268,149 @@ finalizarPedido:
 	case '1':
 		goto adcProduto;
 	case '2':
+		goto finalizarPedido;
 		break;
 	case '3':
 		for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
-
+			idProdutoCarrinho[prod] = NULL;
+			nomeProdutoCarrinho[prod] = NULL;
+			precoProdutoCarrinho[prod] = 0;
 		}
+		qntProdutoCarrinho = 0;
+		totalProdutoCarrinho = 0;
 		menuPizzaria();
+	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 3)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto resumoPedido;
 	}
+finalizarPedido:
+	opcao = 0;
+	float valor = 0;
+	float troco = 0;
+	system(CLEAR_SCREEN_PROGRAM);
+	centerText(BOLDMAGENTA "RESUMO PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+	for (int i = 0; i < ((cmd_dimension.rows / 2 - 3)); i++) {
+		printf("\n");
+	}
+	printf(WHITE "%+75s\n" WHITE, "SELECIONE A MEIO DE" GREEN " PAGAMENTO" WHITE " OU" RED " 4 " WHITE "PARA CANCELAR");
+	printf(BLUE "%-15s" BLUE "%-32s" BLUE "%-15s" BLUE "%-0s\n" WHITE, "ID", "SERVIÇO", "TAXA", "NOVO TOTAL");
+	printf(BLUE "%-15s" WHITE "%-32s" WHITE  "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "1", "DINHEIRO", "0%", "R$ ", totalProdutoCarrinho);
+	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "2", "CARTÃO DÉBITO/CRÉDITO", "2.5%", "R$ ", totalProdutoCarrinho + (totalProdutoCarrinho * 4.00) / 100);
+	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "3", "VALE REFEIÇÃO", "1.5%", "R$ ", totalProdutoCarrinho + (totalProdutoCarrinho * 3.5) / 100);
+	opcao = _getch();
+	switch (opcao) {
+	case '1':
+		troco = valor - totalProdutoCarrinho;
+		printf("DIGITE O VALOR ENTREGUE PELO CLIENTE: ");
+		(void)scanf("%f", &valor);
+
+		if (valor != totalProdutoCarrinho && valor > totalProdutoCarrinho) {
+			printf("VOCÊ DEVE ENTREGAR R$" RED " %0.2f " WHITE "DE TROCO\n", troco);
+			printf(BLUE "VOCÊ DEU O TROCO?\n" WHITE);
+			printf(GREEN "1 " WHITE "SIM");
+			printf(GREEN "2 " WHITE "NÃO (VOLTARÁ PARA A ESCOLHA DO MEIO DE PAGAMENTO)");
+			opcao = _getch();
+
+			switch (opcao) {
+			case '1':
+				if (FinalizarPedido(1)) {
+					centerText(GREEN "PEDIDO FINALIZADO..." WHITE, cmd_dimension.columns + 18);
+					Sleep(3000);
+					menuPizzaria();
+				}
+				else {
+					centerText(RED "ERRO AO FINALIZAR PEDIDO..." WHITE, cmd_dimension.columns + 11);
+				}
+			default:
+				goto finalizarPedido;
+			}
+		}
+		else if (valor == totalProdutoCarrinho) {
+			printf(WHITE "O VALOR ESTA CORRETO, VOCÊ" RED "NÃO" WHITE "DEVE DAR TROCO");
+			if (FinalizarPedido(1)) {
+				centerText(GREEN "PEDIDO FINALIZADO..." WHITE, cmd_dimension.columns + 18);
+				Sleep(3000);
+				menuPizzaria();
+			}
+			else {
+				centerText(RED "ERRO AO FINALIZAR PEDIDO..." WHITE, cmd_dimension.columns + 11);
+			}
+		}
+		else {
+			printf(WHITE "O CLIENTE TE DEVE" RED " %0.2f " WHITE "!", (valor - totalProdutoCarrinho));
+			printf(BLUE "VOCÊ DEU O TROCO?\n" WHITE);
+			printf(GREEN "1 " WHITE "SIM");
+			printf(GREEN "2 " WHITE "NÃO (VOLTARÁ PARA A ESCOLHA DO MEIO DE PAGAMENTO)");
+			opcao = _getch();
+
+			switch (opcao) {
+			case '1':
+				if (FinalizarPedido(1)) {
+					centerText(GREEN "PEDIDO FINALIZADO..." WHITE, cmd_dimension.columns + 18);
+					Sleep(3000);
+					menuPizzaria();
+				}
+				else {
+					centerText(RED "ERRO AO FINALIZAR PEDIDO..." WHITE, cmd_dimension.columns + 11);
+				}
+			}
+		}
+
+
+		if (FinalizarPedido(1)) {
+			for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
+				idProdutoCarrinho[prod] = NULL;
+				nomeProdutoCarrinho[prod] = NULL;
+				precoProdutoCarrinho[prod] = 0;
+			}
+			qntProdutoCarrinho = 0;
+			totalProdutoCarrinho = 0;
+			menuPizzaria();
+		}
+		break;
+	case '2':
+		if (FinalizarPedido(2)) {
+			for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
+				idProdutoCarrinho[prod] = NULL;
+				nomeProdutoCarrinho[prod] = NULL;
+				precoProdutoCarrinho[prod] = 0;
+			}
+			qntProdutoCarrinho = 0;
+			totalProdutoCarrinho = 0;
+			menuPizzaria();
+		}
+		break;
+	case '3':
+		if (FinalizarPedido(3)) {
+			for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
+				idProdutoCarrinho[prod] = NULL;
+				nomeProdutoCarrinho[prod] = NULL;
+				precoProdutoCarrinho[prod] = 0;
+			}
+			qntProdutoCarrinho = 0;
+			totalProdutoCarrinho = 0;
+			menuPizzaria();
+		}
+		break;
+	case '4':
+		for (int prod = 1; prod < qntProdutoCarrinho + 1; prod++) {
+			idProdutoCarrinho[prod] = NULL;
+			nomeProdutoCarrinho[prod] = NULL;
+			precoProdutoCarrinho[prod] = 0;
+		}
+		qntProdutoCarrinho = 0;
+		totalProdutoCarrinho = 0;
+		menuPizzaria();
+		break;
+	default:
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW " (DE 1 A 4)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto finalizarPedido;
+	}
+
 	system("pause > nul");
 }
