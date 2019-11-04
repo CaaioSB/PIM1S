@@ -1,14 +1,25 @@
+#include "util.h"
 #pragma once
 
 // VARIÁVEL GLOBAL DE LOGIN
-static char loggedNomeCompleto[] = "";
-static char loggedEmail[] = { "" };
-static char loggedRG[] = { "" };
-static char loggedCPF[] = { "" };
-static char loggedCEP[] = { "" };
-static char loggedUser[] = { "" };
-static char loggedSenha[] = { "" };
-static char loggedFuncao[] = { "" };
+//static char loggedId[] = "";
+//static char loggedNomeCompleto[] = "";
+//static char loggedEmail[] = { "" };
+//static char loggedRG[] = { "" };
+//static char loggedCPF[] = { "" };
+//static char loggedCEP[] = { "" };
+//static char loggedUser[] = { "" };
+//static char loggedSenha[] = { "" };
+//static char loggedFuncao[] = { "" };
+char* loggedId;
+static char loggedNomeCompleto[100];
+static char loggedProfissao[50];
+static char loggedEmail[100];
+static char loggedRG[100];
+static char loggedCPF[100];
+static char loggedCEP[100];
+static char loggedUser[100];
+static char loggedSenha[100];
 
 /* TABELA FUNCIONARIO
 * ID[0]	NOME[1]					EMAIL[2]						RG[3]		CPF[4]			CEP[5]		USER[6]	PASS[7]	FUNÇÃO[8]

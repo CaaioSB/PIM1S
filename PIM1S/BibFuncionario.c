@@ -173,7 +173,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	char* palavras[50];
 	char line[1024];
 	char delimiter[] = ";";
-	char* values[1024];
+	char* values[10];
 	FILE* arquivo;
 	arquivo = AbreArquivo('l', tb_funcionario);
 
@@ -212,9 +212,17 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			if (valideCaptcha(userCaptcha)) {
 				if (strcmp(usuario, values[6]) == 0) {
 					if (strcmp(senha, values[7]) == 0) {
+						strcpy(loggedId, values[0]);
+						strcpy(loggedNomeCompleto, values[1]);
+						strcpy(loggedEmail, values[2]);
+						strcpy(loggedRG, values[3]);
+						strcpy(loggedCPF, values[4]);
+						strcpy(loggedCEP, values[5]);
+						strcpy(loggedUser, values[6]);
+						strcpy(loggedSenha, values[7]);
+						strcpy(loggedProfissao, values[8]);
 						printf("\n\n");
 						centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
-						strcpy(loggedNomeCompleto, values[1]);
 						Sleep(3000);
 						FecharArquivo(arquivo);
 						menuPizzaria();
@@ -252,28 +260,20 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 				if (strcmp(senha, values[7]) == 0) {
 					printf("\n\n");
 					centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
+					loggedId = values[0];
 					strcpy(loggedNomeCompleto, values[1]);
+					strcpy(loggedProfissao, values[8]);
+					strcpy(loggedEmail, values[2]);
+					strcpy(loggedRG, values[3]);
+					strcpy(loggedCPF, values[4]);
+					strcpy(loggedCEP, values[5]);
+					strcpy(loggedUser, values[6]);
+ 					strcpy(loggedSenha, values[7]);
 					Sleep(3000);
 					FecharArquivo(arquivo);
 					menuPizzaria();
 					return true;
 				}
-				else {
-					printf("\n\n");
-					centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
-					Sleep(3000);
-					FecharArquivo(arquivo);
-					tentativas++;
-					return false;
-				}
-			}
-			else {
-				printf("\n\n");
-				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
-				Sleep(3000);
-				FecharArquivo(arquivo);
-				tentativas++;
-				return false;
 			}
 		}
 		free(ptr);
