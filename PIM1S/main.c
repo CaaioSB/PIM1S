@@ -14,6 +14,8 @@
 // MENSSAGEM DE ERRO
 #define ERROR_INTERNAL "ERRO FATAL: Contate o desenvolvedor do sistema para mais explicações"
 
+extern bool isAdmin = false;
+
 // CONSTANTES
 static char title[25] = "SISTEMA DE PIZZARIA v1.0";
 

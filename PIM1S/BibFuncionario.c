@@ -220,7 +220,13 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 						strcpy(loggedCEP, values[5]);
 						strcpy(loggedUser, values[6]);
 						strcpy(loggedSenha, values[7]);
-						strcpy(loggedProfissao, values[8]);
+						strcpy(loggedFuncao, values[8]);
+						if (strcmp(loggedFuncao, "Gerente")) {
+							isAdmin = "true";
+						}
+						else {
+							isAdmin = "false";
+						}
 						printf("\n\n");
 						centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
 						Sleep(3000);
@@ -262,16 +268,22 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 					centerText(GREEN "LOGIN REALIZADO" WHITE, cmd_dimension.columns + 10);
 					loggedId = values[0];
 					strcpy(loggedNomeCompleto, values[1]);
-					strcpy(loggedProfissao, values[8]);
 					strcpy(loggedEmail, values[2]);
 					strcpy(loggedRG, values[3]);
 					strcpy(loggedCPF, values[4]);
 					strcpy(loggedCEP, values[5]);
 					strcpy(loggedUser, values[6]);
- 					strcpy(loggedSenha, values[7]);
+					strcpy(loggedSenha, values[7]);
+					strcpy(loggedFuncao, values[8]);
+					if (strcmp("Gerente", values[8]) == 0) {
+						isAdmin = true;
+					}
+					else {
+						isAdmin = false;
+					}
 					Sleep(3000);
 					FecharArquivo(arquivo);
-					menuPizzaria();
+					menuPizzaria(isAdmin);
 					return true;
 				}
 			}

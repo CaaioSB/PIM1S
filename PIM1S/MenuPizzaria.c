@@ -1,7 +1,7 @@
 #include "MenuPizzaria.h"
 #include "util.h"
 #include "conio.h"
-#include "BibFuncionario.h""
+#include "BibFuncionario.h"
 
 void menuPizzaria() {
 	char opcao;
@@ -15,9 +15,7 @@ inicio:
 	printf(GREEN "1" WHITE " NOVO PEDIDO\n");
 	printf(GREEN "2" WHITE " CATÁLOGO\n");
 	printf(GREEN "3" WHITE " FEEDBACK\n");
-	if (strcmp(loggedProfissao, "Gerente") == 0) {
-		printf(GREEN "4" WHITE " GERENCIAMENTO\n");
-	}
+	printf(GREEN "4" WHITE " GERENCIAMENTO\n");
 	printf(YELLOW "9" WHITE " DESLOGAR\n");
 	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
@@ -33,8 +31,14 @@ inicio:
 		menuFeedback();
 		break;
 	case '4':
-		MenuGerenciamento();
-		break;
+		if (isAdmin) {
+			MenuGerenciamento();
+		}
+		else {
+			centerText(RED "\nAREA RESTRITA AO GERENTE DA PIZZARIA!", cmd_dimension.columns + 4);
+			Sleep(2000);
+			goto inicio;
+		}
 	case '9':
 		// DESLOGAR 
 		menuPrincipal();

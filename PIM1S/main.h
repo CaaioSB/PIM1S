@@ -13,13 +13,15 @@
 //static char loggedFuncao[] = { "" };
 char* loggedId;
 static char loggedNomeCompleto[100];
-static char loggedProfissao[50];
 static char loggedEmail[100];
 static char loggedRG[100];
 static char loggedCPF[100];
 static char loggedCEP[100];
 static char loggedUser[100];
 static char loggedSenha[100];
+static char loggedFuncao[50];
+
+extern bool isAdmin;
 
 /* TABELA FUNCIONARIO
 * ID[0]	NOME[1]					EMAIL[2]						RG[3]		CPF[4]			CEP[5]		USER[6]	PASS[7]	FUNÇÃO[8]

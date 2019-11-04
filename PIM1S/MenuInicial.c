@@ -3,9 +3,8 @@
 #include "Login.h"
 #include "BibFuncionario.h"
 
-int i;
-
 void menuPrincipal() {
+	int i;
 	char op;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
