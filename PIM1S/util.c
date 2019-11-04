@@ -22,7 +22,7 @@ void centerText(char* text, int fieldWidth) {
 //void topLines()
 //{
 //	for (i = 0; i < cmd_dimension.columns; i++) {
-//		printf(RED "_" WHITE );
+//		printf(RED "_" WHITE );2
 //		printf(YELLOW "_" WHITE );
 //	}
 //}
@@ -46,6 +46,7 @@ FILE* AbreArquivo(char modo, char caminho[30]) {
 		break;
 	case 'a':
 		arquivo = fopen(caminho, "a");
+		break;
 	case 'r':
 		arquivo = fopen(caminho, "r");
 		break;
