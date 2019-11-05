@@ -17,7 +17,7 @@ inicio:
 	printf(RED "2" WHITE " INSATISFEITO ");
 	printf(YELLOW "3" WHITE " INDIFERENTE ");
 	printf(GREEN "4" WHITE " SATISFEITO ");
-	printf(BOLDGREEN "5" WHITE " MUITO SATISFEITO\n");
+	printf(BOLDGREEN "5" WHITE " MUITO SATISFEITO\n\n");
 	ListarFeedbacks();
 
 	system("pause >nul");

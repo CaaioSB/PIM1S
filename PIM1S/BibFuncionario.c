@@ -15,6 +15,7 @@
 #include "main.h"
 
 struct REGISTER {
+	char* id;
 	char nome_completo[1024];
 	char email[1024];
 	char rg[1024];
@@ -295,10 +296,14 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 }
 
 static bool ListarFuncionarios() {
+	struct REGISTER Funcionario;
 	int x = 0;
+	int j = 0;
 	int numLinhas = 0;
 	char* palavras[50];
 	char line[1024];
+	char* values[10];
+	char delimiter[] = ";";
 	FILE* arquivo;
 
 	arquivo = AbreArquivo('l', tb_funcionario);
@@ -306,13 +311,31 @@ static bool ListarFuncionarios() {
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
+	printf(GREEN "%-15s" WHITE "%-32s" WHITE "%-0s\n" WHITE, "ID", "NOME DO FUNCIONÁRIO", "CPF");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
 		palavras[x] = _strdup(line);
-		printf("%s\n", palavras[x]);
+		char* ptr = strtok(palavras[x], delimiter);
+		values[j] = ptr;
+		j++;
+		while (ptr != NULL && j < 9) {
+			ptr = strtok(NULL, delimiter);
+			values[j] = ptr;
+			j++;
+		}
+		Funcionario.id = values[0];
+		strcpy(Funcionario.nome_completo, values[1]);
+		strcpy(Funcionario.email, values[2]);
+		strcpy(Funcionario.rg, values[3]);
+		strcpy(Funcionario.cpf, values[4]);
+		strcpy(Funcionario.cep, values[5]);
+		strcpy(Funcionario.usuario, values[6]);
+		strcpy(Funcionario.senha, values[7]);
+		strcpy(Funcionario.funcao, values[8]);
+		printf(GREEN "%-14s " WHITE "%-32s" WHITE "%-0s\n" WHITE, Funcionario.id, Funcionario.nome_completo, Funcionario.cpf);
+		j = 0;
 		x++;
-
 		//Conta a quantidade de linhas
 		numLinhas++;
 	}
