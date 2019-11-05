@@ -146,6 +146,7 @@
     <ClCompile Include="MenuFeedback.c" />
     <ClCompile Include="MenuFuncionario.c" />
     <ClCompile Include="MenuGerenciamento.c" />
+    <ClCompile Include="MenuPedido.c" />
     <ClCompile Include="MenuPizzaria.c" />
     <ClCompile Include="MenuInicial.c" />
     <ClCompile Include="MenuProduto.c" />
@@ -175,6 +176,7 @@
     <ClInclude Include="MenuFeedback.h" />
     <ClInclude Include="MenuFuncionario.h" />
     <ClInclude Include="MenuGerenciamento.h" />
+    <ClInclude Include="MenuPedido.h" />
     <ClInclude Include="MenuPizzaria.h" />
     <ClInclude Include="MenuInicial.h" />
     <ClInclude Include="MenuProduto.h" />

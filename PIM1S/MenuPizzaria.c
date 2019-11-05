@@ -13,9 +13,10 @@ inicio:
 	}
 
 	printf(GREEN "1" WHITE " NOVO PEDIDO\n");
-	printf(GREEN "2" WHITE " CATÁLOGO\n");
-	printf(GREEN "3" WHITE " FEEDBACK\n");
-	printf(GREEN "4" WHITE " GERENCIAMENTO\n");
+	printf(GREEN "2" WHITE " PEDIDOS\n");
+	printf(GREEN "3" WHITE " CATÁLOGO\n");
+	printf(GREEN "4" WHITE " FEEDBACK\n");
+	printf(GREEN "5" WHITE " GERENCIAMENTO\n");
 	printf(YELLOW "9" WHITE " DESLOGAR\n");
 	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
@@ -25,12 +26,15 @@ inicio:
 		NovoPedido();
 		break;
 	case '2':
-		MostrarCatalogo();
+		MenuPedido();
 		break;
 	case '3':
-		menuFeedback();
+		MostrarCatalogo();
 		break;
 	case '4':
+		menuFeedback();
+		break;
+	case '5':
 		if (isAdmin) {
 			MenuGerenciamento();
 		}

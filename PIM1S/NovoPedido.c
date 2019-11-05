@@ -10,6 +10,7 @@ struct Pedido
 	char Observacao[500];
 	double Total;
 };
+
 void NovoPedido() {
 	int opcao;
 	int posicao = 1;

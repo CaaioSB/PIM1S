@@ -122,6 +122,9 @@
     <ClCompile Include="BibPedido.c">
       <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
     </ClCompile>
+    <ClCompile Include="MenuPedido.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -204,6 +207,9 @@
     </ClInclude>
     <ClInclude Include="BibPedido.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPedido.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
