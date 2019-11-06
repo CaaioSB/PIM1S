@@ -174,7 +174,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 	char* palavras[50];
 	char line[1024];
 	char delimiter[] = ";";
-	char* values[10];
+	char* values[50];
 	FILE* arquivo;
 	arquivo = AbreArquivo('l', tb_funcionario);
 
@@ -285,8 +285,23 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 					Sleep(3000);
 					FecharArquivo(arquivo);
 					menuPizzaria(isAdmin);
-					return true;
 				}
+				else {
+					printf("\n\n");
+					centerText(RED "SENHA INCORRETA, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
+					Sleep(3000);
+					FecharArquivo(arquivo);
+					tentativas++;
+					return false;
+				}
+			}
+			else {
+				printf("\n\n");
+				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
+				Sleep(3000);
+				FecharArquivo(arquivo);
+				tentativas++;
+				return false;
 			}
 		}
 		free(ptr);

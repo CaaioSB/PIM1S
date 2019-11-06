@@ -85,6 +85,8 @@ static void ListarPedidos() {
 	struct BibPedido Pedidos;
 	int x = 0;
 	int j = 0;
+	int w = 0;
+	int z = 3;
 	int numLinhas = 0;
 	char* palavras[50];
 	char line[1024];
@@ -92,15 +94,23 @@ static void ListarPedidos() {
 	char delimiter[] = ";";
 	FILE* arquivo;
 
+	system(CLEAR_SCREEN_PROGRAM);
+	centerText(BLUE "MENU PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 11);
+
+	for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+		printf("\n");
+	}
+
 	arquivo = fopen(tb_pedido, "rt");
 
 	if (arquivo == NULL) {
 		return EXIT_FAILURE;
 	}
 
-	printf(GREEN "%-15s" GREEN "%-32s" GREEN "%-0s\n" GREEN, "ID", "NOME DO CLIENTE", "TELEFONE CELULAR");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
+		printf("\n__________________________________________________________________________\n");
+		printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15s" WHITE "%+20s\n" WHITE, "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO");
 		//Adiciona cada linha no vetor
 		palavras[x] = _strdup(line);
 		char* ptr = strtok(palavras[x], delimiter);
@@ -114,20 +124,22 @@ static void ListarPedidos() {
 		Pedidos.idPedido = values[0];
 		Pedidos.idClientePedido = values[1];
 		Pedidos.qtdProdutoPedido = atoi(values[2]);
-		for (int z = 3; z <= Pedidos.qtdProdutoPedido * 2; z++) {
-			for (int w = 0; w < Pedidos.qtdProdutoPedido; w++) {
-				Pedidos.nomeProdutoPedido[w], values[z];
-			}
+		for (z = 0; z < Pedidos.qtdProdutoPedido; z++) {
+			Pedidos.nomeProdutoPedido[w] = values[z + 3];
+			w++;
 		}
+		Pedidos.totalPedido = atoll(values[z++]);
+		printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15i", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido);
+		for (int g = 0; g < w; g++) {
+			printf(WHITE "\n%+74s", Pedidos.nomeProdutoPedido[g]);
+		}
+		printf("\n__________________________________________________________________________\n");
+		w = 0;
+		j = 0;
+		numLinhas++;
+		x++;
 	}
-	Pedidos.totalPedido = atoll(values[5]);
-	printf(WHITE "%-14s " WHITE "%-32s" WHITE "%-0i\n" WHITE, Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido);
-	j = 0;
-	x++;
-	//Conta a quantidade de linhas
-	numLinhas++;
 	fclose(arquivo);
-	return true;
 }
 
 static int ContarPedidos() {

@@ -24,7 +24,7 @@ inicio:
 		break;
 	case '2':
 		ListarPedidos();
-		break;
+		goto inicio;
 	case '3':
 		//RemProduto();
 		break;
