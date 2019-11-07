@@ -84,10 +84,9 @@ static bool BaixaEstoque() {
 static void ListarPedidos() {
 	struct BibPedido Pedidos;
 	int x = 0;
-	int j = 0;
 	int w = 0;
 	int z = 3;
-	int numLinhas = 0;
+	int numLinha = 0;
 	char* palavras[50];
 	char line[1024];
 	char* values[50];
@@ -107,36 +106,62 @@ static void ListarPedidos() {
 		return EXIT_FAILURE;
 	}
 
+	while (fgets(line, sizeof line, arquivo) != NULL) {
+		numLinha++;
+	}
+
+	fclose(arquivo);
+
+	arquivo = fopen(tb_pedido, "rt");
+	printf("SELECIONE QUAL PEDIDO DESEJA LISTAR\n");
+	printf(GREEN "1" WHITE "..." RED "%i\n" WHITE, numLinha);
+	Pedidos.idPedido = _getch();
+
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
-		printf("\n__________________________________________________________________________\n");
-		printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15s" WHITE "%+20s\n" WHITE, "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO");
-		//Adiciona cada linha no vetor
-		palavras[x] = _strdup(line);
-		char* ptr = strtok(palavras[x], delimiter);
-		values[j] = ptr;
-		j++;
-		while (ptr != NULL && j < 25) {
-			ptr = strtok(NULL, delimiter);
-			values[j] = ptr;
-			j++;
+		palavras[numLinha] = _strdup(line);
+		if (line[0] == Pedidos.idPedido) {
+			int j = 0;
+			while (j < 1) {
+				char* ptr = strtok(palavras[numLinha], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 9)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+			}
+			Pedidos.idPedido = values[0];
+			Pedidos.idClientePedido = values[1];
+			Pedidos.qtdProdutoPedido = atoi(values[2]);
+			for (z = 0; z < Pedidos.qtdProdutoPedido; z++) {
+				Pedidos.nomeProdutoPedido[w] = values[z + 3];
+				w++;
+			}
+			Pedidos.totalPedido = atoll(values[z + 3]);
+
+			printf("\n___________________________________________________________________________________________\n");
+			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15s" WHITE "%+20s" WHITE "%+20s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
+			//Adiciona cada linha no vetor
+			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15i", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido);
+			for (int g = 0; g < w; g++) {
+				if (g == 0) {
+					printf(WHITE "%-70s\n", Pedidos.nomeProdutoPedido[g]);
+				}
+				else {
+					printf(WHITE "%+75s\n", Pedidos.nomeProdutoPedido[g]);
+				}
+			}
+			printf(WHITE "%+85.2f", Pedidos.totalPedido);
+			printf("\n___________________________________________________________________________________________\n");
+			break;
 		}
-		Pedidos.idPedido = values[0];
-		Pedidos.idClientePedido = values[1];
-		Pedidos.qtdProdutoPedido = atoi(values[2]);
-		for (z = 0; z < Pedidos.qtdProdutoPedido; z++) {
-			Pedidos.nomeProdutoPedido[w] = values[z + 3];
-			w++;
-		}
-		Pedidos.totalPedido = atoll(values[z++]);
-		printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15i", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido);
-		for (int g = 0; g < w; g++) {
-			printf(WHITE "\n%+74s", Pedidos.nomeProdutoPedido[g]);
-		}
-		printf("\n__________________________________________________________________________\n");
 		w = 0;
-		j = 0;
-		numLinhas++;
+		numLinha++;
 		x++;
 	}
 	fclose(arquivo);

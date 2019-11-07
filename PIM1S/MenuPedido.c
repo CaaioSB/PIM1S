@@ -24,6 +24,7 @@ inicio:
 		break;
 	case '2':
 		ListarPedidos();
+		system("pause > nul");
 		goto inicio;
 	case '3':
 		//RemProduto();

@@ -190,8 +190,8 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 		i++;
 		numLinhas++;
 	}
-
-	for (int x = 0; x < numLinhas; x++) {
+	int x = 0, gambiarra = numLinhas - 1;
+	for (x = 0; x < numLinhas; x++) {
 		int j = 0;
 		char* ptr = strtok(palavras[x], delimiter);
 		values[j] = ptr;
@@ -295,7 +295,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 					return false;
 				}
 			}
-			else {
+			else if (x == gambiarra) {
 				printf("\n\n");
 				centerText(RED "USUÁRIO NÃO ENCONTRADO, VOLTANDO AO MENU INICIAL" WHITE, cmd_dimension.columns + 10);
 				Sleep(3000);
