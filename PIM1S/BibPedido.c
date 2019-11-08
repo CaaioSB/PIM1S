@@ -144,20 +144,20 @@ static void ListarPedidos() {
 			}
 			Pedidos.totalPedido = atoll(values[z + 3]);
 
-			printf("\n___________________________________________________________________________________________\n");
-			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15s" WHITE "%+20s" WHITE "%+20s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
+			printf("\n__________________________________________________________________________________________\n");
+			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-23s" WHITE "%-15s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
 			//Adiciona cada linha no vetor
-			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-15i", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido);
 			for (int g = 0; g < w; g++) {
-				if (g == 0) {
-					printf(WHITE "%-70s\n", Pedidos.nomeProdutoPedido[g]);
+				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27i" WHITE "%-20s\n", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido, Pedidos.nomeProdutoPedido[g]);
+				/*if (g == 0) {
+					printf(WHITE "%+22s\n", Pedidos.nomeProdutoPedido[g]);
 				}
 				else {
 					printf(WHITE "%+75s\n", Pedidos.nomeProdutoPedido[g]);
-				}
+				}*/
 			}
 			printf(WHITE "%+85.2f", Pedidos.totalPedido);
-			printf("\n___________________________________________________________________________________________\n");
+			printf("\n__________________________________________________________________________________________\n");
 			break;
 		}
 		w = 0;

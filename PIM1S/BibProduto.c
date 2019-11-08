@@ -112,6 +112,107 @@ static bool ListarPizzas() {
 	return true;
 }
 
+static bool ListarProdutosCategoria() {
+	struct PRODUTO Bebidas;
+	int j = 0;
+	int x = 0;
+	int numProdutos = 0;
+	char delimiter[] = ";";
+	char* palavras[50];
+	char line[1024];
+	FILE* arquivo;
+	char* values[9];
+
+	char* nomePizza[100] = { NULL };
+	char* nomeBebida[100] = { NULL };
+	char* nomeAcompanhamento[100] = { NULL };
+
+	int pizza = 0, bebida = 0, acompanhamento = 0;
+
+	arquivo = AbreArquivo('l', tb_produto);
+
+	if (arquivo == NULL)
+		return EXIT_FAILURE;
+
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		palavras[x] = _strdup(line);
+		if (strstr(palavras[x], "BEBIDA") != NULL) {
+			//printf("%s\n", palavras[x]);
+			while (j < 1) {
+				char* ptr = strtok(palavras[x], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 2)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+				nomeBebida[bebida] = values[1];
+				bebida = bebida + 1;
+			}
+		}
+		if (strstr(palavras[x], "PIZZA") != NULL) {
+			while (j < 1) {
+				char* ptr = strtok(palavras[x], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 2)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+				nomePizza[pizza] = values[1];
+				pizza = pizza + 1;
+			}
+		}
+		else {
+			while (j < 1) {
+				char* ptr = strtok(palavras[x], delimiter);
+				values[j] = ptr;
+				j++;
+				while (ptr != NULL && j < 2)
+				{
+					// Imprime os dados lidos do documento de texto
+					//printf("'%s'\n", ptr);
+					ptr = strtok(NULL, delimiter);
+					values[j] = ptr;
+					j++;
+				}
+				nomeAcompanhamento[acompanhamento] = values[1];
+				acompanhamento = acompanhamento + 1;
+			}
+		}
+		x++;
+		j = 0;
+		numProdutos++;
+	}
+
+	for (int cv = 0; cv < numProdutos; cv++) {
+		if (nomePizza[cv] == NULL) {
+			nomePizza[cv] = "SEI LÁ";
+		}
+		if (nomeBebida[cv] == NULL) {
+			nomeBebida[cv] = "SEI LÁ";
+		}
+		if (nomeAcompanhamento[cv] == NULL) {
+			nomeAcompanhamento[cv] = "SEI LÁ";
+		}
+		printf(WHITE "%-15s" WHITE "%+10s" WHITE "%-15s\n", nomePizza[cv], nomeBebida[cv], nomeAcompanhamento[cv]);
+
+	}
+	FecharArquivo(arquivo);
+	printf("\n");
+	return true;
+}
+
 static bool ListarBebidas() {
 	struct PRODUTO Bebidas;
 	int j = 0;
