@@ -195,6 +195,7 @@ static bool ListarProdutosCategoria() {
 		numProdutos++;
 	}
 
+	printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-23s" WHITE "%-15s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
 	for (int cv = 0; cv < numProdutos; cv++) {
 		if (nomePizza[cv] == NULL) {
 			nomePizza[cv] = "SEI LÁ";

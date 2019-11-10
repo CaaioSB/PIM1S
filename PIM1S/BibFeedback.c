@@ -75,7 +75,6 @@ static int ContarFeedbacks() {
 	file = fopen(tb_feedback, "r");
 
 	if (file == NULL) {
-		FecharArquivo(file);
 		return 0;
 	}
 

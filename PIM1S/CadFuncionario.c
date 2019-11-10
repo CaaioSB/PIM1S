@@ -14,7 +14,7 @@ bool CadFuncionario() {
 
 	printf("DIGITE O NOME COMPLETO: ");
 	setbuf(stdin, NULL);
-	(void)scanf(" %[^\n]s", BFuncionario.nome_completo);
+	scanf(" %[^\n]s", BFuncionario.nome_completo);
 
 	printf("DIGITE SEU E-MAIL: ");
 	setbuf(stdin, NULL);
