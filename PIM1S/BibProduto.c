@@ -195,19 +195,18 @@ static bool ListarProdutosCategoria() {
 		numProdutos++;
 	}
 
-	printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-23s" WHITE "%-15s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
+	printf(YELLOW "%-35s " YELLOW "%-35s" YELLOW "%-0s\n" WHITE, "PIZZAS", "BEBIDAS", "ACOMPANHAMENTOS");
 	for (int cv = 0; cv < numProdutos; cv++) {
 		if (nomePizza[cv] == NULL) {
-			nomePizza[cv] = "SEI LÁ";
+			nomePizza[cv] = " ";
 		}
 		if (nomeBebida[cv] == NULL) {
-			nomeBebida[cv] = "SEI LÁ";
+			nomeBebida[cv] = " ";
 		}
 		if (nomeAcompanhamento[cv] == NULL) {
-			nomeAcompanhamento[cv] = "SEI LÁ";
+			nomeAcompanhamento[cv] = " ";
 		}
-		printf(WHITE "%-15s" WHITE "%+10s" WHITE "%-15s\n", nomePizza[cv], nomeBebida[cv], nomeAcompanhamento[cv]);
-
+		printf(WHITE "%-35s " WHITE "%-35s" WHITE "%-0s\n" WHITE, nomePizza[cv], nomeBebida[cv], nomeAcompanhamento[cv]);
 	}
 	FecharArquivo(arquivo);
 	printf("\n");
