@@ -126,7 +126,7 @@ static void ListarPedidos() {
 				char* ptr = strtok(palavras[numLinha], delimiter);
 				values[j] = ptr;
 				j++;
-				while (ptr != NULL && j < 9)
+				while (ptr != NULL && j < 25)
 				{
 					// Imprime os dados lidos do documento de texto
 					//printf("'%s'\n", ptr);
@@ -146,15 +146,10 @@ static void ListarPedidos() {
 
 			printf("\n__________________________________________________________________________________________\n");
 			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-23s" WHITE "%-15s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
+				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27i" WHITE "%-20s\n", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido, Pedidos.nomeProdutoPedido[0]);
 			//Adiciona cada linha no vetor
 			for (int g = 0; g < w; g++) {
-				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27i" WHITE "%-20s\n", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido, Pedidos.nomeProdutoPedido[g]);
-				/*if (g == 0) {
-					printf(WHITE "%+22s\n", Pedidos.nomeProdutoPedido[g]);
-				}
-				else {
-					printf(WHITE "%+75s\n", Pedidos.nomeProdutoPedido[g]);
-				}*/
+				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-20s\n", " ", " ", " ", Pedidos.nomeProdutoPedido[g]);
 			}
 			printf(WHITE "%+85.2f", Pedidos.totalPedido);
 			printf("\n__________________________________________________________________________________________\n");
