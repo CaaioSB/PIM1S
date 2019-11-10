@@ -131,6 +131,7 @@
     <ClCompile Include="AltProduto.c" />
     <ClCompile Include="BibCliente.c" />
     <ClCompile Include="BibFeedback.c" />
+    <ClCompile Include="BibFinanceiro.c" />
     <ClCompile Include="BibIngrediente.c" />
     <ClCompile Include="BibPedido.c" />
     <ClCompile Include="BibProduto.c" />
@@ -141,9 +142,11 @@
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="BibFuncionario.c" />
     <ClCompile Include="LisFeedback.c" />
+    <ClCompile Include="LisTotalPedidos.c" />
     <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="MenuFeedback.c" />
+    <ClCompile Include="MenuFinanceiro.c" />
     <ClCompile Include="MenuFuncionario.c" />
     <ClCompile Include="MenuGerenciamento.c" />
     <ClCompile Include="MenuPedido.c" />
@@ -161,6 +164,7 @@
     <ClInclude Include="AltProduto.h" />
     <ClInclude Include="BibCliente.h" />
     <ClInclude Include="BibFeedback.h" />
+    <ClInclude Include="BibFinanceiro.h" />
     <ClInclude Include="BibFuncionario.h" />
     <ClInclude Include="BibIngrediente.h" />
     <ClInclude Include="BibPedido.h" />
@@ -171,9 +175,11 @@
     <ClInclude Include="Catalogo.h" />
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="LisFeedback.h" />
+    <ClInclude Include="LisTotalPedidos.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MenuFeedback.h" />
+    <ClInclude Include="MenuFinanceiro.h" />
     <ClInclude Include="MenuFuncionario.h" />
     <ClInclude Include="MenuGerenciamento.h" />
     <ClInclude Include="MenuPedido.h" />

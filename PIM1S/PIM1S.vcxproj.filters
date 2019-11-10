@@ -125,6 +125,15 @@
     <ClCompile Include="MenuPedido.c">
       <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
     </ClCompile>
+    <ClCompile Include="MenuFinanceiro.c">
+      <Filter>Arquivos de Origem\Gerenciamento Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="LisTotalPedidos.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
+    <ClCompile Include="BibFinanceiro.c">
+      <Filter>Arquivos de Origem\Gerencamento Biblioteca</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -210,6 +219,15 @@
     </ClInclude>
     <ClInclude Include="MenuPedido.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFinanceiro.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="LisTotalPedidos.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="BibFinanceiro.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

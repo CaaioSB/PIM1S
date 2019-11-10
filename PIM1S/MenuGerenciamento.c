@@ -36,6 +36,7 @@ void MenuGerenciamento() {
 	case '5':
 		break;
 	case '6':
+		menuFinanceiro();
 		break;
 	case '9':
 		menuPizzaria();
