@@ -24,7 +24,9 @@ inicio:
 		break;
 	case '2':
 		ListarPedidos();
-		system("pause > nul");
+		printf("\n\n");
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
+		system("pause >nul");
 		goto inicio;
 	case '3':
 		//RemProduto();

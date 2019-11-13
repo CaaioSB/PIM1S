@@ -65,7 +65,7 @@ static void ListarTotalPedido() {
 		numLinha++;
 		x++;
 	}
-	printf(GREEN "R$ %0.2f" WHITE " %s " GREEN "%i" WHITE " %s ", Pedidos.totalPedido, "COM", ContarPedidos(), "PEDIDOS.");
+	printf(GREEN "R$ %0.2f" WHITE " %s " GREEN "%i" WHITE " %s \n", Pedidos.totalPedido, "COM", ContarPedidos(), "PEDIDOS.");
 	fclose(arquivo);
 }
 

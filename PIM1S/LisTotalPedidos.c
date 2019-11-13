@@ -13,7 +13,7 @@ inicio:
 
 	printf(WHITE "ATÉ O MOMENTO FOI ARRECADADO " WHITE);
 	ListarTotalPedido();
-
+	centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
 	system("pause >nul");
 	menuFinanceiro();
 }

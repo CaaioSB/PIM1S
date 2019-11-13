@@ -12,7 +12,7 @@ void MostrarCatalogo() {
 	}
 
 	if (ListarProdutosCategoria()) {
-		centerText(GREEN "\nAPERTE QUALQUER TECLA PARA VOLTAR AO MENU DA PIZZARIA" WHITE, cmd_dimension.columns + 12);
+		centerText(GREEN "APERTE QUALQUER TECLA PARA VOLTAR AO MENU DA PIZZARIA" WHITE, cmd_dimension.columns + 12);
 		system("pause >nul");
 		menuPizzaria();
 	}

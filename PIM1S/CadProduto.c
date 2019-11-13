@@ -17,6 +17,7 @@ inicio:
 	printf("DIGITE O NOME DO PRODUTO: ");
 	setbuf(stdin, NULL);
 	(void)scanf("%[^\n]s", &BProduto.nome);
+	setbuf(stdin, NULL);
 	printf("SELECIONE O TIPO DO PRODUTO: ");
 	printf(GREEN "\n1 " WHITE "PIZZA SALGADA");
 	printf(GREEN "\n2 " WHITE "PIZZA DOCE");
@@ -24,6 +25,7 @@ inicio:
 	printf(GREEN "\n4 " WHITE "BEBIDA\n");
 	printf("OPÇÃO: ");
 tipoProduto:
+	setbuf(stdin, NULL);
 	op = _getch();
 
 	switch (op)

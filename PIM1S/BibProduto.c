@@ -75,6 +75,7 @@ static bool ListarPizzas() {
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
+	printf(YELLOW "%-10s " YELLOW "%-25s" YELLOW "%-0s\n" WHITE, "ID", "NOME", "PREÇO");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
@@ -99,10 +100,11 @@ static bool ListarPizzas() {
 				//int quantidade = atoi(values[3]);
 				Pizzas.quantidade = atoi(values[3]);
 				Pizzas.preco = atoll(values[4]);
-				printf(GREEN "%s " WHITE "%s", Pizzas.id, Pizzas.nome);
+				printf(GREEN "%-10s " WHITE "%-25s" WHITE "%-10.2f\n" WHITE, Pizzas.id, Pizzas.nome, Pizzas.preco);
+				//printf(GREEN "%s " WHITE "%s\n", Pizzas.id, Pizzas.nome);
 			}
 		}
-
+		j = 0;
 		x++;
 		//Conta a quantidade de linhas
 		numLinhas++;
@@ -124,8 +126,13 @@ static bool ListarProdutosCategoria() {
 	char* values[9];
 
 	char* nomePizza[100] = { NULL };
+	float precoPizza[100] = { 0 };
+
 	char* nomeBebida[100] = { NULL };
+	float precoBebida[100] = { 0 };
+
 	char* nomeAcompanhamento[100] = { NULL };
+	float precoAcompanhamento[100] = { 0 };
 
 	int pizza = 0, bebida = 0, acompanhamento = 0;
 
@@ -144,7 +151,7 @@ static bool ListarProdutosCategoria() {
 				char* ptr = strtok(palavras[x], delimiter);
 				values[j] = ptr;
 				j++;
-				while (ptr != NULL && j < 2)
+				while (ptr != NULL && j < 5)
 				{
 					// Imprime os dados lidos do documento de texto
 					//printf("'%s'\n", ptr);
@@ -153,6 +160,7 @@ static bool ListarProdutosCategoria() {
 					j++;
 				}
 				nomeBebida[bebida] = values[1];
+				precoBebida[bebida] = atoll(values[4]);
 				bebida = bebida + 1;
 			}
 		}
@@ -161,7 +169,7 @@ static bool ListarProdutosCategoria() {
 				char* ptr = strtok(palavras[x], delimiter);
 				values[j] = ptr;
 				j++;
-				while (ptr != NULL && j < 2)
+				while (ptr != NULL && j < 5)
 				{
 					// Imprime os dados lidos do documento de texto
 					//printf("'%s'\n", ptr);
@@ -170,6 +178,7 @@ static bool ListarProdutosCategoria() {
 					j++;
 				}
 				nomePizza[pizza] = values[1];
+				precoPizza[pizza] = atoll(values[4]);
 				pizza = pizza + 1;
 			}
 		}
@@ -178,7 +187,7 @@ static bool ListarProdutosCategoria() {
 				char* ptr = strtok(palavras[x], delimiter);
 				values[j] = ptr;
 				j++;
-				while (ptr != NULL && j < 2)
+				while (ptr != NULL && j < 5)
 				{
 					// Imprime os dados lidos do documento de texto
 					//printf("'%s'\n", ptr);
@@ -187,6 +196,7 @@ static bool ListarProdutosCategoria() {
 					j++;
 				}
 				nomeAcompanhamento[acompanhamento] = values[1];
+				precoAcompanhamento[acompanhamento] = atoll(values[4]);
 				acompanhamento = acompanhamento + 1;
 			}
 		}
@@ -194,19 +204,41 @@ static bool ListarProdutosCategoria() {
 		j = 0;
 		numProdutos++;
 	}
+	int maior;
+	if (pizza > acompanhamento) {
+		maior = pizza;
+		if (bebida > maior) {
+			maior = bebida;
+		}
+		if (acompanhamento > maior) {
+			maior = acompanhamento;
+		}
+	}
+	else {
+		maior = acompanhamento;
+		if (bebida > maior) {
+			maior = bebida;
+		}
+	}
 
-	printf(YELLOW "%-35s " YELLOW "%-35s" YELLOW "%-0s\n" WHITE, "PIZZAS", "BEBIDAS", "ACOMPANHAMENTOS");
-	for (int cv = 0; cv < numProdutos; cv++) {
+	printf(RED "%-35s %-10s" GREEN "%-35s %-10s" YELLOW "%-35s %-10s\n" WHITE, "PIZZAS", "VALOR", "BEBIDAS", "VALOR", "ACOMPANHAMENTOS", "  VALOR");
+	for (int cv = 0; cv < maior; cv++) {
 		if (nomePizza[cv] == NULL) {
-			nomePizza[cv] = " ";
+			nomePizza[cv] = RED"<INDISPONÍVEL> \t\t\t"WHITE;
+			precoPizza[cv] = 0;
 		}
 		if (nomeBebida[cv] == NULL) {
-			nomeBebida[cv] = " ";
+			nomeBebida[cv] = RED"<INDISPONÍVEL>   \t\t\t"WHITE;
+			precoBebida[cv] = 0;
+			//nomeBebida[cv] = " ";
 		}
 		if (nomeAcompanhamento[cv] == NULL) {
-			nomeAcompanhamento[cv] = " ";
+			nomeAcompanhamento[cv] = RED"<INDISPONÍVEL>   \t\t\t"WHITE;
+			precoAcompanhamento[cv] = 0;
+			//nomeAcompanhamento[cv] = " ";
 		}
-		printf(WHITE "%-35s " WHITE "%-35s" WHITE "%-0s\n" WHITE, nomePizza[cv], nomeBebida[cv], nomeAcompanhamento[cv]);
+		printf(WHITE "%-35s %-10.2f" WHITE "%-35s %-10.2f" WHITE "%-35s %-10.2f\n" WHITE, nomePizza[cv], precoPizza[cv], nomeBebida[cv], precoBebida[cv], nomeAcompanhamento[cv], precoAcompanhamento[cv]);
+		//printf(WHITE "%-35s " WHITE "%-35s" WHITE "%-0s\n" WHITE, nomePizza[cv], nomeBebida[cv], nomeAcompanhamento[cv]);
 	}
 	FecharArquivo(arquivo);
 	printf("\n");
@@ -253,10 +285,10 @@ static bool ListarBebidas() {
 				//int quantidade = atoi(values[3]);
 				Bebidas.quantidade = atoi(values[3]);
 				Bebidas.preco = atoll(values[4]);
-				printf(GREEN "%s " WHITE "%s", Bebidas.id, Bebidas.nome);
+				printf(GREEN "%s " WHITE "%s\n", Bebidas.id, Bebidas.nome);
 			}
 		}
-
+		j = 0;
 		x++;
 		//Conta a quantidade de linhas
 		numLinhas++;
