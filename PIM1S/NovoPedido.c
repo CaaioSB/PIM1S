@@ -15,7 +15,7 @@ void NovoPedido() {
 	int opcao;
 	int posicao = 1;
 	//int loop = 0;
-	char idProduto;
+	int idProduto;
 	char idCliente[5];
 cliente:
 	opcao = 0;
@@ -143,7 +143,7 @@ adcProduto:
 	printf(MAGENTA "QUAL PRODUTO DESEJA ADICIONAR? \n" WHITE);
 	printf(GREEN "1" WHITE " ADICIONAR PIZZA\n");
 	printf(GREEN "2" WHITE " ADICIONAR BEBIDA\n");
-	printf(GREEN "3" WHITE " ADICIONAR ACOMPANHAMENTO\n");
+	printf(RED "3" RED " ADICIONAR ACOMPANHAMENTO\n");
 	printf(RED "9" WHITE " VOLTAR\n");
 	opcao = _getch();
 
@@ -152,8 +152,6 @@ adcProduto:
 		goto adcPizza;
 	case '2':
 		goto adcBebida;
-	case '3':
-		break;
 	case '9':
 		goto novoPedido;
 	default:
@@ -176,7 +174,7 @@ adcPizza:
 	printf(MAGENTA "SELECIONE A PIZZA:\n" WHITE);
 	ListarPizzas();
 	setbuf(stdin, NULL);
-	(void)scanf("%c", &idProduto);
+	(void)scanf("%i", &idProduto);
 
 	if (AdicionarCarrinho(idProduto)) {
 		printf(GREEN "A %s FOI ADICIONADA COM SUCESSO!" WHITE, nomeProdutoCarrinho[qntProdutoCarrinho]);
@@ -203,7 +201,7 @@ adcBebida:
 	printf(MAGENTA "SELECIONE A BEBIDA:\n" WHITE);
 	ListarBebidas();
 	setbuf(stdin, NULL);
-	(void)scanf("%c", &idProduto);
+	(void)scanf("%i", &idProduto);
 
 	if (AdicionarCarrinho(idProduto)) {
 		printf(GREEN "A PRODUTO: %s FOI ADICIONADO COM SUCESSO!" WHITE, nomeProdutoCarrinho[qntProdutoCarrinho]);

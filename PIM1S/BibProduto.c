@@ -75,7 +75,7 @@ static bool ListarPizzas() {
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
-	printf(YELLOW "%-10s " YELLOW "%-25s" YELLOW "%-0s\n" WHITE, "ID", "NOME", "PREÇO");
+	printf(YELLOW "%-10s " YELLOW "%-35s" YELLOW "%-25s\n" WHITE, "ID", "NOME", "PREÇO");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		//Adiciona cada linha no vetor
@@ -100,7 +100,7 @@ static bool ListarPizzas() {
 				//int quantidade = atoi(values[3]);
 				Pizzas.quantidade = atoi(values[3]);
 				Pizzas.preco = atoll(values[4]);
-				printf(GREEN "%-10s " WHITE "%-25s" WHITE "%-10.2f\n" WHITE, Pizzas.id, Pizzas.nome, Pizzas.preco);
+				printf(GREEN "%-10s " WHITE "%-35s" WHITE "%-25.2f\n" WHITE, Pizzas.id, Pizzas.nome, Pizzas.preco);
 				//printf(GREEN "%s " WHITE "%s\n", Pizzas.id, Pizzas.nome);
 			}
 		}
@@ -393,7 +393,7 @@ static bool AlterarProduto(char idProduto, char nomeProduto[100], char tipoProdu
 	}
 }
 
-static bool AdicionarCarrinho(char id) {
+static bool AdicionarCarrinho(int id) {
 	int numLinha = 0;
 	char line[1024];
 	char delimiter[] = ";";
@@ -426,8 +426,12 @@ static bool AdicionarCarrinho(char id) {
 
 	while (fgets(carrinhoCompras, sizeof carrinhoCompras, arquivo2) != NULL)
 	{
+		char valuesTeste;
 		palavras[numLinha] = _strdup(carrinhoCompras);
-		if (carrinhoCompras[0] == id)
+		char ptrr = strtok(palavras[numLinha], delimiter);
+		valuesTeste = ptrr;
+		int v = valuesTeste - 48;
+		if (v == id)
 		{
 			qntProdutoCarrinho++;
 			int j = 0;

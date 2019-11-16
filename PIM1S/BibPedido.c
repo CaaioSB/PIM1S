@@ -113,9 +113,16 @@ static void ListarPedidos() {
 	fclose(arquivo);
 
 	arquivo = fopen(tb_pedido, "rt");
-	printf("SELECIONE QUAL PEDIDO DESEJA LISTAR\n");
-	printf(GREEN "1" WHITE "..." RED "%i\n" WHITE, numLinha);
-	Pedidos.idPedido = _getch();
+	printf(YELLOW "SELECIONE QUAL PEDIDO DESEJA LISTAR\n\n" WHITE);
+	for (int j = 1; j <= numLinha; j++) {
+		if (j % 10) {
+			printf("%i ", j);
+		}
+		else {
+			printf("%i \n", j);
+		}
+	}
+	Pedidos.idPedido = scanf("%i");
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
@@ -146,7 +153,7 @@ static void ListarPedidos() {
 
 			printf("\n__________________________________________________________________________________________\n");
 			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-23s" WHITE "%-15s\n", "ID PEDIDO", "ID CLIENTE", "QUANTIDADE DE PRODUTOS", "NOME DO PRODUTO", "PREÇO TOTAL");
-				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27i" WHITE "%-20s\n", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido + 1, Pedidos.nomeProdutoPedido[0]);
+			printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27i" WHITE "%-20s\n", Pedidos.idPedido, Pedidos.idClientePedido, Pedidos.qtdProdutoPedido + 1, Pedidos.nomeProdutoPedido[0]);
 			//Adiciona cada linha no vetor
 			for (int g = 0; g < w; g++) {
 				printf(GREEN "%-14s" WHITE "%-15s" WHITE "%-27s" WHITE "%-20s\n", " ", " ", " ", Pedidos.nomeProdutoPedido[g]);
