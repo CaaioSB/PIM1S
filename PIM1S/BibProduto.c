@@ -400,6 +400,7 @@ static bool AdicionarCarrinho(int id) {
 	FILE* arquivo;
 	FILE* arquivo2;
 	char* palavras[50];
+	char* palavrass[50];
 	int i = 0;
 	char* values[9];
 	char* fileLine[100];
@@ -426,12 +427,11 @@ static bool AdicionarCarrinho(int id) {
 
 	while (fgets(carrinhoCompras, sizeof carrinhoCompras, arquivo2) != NULL)
 	{
-		char valuesTeste;
 		palavras[numLinha] = _strdup(carrinhoCompras);
-		char ptrr = strtok(palavras[numLinha], delimiter);
-		valuesTeste = ptrr;
-		int v = valuesTeste - 48;
-		if (v == id)
+		palavrass[numLinha] = _strdup(carrinhoCompras);
+		char* ptrr = strtok(palavrass[numLinha], delimiter);
+		int v = atoi(ptrr);
+		if (id == v)
 		{
 			qntProdutoCarrinho++;
 			int j = 0;
