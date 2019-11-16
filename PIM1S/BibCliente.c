@@ -27,13 +27,14 @@ static bool CadastrarCliente(char nome_completo[100], char telres[15], char telc
 	}
 }
 
-static char BuscarCliente(char id) {
+static char BuscarCliente(int id) {
 	int numLinha = 0;
 	char line[1024];
 	char delimiter[] = ";";
 	FILE* arquivo;
 	FILE* arquivo2;
 	char* palavras[50];
+	char* palavrass[50];
 	int i = 0;
 	char* values[9];
 	char* fileLine[100];
@@ -63,7 +64,10 @@ static char BuscarCliente(char id) {
 	while (fgets(dadosCliente, sizeof dadosCliente, arquivo2) != NULL)
 	{
 		palavras[numLinha] = _strdup(dadosCliente);
-		if (dadosCliente[0] == id)
+		palavrass[numLinha] = _strdup(dadosCliente);
+		char* ptrr = strtok(palavrass[numLinha], delimiter);
+		int v = atoi(ptrr);
+		if (v == id)
 		{
 			int j = 0;
 			while (j < 1) {

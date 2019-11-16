@@ -16,7 +16,7 @@ void NovoPedido() {
 	int posicao = 1;
 	//int loop = 0;
 	int idProduto;
-	char idCliente[5];
+	int idCliente[5];
 cliente:
 	opcao = 0;
 	//loop = 1;
@@ -59,7 +59,7 @@ selCliente:
 	ListarClientes();
 	printf("\n");
 	setbuf(stdin, NULL);
-	(void)scanf("%c", idCliente);
+	(void)scanf("%i", idCliente);
 
 	BuscarCliente(idCliente[0]);
 confCliente:
