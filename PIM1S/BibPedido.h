@@ -5,6 +5,6 @@ static bool FinalizarPedido(int formaPagamento);
 
 static bool BaixaEstoque();
 
-static void ListarPedidos();
+static void VisualizarPedido();
 
 static int ContarPedidos();

@@ -17,7 +17,7 @@ inicio:
 	printf(YELLOW "      MENU\n" WHITE);
 	printf(GREEN "1" WHITE " FAZER LOGIN\n");
 	printf(GREEN"2" WHITE " REGISTRAR-SE\n");
-	printf(GREEN"3" WHITE " ESQUECI MINHA SENHA\n");
+	printf(RED "3" RED " ESQUECI MINHA SENHA\n");
 	printf(RED "0" WHITE " SAIR\n");
 	op = _getch();
 

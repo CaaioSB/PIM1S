@@ -234,6 +234,7 @@ removerProduto:
 	if (opcao != 0) {
 		qntProdutoCarrinho--;
 		nomeProdutoCarrinho[opcao] = NULL;
+		totalProdutoCarrinho -= precoProdutoCarrinho[opcao];
 
 		for (posicao; posicao <= qntProdutoCarrinho; posicao++) {
 			if (nomeProdutoCarrinho[posicao] == NULL) {

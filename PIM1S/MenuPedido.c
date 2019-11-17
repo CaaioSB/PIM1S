@@ -12,9 +12,9 @@ inicio:
 		printf("\n");
 	}
 
-	printf(GREEN "1 " WHITE "VISUALIZAR PEDIDOS\n");
-	printf(GREEN "2 " WHITE "LISTAR PEDIDOS\n");
-	printf(GREEN "3 " WHITE "REMOVER PEDIDO\n");
+	printf(GREEN "1 " WHITE "LISTAR PEDIDOS\n");
+	printf(GREEN "2 " WHITE "VISUALIZAR PEDIDO\n");
+	printf(RED "3 " RED "REMOVER PEDIDO\n");
 	printf(YELLOW "9 " WHITE "VOLTAR\n");
 	opcao = _getch();
 
@@ -23,19 +23,22 @@ inicio:
 		//CadProduto();
 		break;
 	case '2':
-		ListarPedidos();
+		VisualizarPedido();
 		printf("\n\n");
 		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR" WHITE, cmd_dimension.columns + 12);
 		system("pause >nul");
 		goto inicio;
 	case '3':
-		//RemProduto();
+		centerText(RED "ESSA FUNÇÃO NÃO ESTA DISPONÍVEL NESTA VERSÃO DO SISTEMA, SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 a 2 ou 9)" WHITE, cmd_dimension.columns + 18);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU", WHITE, cmd_dimension.columns + 12);
+		system("pause");
+		goto inicio;
 		break;
 	case '9':
 		menuPizzaria();
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 a 5)" WHITE, cmd_dimension.columns + 18);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA! " YELLOW "(DE 1 a 2 ou 9)" WHITE, cmd_dimension.columns + 18);
 		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU", WHITE, cmd_dimension.columns + 12);
 		system("pause");
 		goto inicio;

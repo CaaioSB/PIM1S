@@ -81,13 +81,14 @@ static bool BaixaEstoque() {
 	return true;
 }
 
-static void ListarPedidos() {
+static void VisualizarPedido() {
 	struct BibPedido Pedidos;
 	int x = 0;
 	int w = 0;
 	int z = 3;
 	int numLinha = 0;
 	char* palavras[50];
+	char* palavrass[50];
 	char line[1024];
 	char* values[50];
 	char delimiter[] = ";";
@@ -116,18 +117,24 @@ static void ListarPedidos() {
 	printf(YELLOW "SELECIONE QUAL PEDIDO DESEJA LISTAR\n\n" WHITE);
 	for (int j = 1; j <= numLinha; j++) {
 		if (j % 10) {
-			printf("%i ", j);
+			printf("%-5i ", j);
 		}
 		else {
-			printf("%i \n", j);
+			printf("%-5i \n", j);
 		}
 	}
-	Pedidos.idPedido = scanf("%i");
+	printf("\n");
+	int id = 0;
+	setbuf(stdin, NULL);
+	(void)scanf("%i", &id);
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		palavras[numLinha] = _strdup(line);
-		if (line[0] == Pedidos.idPedido) {
+		palavrass[numLinha] = _strdup(line);
+		char* ptrr = strtok(palavrass[numLinha], delimiter);
+		int v = atoi(ptrr);
+		if (v == id) {
 			int j = 0;
 			while (j < 1) {
 				char* ptr = strtok(palavras[numLinha], delimiter);
