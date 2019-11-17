@@ -4,6 +4,7 @@
 
 void MenuPedido() {
 	int opcao;
+	int quantidade;
 inicio:
 	system(CLEAR_SCREEN_PROGRAM);
 	centerText(BLUE "MENU PEDIDO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 11);
@@ -12,7 +13,7 @@ inicio:
 		printf("\n");
 	}
 
-	printf(GREEN "1 " WHITE "LISTAR PEDIDOS\n");
+	printf(GREEN "1 " WHITE "LISTAR TOTAL DE PEDIDOS\n");
 	printf(GREEN "2 " WHITE "VISUALIZAR PEDIDO\n");
 	printf(RED "3 " RED "REMOVER PEDIDO\n");
 	printf(YELLOW "9 " WHITE "VOLTAR\n");
@@ -20,7 +21,12 @@ inicio:
 
 	switch (opcao) {
 	case '1':
-		//CadProduto();
+		quantidade = ContarPedidos();
+		printf("\n");
+		printf(WHITE "ATÉ O MOMENTO FORAM FEITOS %i PEDIDOS NA PIZZARIA\n" WHITE, quantidade);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto inicio;
 		break;
 	case '2':
 		VisualizarPedido();
@@ -30,16 +36,15 @@ inicio:
 		goto inicio;
 	case '3':
 		centerText(RED "ESSA FUNÇÃO NÃO ESTA DISPONÍVEL NESTA VERSÃO DO SISTEMA, SELECIONE UMA OPÇÃO VÁLIDA " YELLOW "(DE 1 a 2 ou 9)" WHITE, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU", WHITE, cmd_dimension.columns + 12);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
 		system("pause");
 		goto inicio;
-		break;
 	case '9':
 		menuPizzaria();
 		break;
 	default:
 		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA! " YELLOW "(DE 1 a 2 ou 9)" WHITE, cmd_dimension.columns + 18);
-		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU", WHITE, cmd_dimension.columns + 12);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
 		system("pause");
 		goto inicio;
 	}
