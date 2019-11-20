@@ -87,8 +87,8 @@ static void VisualizarPedido() {
 	int w = 0;
 	int z = 3;
 	int numLinha = 0;
-	char* palavras[50];
-	char* palavrass[50];
+	char* palavras[1024];
+	char* palavrass[900];
 	char line[1024];
 	char* values[50];
 	char delimiter[] = ";";
@@ -130,6 +130,8 @@ static void VisualizarPedido() {
 
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
+		palavras[numLinha] = NULL;
+		palavrass[numLinha] = NULL;
 		palavras[numLinha] = _strdup(line);
 		palavrass[numLinha] = _strdup(line);
 		char* ptrr = strtok(palavrass[numLinha], delimiter);
@@ -169,6 +171,8 @@ static void VisualizarPedido() {
 			printf("\n__________________________________________________________________________________________\n");
 			break;
 		}
+		palavras[numLinha] = NULL;
+		palavrass[numLinha] = NULL;
 		w = 0;
 		numLinha++;
 		x++;
