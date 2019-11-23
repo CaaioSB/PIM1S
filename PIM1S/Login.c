@@ -11,7 +11,7 @@
 #define SIZE 1024
 
 char usuario[SIZE];
-char senha[SIZE];
+char senha[4];
 int opcao;
 
 void Login() {
@@ -27,9 +27,12 @@ void Login() {
 	setbuf(stdin, NULL);
 	(void)scanf("%s", &usuario);
 
-	printf("DIGITE SUA SENHA: ");
+	printf("DIGITE SEU PIN: ");
 	setbuf(stdin, NULL);
-	(void)scanf("%s", &senha);
+	for (int i = 0; i < 4; i++) {
+		senha[i] = getch();
+		putchar('*');
+	}
 	
 	if (LoginFuncionario(usuario, senha)) {
 		menuPizzaria();

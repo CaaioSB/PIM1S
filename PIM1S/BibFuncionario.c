@@ -213,7 +213,7 @@ static bool LoginFuncionario(char usuario[], char senha[]) {
 			if (valideCaptcha(userCaptcha)) {
 				if (strcmp(usuario, values[6]) == 0) {
 					if (strcmp(senha, values[7]) == 0) {
-						strcpy(loggedId, values[0]);
+						loggedId = values[0];
 						strcpy(loggedNomeCompleto, values[1]);
 						strcpy(loggedEmail, values[2]);
 						strcpy(loggedRG, values[3]);
