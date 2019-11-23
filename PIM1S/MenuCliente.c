@@ -13,8 +13,7 @@ void MenuCliente() {
 	}
 
 	printf(GREEN "1" WHITE " CADASTRAR CLIENTE\n");
-	printf(GREEN "2" WHITE " ALTERAR CLIENTE\n");
-	printf(GREEN "3" WHITE " REMOVER CLIENTE\n");
+	printf(RED "2" WHITE " ALTERAR CLIENTE\n");
 	printf(YELLOW "9" WHITE " VOLTAR\n");
 	printf(RED "0" WHITE "SAIR\n");
 	opcao = _getch();
@@ -25,8 +24,8 @@ void MenuCliente() {
 		CadCliente();
 		goto inicio;
 	case '2':
-		goto inicio;
-	case '3':
+		centerText(RED "MTA (Mail Tranfer Agent) is down." WHITE, cmd_dimension.columns + 10);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
 		goto inicio;
 	case '9':
 		MenuGerenciamento();

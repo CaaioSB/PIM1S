@@ -80,3 +80,5 @@ static char* tb_feedback2 = "C:\\SGP\\db\\tb_feedback2.txt";
 
 static char* tb_pedido = "C:\\SGP\\db\\tb_pedido.txt";
 static char* tb_pedido2 = "C:\\SGP\\db\\tb_pedido2.txt";
+
+// PROMOÇÃO

@@ -16,6 +16,7 @@ void MenuGerenciamento() {
 	printf(GREEN "3" WHITE " PRODUTO\n");
 	printf(GREEN "4" WHITE " PEDIDOS\n");
 	printf(GREEN "6" WHITE " FINANCEIRO\n");
+	printf(GREEN "7" WHITE " PROMOÇÃO\n");
 	printf(YELLOW "9" WHITE " VOLTAR\n");
 	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
@@ -38,6 +39,11 @@ void MenuGerenciamento() {
 	case '6':
 		menuFinanceiro();
 		break;
+	case '7':
+		menuDesconto();
+		centerText(GREEN "PROMOÇÃO CADASTRADA!" WHITE, cmd_dimension.columns + 12);
+		Sleep(3000);
+		goto inicio;
 	case '9':
 		menuPizzaria();
 	case '0':

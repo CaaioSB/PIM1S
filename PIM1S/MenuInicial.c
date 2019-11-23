@@ -39,7 +39,10 @@ inicio:
 		}
 		goto inicio;
 	case '3':
-		esqueciMinhaSenha();
+		centerText(RED "MTA (Mail Tranfer Agent) is down." WHITE, cmd_dimension.columns + 10);
+		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU" WHITE, cmd_dimension.columns + 12);
+		system("pause > nul");
+		goto inicio;
 	case '0':
 		exit(0);
 		break;

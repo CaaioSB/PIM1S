@@ -156,6 +156,7 @@
     <ClCompile Include="NovoPedido.c" />
     <ClCompile Include="MenuCliente.c" />
     <ClCompile Include="CadFuncionario.c" />
+    <ClCompile Include="Promocao.c" />
     <ClCompile Include="splash_window.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="NovoPedido.h" />
     <ClInclude Include="MenuCliente.h" />
     <ClInclude Include="CadFuncionario.h" />
+    <ClInclude Include="Promocao.h" />
     <ClInclude Include="splash_window.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>

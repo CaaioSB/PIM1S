@@ -3,6 +3,7 @@
 #include "BibCliente.h"
 #include "BibProduto.h"
 #include "BibPedido.h"
+#include "Promocao.h"
 
 struct Pedido
 {
@@ -302,11 +303,12 @@ finalizarPedido:
 	for (int i = 0; i < ((cmd_dimension.rows / 2 - 3)); i++) {
 		printf("\n");
 	}
+	totalProdutoCarrinho = totalProdutoCarrinho - (totalProdutoCarrinho * descontoPorcentagem / 100);
 	printf(WHITE "%+75s\n" WHITE, "SELECIONE A MEIO DE" GREEN " PAGAMENTO" WHITE " OU" RED " 9 " WHITE "PARA CANCELAR");
 	printf(BLUE "%-15s" BLUE "%-32s" BLUE "%-15s" BLUE "%-0s\n" WHITE, "ID", "SERVIÇO", "TAXA", "NOVO TOTAL");
 	printf(BLUE "%-15s" WHITE "%-32s" WHITE  "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "1", "DINHEIRO", "0%", "R$ ", totalProdutoCarrinho);
-	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "2", "CARTÃO DÉBITO/CRÉDITO", "2.5%", "R$ ", totalProdutoCarrinho + (totalProdutoCarrinho * 4.00) / 100);
-	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "3", "VALE REFEIÇÃO", "1.5%", "R$ ", totalProdutoCarrinho + (totalProdutoCarrinho * 3.5) / 100);
+	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "2", "CARTÃO DÉBITO/CRÉDITO", "4%", "R$ ", (totalProdutoCarrinho + (totalProdutoCarrinho * 4.00) / 100));
+	printf(BLUE "%-15s" WHITE "%-32s" WHITE "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "3", "VALE REFEIÇÃO", "3.5%", "R$ ", totalProdutoCarrinho + (totalProdutoCarrinho * 3.5) / 100);
 	opcao = _getch();
 	switch (opcao) {
 	case '1':
