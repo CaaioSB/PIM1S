@@ -13,7 +13,7 @@ inicio:
 
 	printf(GREEN "1 " WHITE "CADASTRAR PRODUTO\n");
 	printf(GREEN "2 " WHITE "ALTERAR PRODUTO\n");
-	printf(GREEN "3 " WHITE "REMOVER PRODUTO\n");
+	printf(RED "3 " RED "REMOVER PRODUTO\n");
 	printf(YELLOW "9 " WHITE "VOLTAR\n");
 	printf(RED "0 " WHITE "SAIR\n");
 	opcao = _getch();
@@ -25,9 +25,6 @@ inicio:
 	case '2':
 		AltProduto();
 		break;
-	case '3':
-		//RemProduto();
-		break;
 	case '9': // Voltar
 		MenuGerenciamento();
 		break;
@@ -37,7 +34,7 @@ inicio:
 		exit(0);
 		break;
 	default:
-		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 a 5)" WHITE, cmd_dimension.columns + 18);
+		centerText(RED "VOCÊ DEVE SELECIONAR UMA OPÇÃO VÁLIDA!" YELLOW "(DE 1 a 2, 9 ou 0)" WHITE, cmd_dimension.columns + 18);
 		centerText(GREEN "PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU", WHITE, cmd_dimension.columns + 12);
 		system("pause");
 		goto inicio;
