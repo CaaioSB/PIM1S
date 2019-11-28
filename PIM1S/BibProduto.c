@@ -448,13 +448,22 @@ static bool AdicionarCarrinho(int id) {
 					j++;
 				}
 			}
-			// PEGANDO OS DADOS DO PRODUTO REQUERIDO
-			idProdutoCarrinho[qntProdutoCarrinho] = values[0];
-			nomeProdutoCarrinho[qntProdutoCarrinho] = values[1];
-			precoProdutoCarrinho[qntProdutoCarrinho] = atoll(values[4]);
-			totalProdutoCarrinho += atoll(values[4]);
-			FecharArquivo(arquivo2);
-			return true;
+			quantidadeProduto = atoi(values[3]);
+			if (quantidadeProduto != 0) {
+				// PEGANDO OS DADOS DO PRODUTO REQUERIDO
+				idProdutoCarrinho[qntProdutoCarrinho] = values[0];
+				nomeProdutoCarrinho[qntProdutoCarrinho] = values[1];
+				precoProdutoCarrinho[qntProdutoCarrinho] = atoll(values[4]);
+				totalProdutoCarrinho += atoll(values[4]);
+				FecharArquivo(arquivo2);
+				return true;
+			}
+			else {
+				printf("\n");
+				qntProdutoCarrinho--;
+				centerText(RED "ESTE PRODUTO NÃO POSSUI EM ESTOQUE!" WHITE, cmd_dimension.columns + 10);
+				return false;
+			}
 		}
 	}
 	numLinha++;

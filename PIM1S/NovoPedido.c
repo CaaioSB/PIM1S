@@ -184,7 +184,7 @@ adcPizza:
 	}
 	else {
 		qntProdutoCarrinho--;
-		printf(RED "A PIZZA NÃO FOI ADICIONADA!" WHITE);
+		centerText(RED "A PIZZA NÃO FOI ADICIONADA!" WHITE, cmd_dimension.columns + 10);
 		Sleep(3000);
 		goto adcProduto;
 	}
