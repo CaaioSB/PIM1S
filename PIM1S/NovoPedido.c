@@ -276,6 +276,7 @@ resumoPedido:
 	case '1':
 		goto adcProduto;
 	case '2':
+		totalProdutoCarrinho = totalProdutoCarrinho - (totalProdutoCarrinho * descontoPorcentagem / 100);
 		goto finalizarPedido;
 		break;
 	case '9':
@@ -303,7 +304,6 @@ finalizarPedido:
 	for (int i = 0; i < ((cmd_dimension.rows / 2 - 3)); i++) {
 		printf("\n");
 	}
-	totalProdutoCarrinho = totalProdutoCarrinho - (totalProdutoCarrinho * descontoPorcentagem / 100);
 	printf(WHITE "%+75s\n" WHITE, "SELECIONE A MEIO DE" GREEN " PAGAMENTO" WHITE " OU" RED " 9 " WHITE "PARA CANCELAR");
 	printf(BLUE "%-15s" BLUE "%-32s" BLUE "%-15s" BLUE "%-0s\n" WHITE, "ID", "SERVIÇO", "TAXA", "NOVO TOTAL");
 	printf(BLUE "%-15s" WHITE "%-32s" WHITE  "%-15s" WHITE "%-0s" WHITE "%0.2f\n", "1", "DINHEIRO", "0%", "R$ ", totalProdutoCarrinho);
@@ -312,7 +312,7 @@ finalizarPedido:
 	opcao = _getch();
 	switch (opcao) {
 	case '1':
-		printf("\nDIGITE O VALOR ENTREGUE PELO CLIENTE:" GREEN "R$");
+		printf("\nDIGITE O VALOR ENTREGUE PELO CLIENTE:" GREEN "R$ ");
 		(void)scanf("%f", &valor);
 		troco = valor - totalProdutoCarrinho;
 
