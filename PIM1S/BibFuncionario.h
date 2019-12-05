@@ -16,3 +16,4 @@ static char BuscarFuncionario(char id);
 
 static int ContarFuncionarios();
 
+static bool ListarFuncionariosCompleto();

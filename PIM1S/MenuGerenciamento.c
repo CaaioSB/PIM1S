@@ -15,7 +15,7 @@ void MenuGerenciamento() {
 	printf(GREEN "2" WHITE " CLIENTE\n");
 	printf(GREEN "3" WHITE " PRODUTO\n");
 	printf(GREEN "4" WHITE " PEDIDOS\n");
-	printf(GREEN "6" WHITE " FINANCEIRO\n");
+	printf(GREEN "5" WHITE " FINANCEIRO\n");
 	printf(GREEN "7" WHITE " PROMOÇÃO\n");
 	printf(YELLOW "9" WHITE " VOLTAR\n");
 	printf(RED "0" WHITE " SAIR\n");
@@ -33,10 +33,9 @@ void MenuGerenciamento() {
 		MenuProduto();
 		break;
 	case '4':
+		MenuPedido();
 		break;
 	case '5':
-		break;
-	case '6':
 		menuFinanceiro();
 		break;
 	case '7':

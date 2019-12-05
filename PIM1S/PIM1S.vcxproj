@@ -142,6 +142,7 @@
     <ClCompile Include="cmd_resolution.c" />
     <ClCompile Include="BibFuncionario.c" />
     <ClCompile Include="LisFeedback.c" />
+    <ClCompile Include="LisFuncionario.c" />
     <ClCompile Include="LisTotalPedidos.c" />
     <ClCompile Include="Login.c" />
     <ClCompile Include="main.c" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Catalogo.h" />
     <ClInclude Include="cmd_resolution.h" />
     <ClInclude Include="LisFeedback.h" />
+    <ClInclude Include="LisFuncionario.h" />
     <ClInclude Include="LisTotalPedidos.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="main.h" />

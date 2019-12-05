@@ -358,6 +358,55 @@ static bool ListarFuncionarios() {
 	return true;
 }
 
+static bool ListarFuncionariosCompleto() {
+	struct REGISTER Funcionario;
+	int x = 0;
+	int j = 0;
+	int numLinhas = 0;
+	char* palavras[50];
+	char line[1024];
+	char* values[10];
+	char delimiter[] = ";";
+	FILE* arquivo;
+
+	arquivo = AbreArquivo('l', tb_funcionario);
+
+	if (arquivo == NULL)
+		return EXIT_FAILURE;
+
+	printf(GREEN "%-5s " WHITE "%-30s %-25s %-25s %-15s %-15s %-0s\n", "ID", "NOME COMPLETO", "RG", "CPF", "CEP", "USUARIO", "PIN");
+	while (fgets(line, sizeof line, arquivo) != NULL)
+	{
+		//Adiciona cada linha no vetor
+		palavras[x] = _strdup(line);
+		char* ptr = strtok(palavras[x], delimiter);
+		values[j] = ptr;
+		j++;
+		while (ptr != NULL && j < 9) {
+			ptr = strtok(NULL, delimiter);
+			values[j] = ptr;
+			j++;
+		}
+		Funcionario.id = values[0];
+		strcpy(Funcionario.nome_completo, values[1]);
+		strcpy(Funcionario.email, values[2]);
+		strcpy(Funcionario.rg, values[3]);
+		strcpy(Funcionario.cpf, values[4]);
+		strcpy(Funcionario.cep, values[5]);
+		strcpy(Funcionario.usuario, values[6]);
+		strcpy(Funcionario.senha, values[7]);
+		strcpy(Funcionario.funcao, values[8]);
+		printf(GREEN "%-5s " WHITE "%-30s %-25s %-25s %-15s %-15s %-0s\n", Funcionario.id, Funcionario.nome_completo, Funcionario.rg, Funcionario.cpf, Funcionario.cep, Funcionario.usuario, "****");
+		j = 0;
+		x++;
+		//Conta a quantidade de linhas
+		numLinhas++;
+	}
+	FecharArquivo(arquivo);
+	printf("\n");
+	return true;
+}
+
 static bool AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], char emailFuncionario[100], char rgFuncionario[20], char cpfFuncionario[11], char cepFuncionario[20], char userFuncionario[20], char passFuncionario[20], char funcaoFuncionario[50]) {
 	/*
 	*	FAZER UMA STRING QUE SIMULA UMA LINDA DO BANCO DADOS
@@ -380,7 +429,7 @@ static bool AlterarFuncionario(char idFuncionario, char nomeFuncionario[100], ch
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		if (i == (idFuncionario - 49)) {
-			snprintf(line, sizeof line, "%c;%s;%s;%s;%s;%s;%s;%s;%s;", idFuncionario, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
+			snprintf(line, sizeof line, "%c;%s;%s;%s;%s;%s;%s;%s;%s;\n", idFuncionario, nomeFuncionario, emailFuncionario, rgFuncionario, cpfFuncionario, cepFuncionario, userFuncionario, passFuncionario, funcaoFuncionario);
 			fileLine[i] = _strdup(line);
 
 		}

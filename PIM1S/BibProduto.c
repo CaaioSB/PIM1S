@@ -126,12 +126,15 @@ static bool ListarProdutosCategoria() {
 	char* values[9];
 
 	char* nomePizza[100] = { NULL };
+	int quantidadePizza[100] = { 0 };
 	float precoPizza[100] = { 0 };
 
 	char* nomeBebida[100] = { NULL };
+	int quantidadeBebida[100] = { 0 };
 	float precoBebida[100] = { 0 };
 
 	char* nomeAcompanhamento[100] = { NULL };
+	int quantidadeAcompanhamento[100] = { NULL };
 	float precoAcompanhamento[100] = { 0 };
 
 	int pizza = 0, bebida = 0, acompanhamento = 0;
@@ -161,6 +164,7 @@ static bool ListarProdutosCategoria() {
 				}
 				nomeBebida[bebida] = values[1];
 				precoBebida[bebida] = atoll(values[4]);
+				quantidadeBebida[bebida] = atoi(values[3]);
 				bebida = bebida + 1;
 			}
 		}
@@ -179,6 +183,7 @@ static bool ListarProdutosCategoria() {
 				}
 				nomePizza[pizza] = values[1];
 				precoPizza[pizza] = atoll(values[4]);
+				quantidadePizza[pizza] = atoi(values[3]);
 				pizza = pizza + 1;
 			}
 		}
@@ -196,6 +201,7 @@ static bool ListarProdutosCategoria() {
 					j++;
 				}
 				nomeAcompanhamento[acompanhamento] = values[1];
+				quantidadeAcompanhamento[acompanhamento] = atoi(values[3]);
 				precoAcompanhamento[acompanhamento] = atoll(values[4]);
 				acompanhamento = acompanhamento + 1;
 			}
@@ -223,16 +229,16 @@ static bool ListarProdutosCategoria() {
 
 	printf(RED "%-35s %-10s" GREEN "%-35s %-10s" YELLOW "%-35s %-10s\n" WHITE, "PIZZAS", "VALOR", "BEBIDAS", "VALOR", "ACOMPANHAMENTOS", "  VALOR");
 	for (int cv = 0; cv < maior; cv++) {
-		if (nomePizza[cv] == NULL) {
+		if (nomePizza[cv] == NULL || quantidadePizza[cv] == 0) {
 			nomePizza[cv] = RED"<INDISPONÍVEL> \t\t\t"WHITE;
 			precoPizza[cv] = 0;
 		}
-		if (nomeBebida[cv] == NULL) {
+		if (nomeBebida[cv] == NULL || quantidadeBebida[cv] == 0) {
 			nomeBebida[cv] = RED"<INDISPONÍVEL>   \t\t\t"WHITE;
 			precoBebida[cv] = 0;
 			//nomeBebida[cv] = " ";
 		}
-		if (nomeAcompanhamento[cv] == NULL) {
+		if (nomeAcompanhamento[cv] == NULL || quantidadeAcompanhamento[cv] == 0) {
 			nomeAcompanhamento[cv] = RED"<INDISPONÍVEL>   \t\t\t"WHITE;
 			precoAcompanhamento[cv] = 0;
 			//nomeAcompanhamento[cv] = " ";
@@ -285,7 +291,7 @@ static bool ListarBebidas() {
 				//int quantidade = atoi(values[3]);
 				Bebidas.quantidade = atoi(values[3]);
 				Bebidas.preco = atoll(values[4]);
-				printf(GREEN "%s " WHITE "%s\n", Bebidas.id, Bebidas.nome);
+				printf(GREEN "%-10s " WHITE "%-35s" WHITE "%-25.2f\n" WHITE, Bebidas.id, Bebidas.nome, Bebidas.preco);
 			}
 		}
 		j = 0;
@@ -297,32 +303,54 @@ static bool ListarBebidas() {
 	printf("\n");
 	return true;
 }
-
 static bool ListarProdutos() {
+	struct PRODUTO Bebidas;
+	int j = 0;
 	int x = 0;
+	int cv = 0;
 	int numLinhas = 0;
+	char delimiter[] = ";";
 	char* palavras[50];
 	char line[1024];
 	FILE* arquivo;
+	char* values[9];
+
+	char* idProduto[100] = { NULL };
+	char* nomeProduto[100] = { NULL };
+	float precoProduto[100] = { 0 };
 
 	arquivo = AbreArquivo('l', tb_produto);
 
 	if (arquivo == NULL)
 		return EXIT_FAILURE;
 
+	printf(GREEN "%-15s" WHITE "%-32s" WHITE "%-0s\n" WHITE, "ID", "NOME DO PRODUTO", "PREÇO");
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
-		//Adiciona cada linha no vetor
 		palavras[x] = _strdup(line);
-		printf("%s\n", palavras[x]);
-		x++;
-
-		//Conta a quantidade de linhas
-		numLinhas++;
+		//printf("%s\n", palavras[x]);
+		char* ptr = strtok(palavras[x], delimiter);
+		values[j] = ptr;
+		j++;
+		while (ptr != NULL && j < 5)
+		{
+			// Imprime os dados lidos do documento de texto
+			//printf("'%s'\n", ptr);
+			ptr = strtok(NULL, delimiter);
+			values[j] = ptr;
+			j++;
+		}
+		idProduto[cv] = values[0];
+		nomeProduto[cv] = values[1];
+		precoProduto[cv] = atoll(values[4]);
+		printf(GREEN "%-15s" WHITE "%-32s" WHITE "%0.2f\n" WHITE, idProduto[cv], nomeProduto[cv], precoProduto[cv]);
+		cv++;
+		j = 0;
 	}
 	FecharArquivo(arquivo);
 	return true;
 }
+
 static int ContarProdutos() {
 	int numLinhas = 0;
 	char line[1024];
@@ -360,7 +388,7 @@ static bool AlterarProduto(char idProduto, char nomeProduto[100], char tipoProdu
 	while (fgets(line, sizeof line, arquivo) != NULL)
 	{
 		if (i == (idProduto - 49)) {
-			snprintf(line, sizeof line, "%c;%s;%s;%d;%0.2f;", idProduto, nomeProduto, tipoProduto, qntProduto, precoProduto);
+			snprintf(line, sizeof line, "%c;%s;%s;%d;%0.2f;\n", idProduto, nomeProduto, tipoProduto, qntProduto, precoProduto);
 			fileLine[i] = _strdup(line);
 		}
 		else {
@@ -373,11 +401,11 @@ static bool AlterarProduto(char idProduto, char nomeProduto[100], char tipoProdu
 
 	FILE* newFile = AbreArquivo('g', tb_produto2);
 	if (newFile == NULL) {
-		centerText(RED "\n\nOCORREU UM ARRO AO ALTERAR O PRODUTO", cmd_dimension.columns + 4);
+		centerText(RED "\n\nOCORREU UM ERRO AO ALTERAR O PRODUTO", cmd_dimension.columns + 4);
 	}
 	else {
 		for (int x = 0; x < i; x++) {
-			fprintf(newFile, "%s\n", fileLine[x]);
+			fprintf(newFile, "%s", fileLine[x]);
 		}
 	}
 	FecharArquivo(newFile);

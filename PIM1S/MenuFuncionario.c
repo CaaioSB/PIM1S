@@ -13,7 +13,8 @@ inicio:
 
 	printf(GREEN "1" WHITE " CADASTRAR FUNCIONÁRIO\n");
 	printf(GREEN "2" WHITE " ALTERAR FUNCIONÁRIO\n");
-	printf(GREEN "3" WHITE " DESLIGAR FUNCIONÁRIO\n");
+	printf(GREEN "3" WHITE " LISTAR FUNCIONÁRIOS\n");
+	printf(RED "4" RED " DESLIGAR FUNCIONÁRIO\n");
 	printf(YELLOW "9" WHITE " VOLTAR\n");
 	printf(RED "0" WHITE " SAIR\n");
 	opcao = _getch();
@@ -27,7 +28,8 @@ inicio:
 		AltFuncionario();
 		break;
 	case '3':
-		break;
+		LisFuncionario();
+		goto inicio;
 	case '9':
 		MenuGerenciamento();
 		break;

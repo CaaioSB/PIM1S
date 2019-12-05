@@ -137,6 +137,9 @@
     <ClCompile Include="Promocao.c">
       <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
     </ClCompile>
+    <ClCompile Include="LisFuncionario.c">
+      <Filter>Arquivos de Origem\Gerenciamento Funcao</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="splash_window.h">
@@ -233,6 +236,9 @@
       <Filter>Arquivos de Cabeçalho\Gerenciamento Biblioteca</Filter>
     </ClInclude>
     <ClInclude Include="Promocao.h">
+      <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
+    </ClInclude>
+    <ClInclude Include="LisFuncionario.h">
       <Filter>Arquivos de Cabeçalho\Gerenciamento Funcao</Filter>
     </ClInclude>
   </ItemGroup>

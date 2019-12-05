@@ -1,3 +1,4 @@
+#include "BibProduto.h"
 #include "MenuProduto.h"
 #include "util.h"
 
@@ -13,7 +14,8 @@ inicio:
 
 	printf(GREEN "1 " WHITE "CADASTRAR PRODUTO\n");
 	printf(GREEN "2 " WHITE "ALTERAR PRODUTO\n");
-	printf(RED "3 " RED "REMOVER PRODUTO\n");
+	printf(GREEN "3 " WHITE "LISTAR PRODUTOS\n");
+	printf(RED "4 " RED "REMOVER PRODUTO\n");
 	printf(YELLOW "9 " WHITE "VOLTAR\n");
 	printf(RED "0 " WHITE "SAIR\n");
 	opcao = _getch();
@@ -25,6 +27,24 @@ inicio:
 	case '2':
 		AltProduto();
 		break;
+	case '3':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "CATÁLOGO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++)
+		{
+			printf("\n");
+		}
+		if (ListarProdutosCategoria()) {
+			centerText(GREEN "APERTE QUALQUER TECLA PARA VOLTAR AO MENU DA PIZZARIA" WHITE, cmd_dimension.columns + 12);
+			system("pause >nul");
+			goto inicio;
+		}
+		else {
+			centerText(RED "\nHOUVE UM PROBLEMA AO MOSTRAR O CATÁLOGO, VOLTANDO AO MENU..." WHITE, cmd_dimension.columns + 10);
+			Sleep(2000);
+			goto inicio; 
+		}
 	case '9': // Voltar
 		MenuGerenciamento();
 		break;

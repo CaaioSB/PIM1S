@@ -42,41 +42,89 @@ opc:
 	switch (alt)
 	{
 	case '1':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO NOME: " RED "(NOME ATUAL: %s%s", nomeFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%[^\n]s", nomeFuncionario);
 		goto opc;
 	case '2':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO EMAIL: " RED "(EMAIL ATUAL: %s%s", emailFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", emailFuncionario);
 		goto opc;
 	case '3':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO RG: " RED "(RG ATUAL: %s%s", rgFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", rgFuncionario);
 		goto opc;
 	case '4':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO CPF: " RED "(CPF ATUAL: %s%s", cpfFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cpfFuncionario);
 		goto opc;
 	case '5':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO CEP: " RED "(CEP ATUAL: %s%s", cepFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", cepFuncionario);
 		goto opc;
 	case '6':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE O NOVO USUÁRIO: " RED "USUÁRIO ATUAL: %s%s", userFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", userFuncionario);
 		goto opc;
 	case '7':
-		printf("DIGITE A NOVA SENHA: " RED "SENHA ATUAL: %s%s", passFuncionario, ")\n" WHITE);
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
+		printf("DIGITE A NOVA SENHA:" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", passFuncionario);
 		goto opc;
 	case '8':
+		system(CLEAR_SCREEN_PROGRAM);
+		centerText(BOLDMAGENTA "ALTERAR FUNCIONÁRIO - SISTEMA GERENCIADOR DE PIZZARIA" WHITE, cmd_dimension.columns + 18);
+
+		for (int i = 0; i < cmd_dimension.rows / 2 - 3; i++) {
+			printf("\n");
+		}
 		printf("DIGITE A NOVA FUNÇÃO: " RED "FUNÇÃO ATUAL: %s%s", funcaoFuncionario, ")\n" WHITE);
 		setbuf(stdin, NULL);
 		(void)scanf("%s", funcaoFuncionario);
